@@ -8,7 +8,9 @@ De cursus volgt die weg in vaste stappen: VS Code, Git en GitHub, een API, HTML 
 
 ## Bekijken
 
-De cursustekst staat in `docs/` en wordt een site met MkDocs.
+De cursus staat online: [https://guybuys.github.io/van-code-tot-server/](https://guybuys.github.io/van-code-tot-server/)
+
+De tekst zelf staat in `docs/` en wordt een site met MkDocs. Lokaal nakijken terwijl je aanpast:
 
 ```powershell
 python -m venv .venv

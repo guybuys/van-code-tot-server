@@ -1,5 +1,9 @@
 site_name: Van code tot server
 site_description: Een weerstation bouwen, van de laptop tot een site op een server
+site_author: Guy Buys
+site_url: https://guybuys.github.io/van-code-tot-server/
+repo_url: https://github.com/guybuys/van-code-tot-server
+repo_name: guybuys/van-code-tot-server
 docs_dir: docs
 theme:
   name: material
