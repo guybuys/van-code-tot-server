@@ -2,7 +2,7 @@
 
 VS Code is de editor voor deze cursus. Daarin schrijf je de code, open je de terminal en start je het programma.
 
-Python op de ESP32 is MicroPython. De website gebruikt Python op je laptop. Dat zijn twee aparte installaties.
+De website gebruikt Python op je laptop. Dat is de gewone Python, niet MicroPython.
 
 ## VS Code installeren
 

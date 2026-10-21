@@ -33,13 +33,12 @@ Wij bouwen een klein platform van diezelfde vorm.
 
 Je maakt een website waarop je kan inloggen en de metingen van je eigen weerstation ziet. Temperatuur en luchtvochtigheid komen binnen, belanden in een database, en verschijnen als tabel en als grafiek. Een gewone gebruiker ziet alleen zijn station. Een beheerder ziet de stations van iedereen. Dat is hetzelfde verschil als tussen een leerling en een leerkracht op Smartschool, of tussen een klant en een medewerker in een webwinkel.
 
-Het weerstation zelf is een ESP32 met MicroPython. Dat toestel publiceert zijn metingen. Jij bouwt de site die ze toont. Tot dat station er is, laat je je eigen Python-programma testmetingen sturen. Zo kan je verder zonder op de hardware te wachten.
+Het weerstation publiceert zijn metingen. Jij bouwt de site die ze toont. Tot dat station er is, laat je je eigen Python-programma testmetingen sturen. Zo kan je verder zonder op de hardware te wachten.
 
 ```mermaid
 flowchart TD
   station[Weerstation] --> broker[MQTT]
-  broker --> programma[Jouw programma]
-  programma --> database[(Database)]
+  broker --> database[(Database)]
   database --> website[Website]
   website --> browser[Browser]
 ```

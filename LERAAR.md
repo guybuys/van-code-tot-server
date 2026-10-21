@@ -14,13 +14,13 @@ Eerst de werkomgeving, dan een backend die ze kunnen testen, daarna pas de pagin
 6. Databases vergelijken (SQL, InfluxDB, MongoDB) en SQL kiezen. SQLite lokaal.
 7. Tabel, daarna één grafiek.
 8. Wachtwoorden, login en twee rollen: `gebruiker` en `beheerder`.
-9. MQTT-ingester.
+9. MQTT-ingester. Een apart programma, niet de FastAPI-app. De site leest de database, de ingester schrijft metingen. Zo zien ze twee programma's op dezelfde database. Dat verschil hoort in dit hoofdstuk, niet in de introductie.
 10. SSH en de NUC.
 11. Eén gezamenlijke deploy.
 
 HTML komt bewust na de eerste API. De leerlingen kennen Python. Een JSON-antwoord kunnen ze testen voor er een pagina bestaat. `/docs` geeft meteen iets om aan te klikken.
 
-Één repository voor de hele site. De ESP32-code blijft bij de andere richting. Spreek wel vroeg het contract af: topic en JSON-velden `temp` en `luchtvochtigheid`. Die namen staan al in `main.py`.
+Één repository voor de hele site. Het bord hoort niet in de cursustekst. Nu publiceert een Arduino Uno R4 WiFi voor de vierdejaars. Later wordt dat een ESP32 met MicroPython bij de andere richting. Voor het zesde jaar telt alleen het bericht. Spreek wel vroeg het contract af: topic en JSON-velden `temp` en `luchtvochtigheid`. Die namen staan al in `main.py`.
 
 ## Repository delen
 

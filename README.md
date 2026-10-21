@@ -2,7 +2,7 @@
 
 Cursus voor het zesde jaar. Leerlingen bouwen een echt softwaresysteem: van de editor op hun laptop tot een site die op een server blijft draaien.
 
-Het project is een **weerstation**. Een ESP32 met MicroPython publiceert temperatuur en luchtvochtigheid. De site bewaart die metingen, toont ze in een tabel en een grafiek, en laat iemand inloggen. Een gewone gebruiker ziet alleen zijn eigen station. Een beheerder ziet alle stations.
+Het project is een **weerstation**. Het station publiceert temperatuur en luchtvochtigheid. De site bewaart die metingen, toont ze in een tabel en een grafiek, en laat iemand inloggen. Een gewone gebruiker ziet alleen zijn eigen station. Een beheerder ziet alle stations.
 
 De cursus volgt die weg in vaste stappen: VS Code, Git en GitHub, een API, HTML en CSS, een database, accounts en rollen, MQTT, en daarna de server. Het weerstation is het systeem dat ze onderweg maken. De stappen zelf zijn dezelfde voor een volgend project.
 
