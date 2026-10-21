@@ -10,7 +10,7 @@ Deze cursus is niet de enige plaats waar een doel aan bod komt. Algoritmiek, num
 
 | Onderdeel | Stand | Doelen |
 |---|---|---|
-| Introductie | klaar | Geen doel. De pagina schetst het weerstation. |
+| Introductie | klaar | Geen doel. De pagina legt eerst uit wat een platform is, en daarna het weerstation. |
 | VS Code | klaar | Geen doel. Zonder editor en terminal starten de andere delen niet. |
 | Git en GitHub | klaar | LPD 8, het stuk versiebeheer en samenwerken. |
 | Een eerste API | klaar | LPD 1, 4, 9, 11, 12 en 13. LPD 14 alleen als fouten lezen. |

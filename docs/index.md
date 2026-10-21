@@ -1,6 +1,32 @@
-# Weerstation
+# Een platform in je browser
 
-Je bouwt een website waarop je kan inloggen en de metingen van je eigen weerstation ziet. Temperatuur en luchtvochtigheid komen binnen, belanden in een database, en verschijnen als tabel en als grafiek.
+Instagram, Zalando en Smartschool lijken verschillende sites. Onder de pagina doen ze hetzelfde werk.
+
+Je opent ze in een browser. Dat kan op een Windows-laptop, een telefoon of een Chromebook. Het besturingssysteem van het toestel maakt voor de site niet uit. De browser vraagt een pagina, de site antwoordt.
+
+Je logt in met een account.
+
+- Op Instagram zie je jouw feed en jouw berichten. De privéberichten van een klasgenoot zie je niet.
+- Op Zalando of Amazon zie je jouw bestellingen en jouw mandje. Een medewerker van de winkel ziet meer: de bestellingen van alle klanten, de voorraad, de betalingen.
+- Op Smartschool ziet een leerling zijn vakken. Een leerkracht ziet de klas.
+
+Zelfde soort site, ander profiel. Het profiel beslist wat je mag zien.
+
+De foto's, de bestellingen en de punten staan niet in de pagina zelf. Ze staan in een database. De site haalt op wat bij jouw account hoort en zet dat in de pagina. Zonder database toont de site iedereen hetzelfde lege scherm. Zonder login zou iedereen alles van iedereen zien.
+
+Dat geheel is een platform: een site in de browser, een account met een profiel, en gegevens uit een database.
+
+```mermaid
+flowchart TD
+  browser[Browser] --> site[Website]
+  site --> database[(Database)]
+```
+
+## Ons project: het weerstation
+
+Wij bouwen een klein platform van diezelfde vorm.
+
+Je maakt een website waarop je kan inloggen en de metingen van je eigen weerstation ziet. Temperatuur en luchtvochtigheid komen binnen, belanden in een database, en verschijnen als tabel en als grafiek. Een gewone gebruiker ziet alleen zijn station. Een beheerder ziet de stations van iedereen. Dat is hetzelfde verschil als tussen een leerling en een leerkracht op Smartschool, of tussen een klant en een medewerker in een webwinkel.
 
 Het weerstation zelf is een ESP32 met MicroPython. Dat toestel publiceert zijn metingen. Jij bouwt de site die ze toont. Tot dat station er is, laat je je eigen Python-programma testmetingen sturen. Zo kan je verder zonder op de hardware te wachten.
 
