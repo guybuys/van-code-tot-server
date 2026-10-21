@@ -30,8 +30,12 @@ In de Arduino IDE, bord **Arduino Uno R4 WiFi**:
 |---|---|
 | VCC | 3.3V |
 | GND | GND |
-| SDA | SDA |
-| SCL | SCL |
+| SDA | A4 |
+| SCL | A5 |
+
+Dat is dezelfde indeling als op de Uno R3. Naast AREF staan twee pinnen die op de officiële print SCL en SDA heten. Dat zijn dezelfde draden als A5 en A4. De Qwiic-stekker is een andere bus en hoort niet bij deze sketch.
+
+Zonder sensor zet je bovenaan de sketch `SIMULEER_SENSOR` op `1`. Dan publiceert het bord temperatuur rond 21 °C en luchtdruk rond 1013 hPa, met een kleine stap bij elke meting. Zet die regel op `0` zodra de BMP280 aangesloten is.
 
 De seriële monitor staat op 115200 baud. Daar verschijnt het bericht ook als de broker nog niet bereikbaar is.
 
