@@ -21,6 +21,20 @@ Zet er een regel bij per extra station. Eén topic `weerstation/+/meting` ontvan
 
 ## Pakket
 
+`test_verbinding.py` meldt aan, publiceert één bericht op `weerstation/test/verbinding` en wacht tot datzelfde bericht terugkomt. Zo controleer je het IP-adres, de gebruikersnaam en het wachtwoord zonder een Arduino. Een geslaagde run eindigt met `Bericht terugontvangen`.
+
+Eerst naar de map `thonny/toon_metingen`. Op een Mac:
+
+```bash
+.venv/bin/python test_verbinding.py
+```
+
+Op Windows:
+
+```powershell
+.venv\Scripts\python test_verbinding.py
+```
+
 In Thonny: **Extra → Beheer pakketten**, zoek `paho-mqtt` en installeer het. Of in de shell van Thonny:
 
 ```text
