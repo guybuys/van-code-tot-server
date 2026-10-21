@@ -2,6 +2,11 @@
 
 Instagram, Zalando en Smartschool lijken verschillende sites. Onder de pagina doen ze hetzelfde werk.
 
+<figure markdown="span">
+  ![Laptop met Instagram, telefoon met Zalando en tablet met het aanmeldscherm van Smartschool. Erboven de logo's van Instagram, Zalando, Amazon en Smartschool.](afbeeldingen/platformen.jpg)
+  <figcaption>Instagram, Zalando, Amazon en Smartschool. Andere schermen, dezelfde soort site.</figcaption>
+</figure>
+
 Je opent ze in een browser. Dat kan op een Windows-laptop, een telefoon of een Chromebook. Het besturingssysteem van het toestel maakt voor de site niet uit. De browser vraagt een pagina, de site antwoordt.
 
 Je logt in met een account.
