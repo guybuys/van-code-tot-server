@@ -6,3 +6,4 @@ __pycache__/
 Leerplan/
 arduino/**/secrets.h
 thonny/**/secrets.py
+esp32/**/secrets.py
