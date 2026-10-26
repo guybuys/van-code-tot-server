@@ -20,7 +20,7 @@ Eerst de werkomgeving, dan een backend die ze kunnen testen, daarna pas de pagin
 
 HTML komt bewust na de eerste API. De leerlingen kennen Python. Een JSON-antwoord kunnen ze testen voor er een pagina bestaat. `/docs` geeft meteen iets om aan te klikken.
 
-Één repository voor de hele site. Het bord hoort niet in de cursustekst. Nu publiceert een Arduino Uno R4 WiFi voor de vierdejaars. Later wordt dat een ESP32 met MicroPython bij de andere richting. Voor het zesde jaar telt alleen het bericht. Spreek wel vroeg het contract af: topic en JSON-velden `temp` en `luchtvochtigheid`. Die namen staan al in `main.py`.
+Één repository voor de hele site. Het bord hoort niet in de cursustekst. Nu publiceert een Arduino Uno R4 WiFi voor de vierdejaars. Later wordt dat een ESP32 met MicroPython bij de andere richting. Voor het zesde jaar telt alleen het bericht. Spreek wel vroeg het contract af: topic en JSON-velden `temp` en `luchtdruk`. Die namen staan al in `main.py` en zijn dezelfde als het bericht van de BMP280. Een extra sensor, zoals windsnelheid, wordt later een extra veld. De eerste API blijft twee verplichte velden. In het databasehoofdstuk kiezen we de vorm: vaste kolommen zolang de lijst kort is, een JSON-kolom zodra stations verschillende sensoren sturen.
 
 ## Repository delen
 

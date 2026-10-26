@@ -4,13 +4,13 @@ from pydantic import BaseModel
 app = FastAPI()
 
 metingen = [
-    {"temp": 18.2, "luchtvochtigheid": 61},
+    {"temp": 18.2, "luchtdruk": 1013.2},
 ]
 
 
 class Meting(BaseModel):
     temp: float
-    luchtvochtigheid: float
+    luchtdruk: float
 
 
 @app.get("/")

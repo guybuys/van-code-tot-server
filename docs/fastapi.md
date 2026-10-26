@@ -6,7 +6,7 @@ Aan het einde van dit hoofdstuk doet jouw programma drie dingen:
 
 - `GET /` antwoordt dat het weerstation-programma draait.
 - `GET /metingen` geeft de lijst met metingen.
-- `POST /metingen` voegt een meting toe. Ontbreekt de temperatuur of de luchtvochtigheid, dan weigert het programma de vraag.
+- `POST /metingen` voegt een meting toe. Ontbreekt de temperatuur of de luchtdruk, dan weigert het programma de vraag.
 
 Je test dat op vier manieren. De lijst met metingen leeft alleen zolang het programma draait. Afsluiten wist wat je toevoegde. Bewaren in een database komt later.
 
@@ -55,13 +55,13 @@ from pydantic import BaseModel
 app = FastAPI()
 
 metingen = [
-    {"temp": 18.2, "luchtvochtigheid": 61},
+    {"temp": 18.2, "luchtdruk": 1013.2},
 ]
 
 
 class Meting(BaseModel):
     temp: float
-    luchtvochtigheid: float
+    luchtdruk: float
 
 
 @app.get("/")
@@ -82,7 +82,7 @@ def nieuwe_meting(meting: Meting):
 
 `Meting` beschrijft welke velden een meting heeft en welk type die hebben. FastAPI gebruikt dat om een onvolledige vraag te weigeren. `@app.get` en `@app.post` koppelen een URL aan een functie. We gebruiken gewone functies met `def`. Dat is dezelfde soort functie als in je andere Python-programma's.
 
-De namen `temp` en `luchtvochtigheid` zijn de afspraak met iedereen die later een meting stuurt, ook het weerstation. Die namen veranderen we niet zomaar.
+De namen `temp` en `luchtdruk` zijn de afspraak met iedereen die later een meting stuurt, ook het weerstation. Die namen veranderen we niet zomaar. Een extra sensor wordt een extra veld in die afspraak.
 
 ## De server starten
 
@@ -124,13 +124,13 @@ FastAPI maakt op [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs) een pa
 ```json
 {
   "temp": 21.5,
-  "luchtvochtigheid": 48
+  "luchtdruk": 1013
 }
 ```
 
-3. Klik **Execute**. De statuscode is `200`. In de response staat de meting die je stuurde. Een komma-getal kan als `48.0` terugkomen. Dat is dezelfde waarde als `48`.
+3. Klik **Execute**. De statuscode is `200`. In de response staat de meting die je stuurde. Een komma-getal kan als `1013.0` terugkomen. Dat is dezelfde waarde als `1013`.
 4. Voer **GET /metingen** opnieuw uit. De nieuwe meting staat erbij.
-5. Stuur nog een POST, dit keer zonder `luchtvochtigheid`. De statuscode is `422`. Het programma is blijven draaien en heeft de meting niet toegevoegd. `422` betekent: de vraag is aangekomen, de inhoud klopt niet met `Meting`.
+5. Stuur nog een POST, dit keer zonder `luchtdruk`. De statuscode is `422`. Het programma is blijven draaien en heeft de meting niet toegevoegd. `422` betekent: de vraag is aangekomen, de inhoud klopt niet met `Meting`.
 
 Bewaar je `main.py` terwijl de server met `--reload` draait, dan herstart het programma en is de toegevoegde meting weg. De startmeting van 18,2 °C blijft, die staat in de code.
 
@@ -147,7 +147,7 @@ curl.exe http://127.0.0.1:8000/metingen
 Maak voor de POST een bestand `body.json`:
 
 ```json
-{"temp": 19.4, "luchtvochtigheid": 55}
+{"temp": 19.4, "luchtdruk": 1008.6}
 ```
 
 ```powershell
@@ -185,12 +185,12 @@ def test_metingen_is_een_lijst():
 def test_nieuwe_meting_komt_terug():
     response = client.post(
         "/metingen",
-        json={"temp": 21.5, "luchtvochtigheid": 48},
+        json={"temp": 21.5, "luchtdruk": 1013},
     )
     assert response.status_code == 200
     ontvangen = response.json()["ontvangen"]
     assert ontvangen["temp"] == 21.5
-    assert ontvangen["luchtvochtigheid"] == 48
+    assert ontvangen["luchtdruk"] == 1013
 
 
 def test_onvolledige_meting_wordt_geweigerd():
@@ -220,7 +220,7 @@ git push
 
 - [http://127.0.0.1:8000](http://127.0.0.1:8000) toont `status` en `service`.
 - Via `/docs` voeg je een meting toe en zie je ze daarna in de lijst.
-- Een POST zonder luchtvochtigheid krijgt status `422`.
+- Een POST zonder luchtdruk krijgt status `422`.
 - `pytest` eindigt met 4 geslaagde tests.
 - `main.py` en `test_main.py` staan op GitHub, `.venv` niet.
 

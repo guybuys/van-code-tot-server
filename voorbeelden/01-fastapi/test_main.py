@@ -20,12 +20,12 @@ def test_metingen_is_een_lijst():
 def test_nieuwe_meting_komt_terug():
     response = client.post(
         "/metingen",
-        json={"temp": 21.5, "luchtvochtigheid": 48},
+        json={"temp": 21.5, "luchtdruk": 1013},
     )
     assert response.status_code == 200
     ontvangen = response.json()["ontvangen"]
     assert ontvangen["temp"] == 21.5
-    assert ontvangen["luchtvochtigheid"] == 48
+    assert ontvangen["luchtdruk"] == 1013
 
 
 def test_onvolledige_meting_wordt_geweigerd():

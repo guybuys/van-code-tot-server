@@ -65,7 +65,7 @@ Het doel gaat over modules die iemand anders kan lezen en verder gebruiken. Vers
 
 Validatie, een begrijpelijke fout, en een interface die een fout voorkomt in plaats van te crashen.
 
-- Een eerste API (klaar): een meting zonder luchtvochtigheid krijgt status 422. Het programma blijft draaien.
+- Een eerste API (klaar): een meting zonder luchtdruk krijgt status 422. Het programma blijft draaien.
 - Metingen op de pagina (onder constructie): een lege periode of een ontbrekend station krijgt een leesbare boodschap, geen lege grafiek zonder uitleg.
 - Wachtwoorden, login en rollen (onder constructie): een fout wachtwoord en een onbekende gebruiker krijgen dezelfde boodschap. Een gebruiker ziet geen stations van iemand anders.
 
