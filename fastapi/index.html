@@ -791,7 +791,7 @@
 <ul>
 <li><code>GET /</code> antwoordt dat het weerstation-programma draait.</li>
 <li><code>GET /metingen</code> geeft de lijst met metingen.</li>
-<li><code>POST /metingen</code> voegt een meting toe. Ontbreekt de temperatuur of de luchtvochtigheid, dan weigert het programma de vraag.</li>
+<li><code>POST /metingen</code> voegt een meting toe. Ontbreekt de temperatuur of de luchtdruk, dan weigert het programma de vraag.</li>
 </ul>
 <p>Je test dat op vier manieren. De lijst met metingen leeft alleen zolang het programma draait. Afsluiten wist wat je toevoegde. Bewaren in een database komt later.</p>
 <h2 id="virtuele-omgeving">Virtuele omgeving<a class="headerlink" href="#virtuele-omgeving" title="Permanent link">&para;</a></h2>
@@ -822,13 +822,13 @@
 <span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
 
 <span class="n">metingen</span> <span class="o">=</span> <span class="p">[</span>
-    <span class="p">{</span><span class="s2">"temp"</span><span class="p">:</span> <span class="mf">18.2</span><span class="p">,</span> <span class="s2">"luchtvochtigheid"</span><span class="p">:</span> <span class="mi">61</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">"temp"</span><span class="p">:</span> <span class="mf">18.2</span><span class="p">,</span> <span class="s2">"luchtdruk"</span><span class="p">:</span> <span class="mf">1013.2</span><span class="p">},</span>
 <span class="p">]</span>
 
 
 <span class="k">class</span><span class="w"> </span><span class="nc">Meting</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
     <span class="n">temp</span><span class="p">:</span> <span class="nb">float</span>
-    <span class="n">luchtvochtigheid</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">luchtdruk</span><span class="p">:</span> <span class="nb">float</span>
 
 
 <span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"/"</span><span class="p">)</span>
@@ -847,7 +847,7 @@
     <span class="k">return</span> <span class="p">{</span><span class="s2">"ontvangen"</span><span class="p">:</span> <span class="n">meting</span><span class="o">.</span><span class="n">model_dump</span><span class="p">()}</span>
 </code></pre></div>
 <p><code>Meting</code> beschrijft welke velden een meting heeft en welk type die hebben. FastAPI gebruikt dat om een onvolledige vraag te weigeren. <code>@app.get</code> en <code>@app.post</code> koppelen een URL aan een functie. We gebruiken gewone functies met <code>def</code>. Dat is dezelfde soort functie als in je andere Python-programma's.</p>
-<p>De namen <code>temp</code> en <code>luchtvochtigheid</code> zijn de afspraak met iedereen die later een meting stuurt, ook het weerstation. Die namen veranderen we niet zomaar.</p>
+<p>De namen <code>temp</code> en <code>luchtdruk</code> zijn de afspraak met iedereen die later een meting stuurt, ook het weerstation. Die namen veranderen we niet zomaar. Een extra sensor wordt een extra veld in die afspraak.</p>
 <h2 id="de-server-starten">De server starten<a class="headerlink" href="#de-server-starten" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="n">python</span> <span class="n">-m</span> <span class="n">uvicorn</span> <span class="n">main</span><span class="p">:</span><span class="n">app</span> <span class="p">-</span><span class="n">-reload</span>
 </code></pre></div>
@@ -871,13 +871,13 @@
 </ol>
 <div class="highlight"><pre><span></span><code><span class="p">{</span>
 <span class="w">  </span><span class="nt">"temp"</span><span class="p">:</span><span class="w"> </span><span class="mf">21.5</span><span class="p">,</span>
-<span class="w">  </span><span class="nt">"luchtvochtigheid"</span><span class="p">:</span><span class="w"> </span><span class="mi">48</span>
+<span class="w">  </span><span class="nt">"luchtdruk"</span><span class="p">:</span><span class="w"> </span><span class="mi">1013</span>
 <span class="p">}</span>
 </code></pre></div>
 <ol>
-<li>Klik <strong>Execute</strong>. De statuscode is <code>200</code>. In de response staat de meting die je stuurde. Een komma-getal kan als <code>48.0</code> terugkomen. Dat is dezelfde waarde als <code>48</code>.</li>
+<li>Klik <strong>Execute</strong>. De statuscode is <code>200</code>. In de response staat de meting die je stuurde. Een komma-getal kan als <code>1013.0</code> terugkomen. Dat is dezelfde waarde als <code>1013</code>.</li>
 <li>Voer <strong>GET /metingen</strong> opnieuw uit. De nieuwe meting staat erbij.</li>
-<li>Stuur nog een POST, dit keer zonder <code>luchtvochtigheid</code>. De statuscode is <code>422</code>. Het programma is blijven draaien en heeft de meting niet toegevoegd. <code>422</code> betekent: de vraag is aangekomen, de inhoud klopt niet met <code>Meting</code>.</li>
+<li>Stuur nog een POST, dit keer zonder <code>luchtdruk</code>. De statuscode is <code>422</code>. Het programma is blijven draaien en heeft de meting niet toegevoegd. <code>422</code> betekent: de vraag is aangekomen, de inhoud klopt niet met <code>Meting</code>.</li>
 </ol>
 <p>Bewaar je <code>main.py</code> terwijl de server met <code>--reload</code> draait, dan herstart het programma en is de toegevoegde meting weg. De startmeting van 18,2 °C blijft, die staat in de code.</p>
 <h2 id="test-3-curl">Test 3. curl<a class="headerlink" href="#test-3-curl" title="Permanent link">&para;</a></h2>
@@ -886,7 +886,7 @@
 <div class="highlight"><pre><span></span><code><span class="n">curl</span><span class="p">.</span><span class="n">exe</span> <span class="n">http</span><span class="p">://</span><span class="n">127</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">:</span><span class="n">8000</span><span class="p">/</span><span class="n">metingen</span>
 </code></pre></div>
 <p>Maak voor de POST een bestand <code>body.json</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">"temp"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.4</span><span class="p">,</span><span class="w"> </span><span class="nt">"luchtvochtigheid"</span><span class="p">:</span><span class="w"> </span><span class="mi">55</span><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nt">"temp"</span><span class="p">:</span><span class="w"> </span><span class="mf">19.4</span><span class="p">,</span><span class="w"> </span><span class="nt">"luchtdruk"</span><span class="p">:</span><span class="w"> </span><span class="mf">1008.6</span><span class="p">}</span>
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><span class="n">curl</span><span class="p">.</span><span class="n">exe</span> <span class="n">-X</span> <span class="n">POST</span> <span class="n">http</span><span class="p">://</span><span class="n">127</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">0</span><span class="p">.</span><span class="n">1</span><span class="p">:</span><span class="n">8000</span><span class="p">/</span><span class="n">metingen</span> <span class="n">-H</span> <span class="s2">"Content-Type: application/json"</span> <span class="p">-</span><span class="n">-data-binary</span> <span class="s2">"@body.json"</span>
 </code></pre></div>
@@ -916,12 +916,12 @@
 <span class="k">def</span><span class="w"> </span><span class="nf">test_nieuwe_meting_komt_terug</span><span class="p">():</span>
     <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
         <span class="s2">"/metingen"</span><span class="p">,</span>
-        <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">"temp"</span><span class="p">:</span> <span class="mf">21.5</span><span class="p">,</span> <span class="s2">"luchtvochtigheid"</span><span class="p">:</span> <span class="mi">48</span><span class="p">},</span>
+        <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">"temp"</span><span class="p">:</span> <span class="mf">21.5</span><span class="p">,</span> <span class="s2">"luchtdruk"</span><span class="p">:</span> <span class="mi">1013</span><span class="p">},</span>
     <span class="p">)</span>
     <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
     <span class="n">ontvangen</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"ontvangen"</span><span class="p">]</span>
     <span class="k">assert</span> <span class="n">ontvangen</span><span class="p">[</span><span class="s2">"temp"</span><span class="p">]</span> <span class="o">==</span> <span class="mf">21.5</span>
-    <span class="k">assert</span> <span class="n">ontvangen</span><span class="p">[</span><span class="s2">"luchtvochtigheid"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">48</span>
+    <span class="k">assert</span> <span class="n">ontvangen</span><span class="p">[</span><span class="s2">"luchtdruk"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1013</span>
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">test_onvolledige_meting_wordt_geweigerd</span><span class="p">():</span>
@@ -942,7 +942,7 @@
 <ul>
 <li><a href="http://127.0.0.1:8000">http://127.0.0.1:8000</a> toont <code>status</code> en <code>service</code>.</li>
 <li>Via <code>/docs</code> voeg je een meting toe en zie je ze daarna in de lijst.</li>
-<li>Een POST zonder luchtvochtigheid krijgt status <code>422</code>.</li>
+<li>Een POST zonder luchtdruk krijgt status <code>422</code>.</li>
 <li><code>pytest</code> eindigt met 4 geslaagde tests.</li>
 <li><code>main.py</code> en <code>test_main.py</code> staan op GitHub, <code>.venv</code> niet.</li>
 </ul>
