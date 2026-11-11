@@ -2,18 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://guybuys.github.io/van-code-tot-server/</loc>
-         <lastmod>2026-10-26</lastmod>
+         <lastmod>2026-11-11</lastmod>
+    </url>
+    <url>
+         <loc>https://guybuys.github.io/van-code-tot-server/css/</loc>
+         <lastmod>2026-11-11</lastmod>
     </url>
     <url>
          <loc>https://guybuys.github.io/van-code-tot-server/fastapi/</loc>
-         <lastmod>2026-10-26</lastmod>
+         <lastmod>2026-11-11</lastmod>
     </url>
     <url>
          <loc>https://guybuys.github.io/van-code-tot-server/github/</loc>
-         <lastmod>2026-10-26</lastmod>
+         <lastmod>2026-11-11</lastmod>
+    </url>
+    <url>
+         <loc>https://guybuys.github.io/van-code-tot-server/html/</loc>
+         <lastmod>2026-11-11</lastmod>
     </url>
     <url>
          <loc>https://guybuys.github.io/van-code-tot-server/vscode/</loc>
-         <lastmod>2026-10-26</lastmod>
+         <lastmod>2026-11-11</lastmod>
     </url>
 </urlset>
