@@ -59,6 +59,10 @@ pytest
 python -m uvicorn main:app --reload
 ```
 
+## HTML en CSS
+
+`index.html` toont één meting met vaste cijfers. `style.css` zet die pagina in een witte kolom. De leerlingen openen het bestand met `start index.html`. FastAPI draait daarbij niet. Geen Jinja, geen media queries. Het voorbeeld na beide hoofdstukken staat in `voorbeelden/02-pagina/`. Het volgende hoofdstuk laat FastAPI die pagina serveren.
+
 ## Wachtwoorden
 
 Nog geen hoofdstuk. Een hash uitleggen voor er een gebruikerstabel is, blijft los zand.

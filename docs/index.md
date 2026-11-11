@@ -61,8 +61,8 @@ De volgorde ligt vast. Elk hoofdstuk gaat ervan uit dat het vorige af is.
 
 Daarna, in deze volgorde:
 
-4. HTML, de structuur van de pagina.
-5. CSS, de vorm.
+4. [HTML](html.md), de structuur van de pagina.
+5. [CSS](css.md), de vorm.
 6. De pagina laten komen uit FastAPI.
 7. Databases vergelijken, en daarna SQL gebruiken voor gebruikers, stations en metingen.
 8. De metingen op de pagina zetten, eerst als tabel, dan als grafiek.

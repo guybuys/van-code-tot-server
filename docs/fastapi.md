@@ -240,4 +240,4 @@ git push
 
 Elk programma op deze laptop kan een meting toevoegen. Er is geen gebruiker en geen wachtwoord. Zodra de site op een andere computer staat, volstaat de URL om metingen toe te voegen. Voor die tijd koppelen we metingen aan een account. Een wachtwoord bewaren we dan niet als leesbare tekst. Het wordt een hash: daaruit kan je het wachtwoord niet terug aflezen, en de site kan wel controleren of het ingetypte wachtwoord klopt.
 
-De volgende hoofdstukken maken de pagina die deze gegevens toont.
+De volgende hoofdstukken maken de pagina die deze gegevens toont. Eerst [HTML](html.md), nog met vaste cijfers.

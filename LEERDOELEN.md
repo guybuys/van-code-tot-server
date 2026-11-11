@@ -14,8 +14,8 @@ Deze cursus is niet de enige plaats waar een doel aan bod komt. Algoritmiek, num
 | VS Code | klaar | Geen doel. Zonder editor en terminal starten de andere delen niet. |
 | Git en GitHub | klaar | LPD 8, het stuk versiebeheer en samenwerken. |
 | Een eerste API | klaar | LPD 1, 4, 9, 11, 12 en 13. LPD 14 alleen als fouten lezen. |
-| HTML | onder constructie | LPD 10, de structuur van de pagina. |
-| CSS | onder constructie | LPD 10, de vorm. Responsive blijft een uitbreiding. |
+| HTML | klaar | LPD 10, de structuur van de pagina. |
+| CSS | klaar | LPD 10, de vorm. Responsive blijft een uitbreiding. |
 | De pagina uit FastAPI | onder constructie | LPD 7, 10 en 11. De presentatielaag wordt de HTML-pagina. |
 | Databases | onder constructie | LPD 4, 6, 7 en 12. Ontwerp van gebruiker, station en meting, daarna SQL. |
 | Metingen op de pagina | onder constructie | LPD 9, 10 en 11. Eerst een tabel, daarna een grafiek. |
@@ -73,8 +73,8 @@ Validatie, een begrijpelijke fout, en een interface die een fout voorkomt in pla
 
 HTML voor de structuur, CSS voor de vorm. Responsive is een wenk, geen minimumeis.
 
-- HTML (onder constructie).
-- CSS (onder constructie).
+- HTML (klaar): een pagina met titel, zin en tabel. De cijfers staan vast in het bestand.
+- CSS (klaar): een apart bestand bepaalt lettertype, kolom en tabel. Geen media queries.
 - De pagina uit FastAPI (onder constructie): dezelfde pagina, nu door het programma geleverd.
 - Metingen op de pagina (onder constructie): tabel en grafiek.
 

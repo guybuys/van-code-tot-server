@@ -39,3 +39,6 @@ nav:
       - Git en GitHub: github.md
   - Backend:
       - Een eerste API: fastapi.md
+  - Pagina:
+      - HTML: html.md
+      - CSS: css.md
