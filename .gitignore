@@ -6,4 +6,5 @@ __pycache__/
 Leerplan/
 arduino/**/secrets.h
 thonny/**/secrets.py
+thonny/demo_metingen.py
 esp32/**/secrets.py
