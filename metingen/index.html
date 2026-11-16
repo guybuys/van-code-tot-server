@@ -1,0 +1,1328 @@
+
+<!doctype html>
+<html lang="nl" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Een weerstation bouwen, van de laptop tot een site op een server">
+      
+      
+        <meta name="author" content="Guy Buys">
+      
+      
+        <link rel="canonical" href="https://guybuys.github.io/van-code-tot-server/metingen/">
+      
+      
+        <link rel="prev" href="../database/">
+      
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Metingen - Van code tot server</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#metingen-op-de-pagina" class="md-skip">
+          Ga naar inhoud
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Van code tot server" class="md-header__button md-logo" aria-label="Van code tot server" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Van code tot server
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Metingen
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Zoeken" placeholder="Zoeken" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Zoeken">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Leegmaken" aria-label="Leegmaken" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Zoeken initialiseren
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/guybuys/van-code-tot-server" title="Ga naar repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    guybuys/van-code-tot-server
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigatie" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Van code tot server" class="md-nav__button md-logo" aria-label="Van code tot server" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Van code tot server
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/guybuys/van-code-tot-server" title="Ga naar repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    guybuys/van-code-tot-server
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introductie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Werkomgeving
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Werkomgeving
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vscode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VS Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git en GitHub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backend
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Backend
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fastapi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Een eerste API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pagina
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Pagina
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../html/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HTML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../css/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CSS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pagina/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    De pagina uit FastAPI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gegevens
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Gegevens
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metingen
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metingen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhoudsopgave">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#schrijven-en-lezen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schrijven en lezen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#de-pagina" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        De pagina
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nakijken" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nakijken
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#de-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        De test
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bewaren-op-github" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bewaren op GitHub
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#klaar-als" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Klaar als
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhoudsopgave">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#schrijven-en-lezen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Schrijven en lezen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#de-pagina" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        De pagina
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nakijken" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nakijken
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#de-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        De test
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bewaren-op-github" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bewaren op GitHub
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#klaar-als" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Klaar als
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="metingen-op-de-pagina">Metingen op de pagina<a class="headerlink" href="#metingen-op-de-pagina" title="Permanent link">&para;</a></h1>
+<p><code>database.py</code> bewaart veertien metingen. De pagina leest ze nog niet. Ze toont één waarde uit een lijst, en die lijst is weg na een herstart.</p>
+<p>Dit hoofdstuk laat de pagina het klaslokaal lezen. Eerst als tabel, daarna als grafiek van de temperatuur. De speelplaats blijft in de database. Welk station van wie is, komt bij het inloggen.</p>
+<h2 id="schrijven-en-lezen">Schrijven en lezen<a class="headerlink" href="#schrijven-en-lezen" title="Permanent link">&para;</a></h2>
+<p>Zet bovenaan <code>database.py</code> deze import bij de andere:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span><span class="p">,</span> <span class="n">timezone</span>
+</code></pre></div>
+<p>Zet deze functies onder <code>start</code> en boven <code>toon</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">naam_van_station</span><span class="p">(</span><span class="n">station_id</span><span class="p">):</span>
+    <span class="n">verbinding</span> <span class="o">=</span> <span class="n">verbind</span><span class="p">()</span>
+    <span class="n">rij</span> <span class="o">=</span> <span class="n">verbinding</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+        <span class="s2">"SELECT naam FROM station WHERE id = ?"</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">station_id</span><span class="p">,),</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+    <span class="n">verbinding</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">rij</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="n">rij</span><span class="p">[</span><span class="s2">"naam"</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">metingen_van_station</span><span class="p">(</span><span class="n">station_id</span><span class="p">):</span>
+    <span class="n">verbinding</span> <span class="o">=</span> <span class="n">verbind</span><span class="p">()</span>
+    <span class="n">rijen</span> <span class="o">=</span> <span class="n">verbinding</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        SELECT tijd, temp, luchtdruk</span>
+<span class="sd">        FROM meting</span>
+<span class="sd">        WHERE station_id = ?</span>
+<span class="sd">        ORDER BY tijd</span>
+<span class="sd">        """</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">station_id</span><span class="p">,),</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+    <span class="n">verbinding</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">rijen</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">alle_metingen</span><span class="p">():</span>
+    <span class="n">verbinding</span> <span class="o">=</span> <span class="n">verbind</span><span class="p">()</span>
+    <span class="n">rijen</span> <span class="o">=</span> <span class="n">verbinding</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        SELECT station_id, tijd, temp, luchtdruk</span>
+<span class="sd">        FROM meting</span>
+<span class="sd">        ORDER BY tijd, station_id</span>
+<span class="sd">        """</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+    <span class="n">verbinding</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">return</span> <span class="p">[</span><span class="nb">dict</span><span class="p">(</span><span class="n">rij</span><span class="p">)</span> <span class="k">for</span> <span class="n">rij</span> <span class="ow">in</span> <span class="n">rijen</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">voeg_meting_toe</span><span class="p">(</span><span class="n">station_id</span><span class="p">,</span> <span class="n">temp</span><span class="p">,</span> <span class="n">luchtdruk</span><span class="p">):</span>
+    <span class="n">tijd</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(</span><span class="n">timezone</span><span class="o">.</span><span class="n">utc</span><span class="p">)</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">"%Y-%m-</span><span class="si">%d</span><span class="s2">T%H:%M:%SZ"</span><span class="p">)</span>
+    <span class="n">verbinding</span> <span class="o">=</span> <span class="n">verbind</span><span class="p">()</span>
+    <span class="n">verbinding</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+        <span class="s2">"INSERT INTO meting (station_id, tijd, temp, luchtdruk) VALUES (?, ?, ?, ?)"</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">station_id</span><span class="p">,</span> <span class="n">tijd</span><span class="p">,</span> <span class="n">temp</span><span class="p">,</span> <span class="n">luchtdruk</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="n">verbinding</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="n">verbinding</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">"temp"</span><span class="p">:</span> <span class="n">temp</span><span class="p">,</span> <span class="s2">"luchtdruk"</span><span class="p">:</span> <span class="n">luchtdruk</span><span class="p">,</span> <span class="s2">"tijd"</span><span class="p">:</span> <span class="n">tijd</span><span class="p">}</span>
+</code></pre></div>
+<p><code>naam_van_station</code> geeft <code>None</code> terug als dat nummer niet bestaat. <code>metingen_van_station</code> geeft de rijen van één station, gesorteerd op tijd. <code>voeg_meting_toe</code> zet de tijd er zelf bij, in UTC, en bewaart de rij met <code>commit</code>.</p>
+<p>Een POST heeft nog altijd alleen <code>temp</code> en <code>luchtdruk</code>. Het programma kiest het klaslokaal en de tijd.</p>
+<h2 id="de-pagina">De pagina<a class="headerlink" href="#de-pagina" title="Permanent link">&para;</a></h2>
+<p>Vervang <code>main.py</code> door dit bestand. De lijst <code>metingen = [...]</code> is weg.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span><span class="p">,</span> <span class="n">Request</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi.staticfiles</span><span class="w"> </span><span class="kn">import</span> <span class="n">StaticFiles</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi.templating</span><span class="w"> </span><span class="kn">import</span> <span class="n">Jinja2Templates</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">database</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
+<span class="n">app</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s2">"/static"</span><span class="p">,</span> <span class="n">StaticFiles</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="s2">"static"</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">"static"</span><span class="p">)</span>
+<span class="n">templates</span> <span class="o">=</span> <span class="n">Jinja2Templates</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="s2">"templates"</span><span class="p">)</span>
+
+<span class="n">database</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Meting</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">temp</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">luchtdruk</span><span class="p">:</span> <span class="nb">float</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">komma</span><span class="p">(</span><span class="n">getal</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">getal</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">"</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"."</span><span class="p">,</span> <span class="s2">","</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">voor_tabel</span><span class="p">(</span><span class="n">rij</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">"tijd"</span><span class="p">:</span> <span class="n">rij</span><span class="p">[</span><span class="s2">"tijd"</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"T"</span><span class="p">,</span> <span class="s2">" "</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"Z"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)[:</span><span class="mi">16</span><span class="p">],</span>
+        <span class="s2">"temperatuur"</span><span class="p">:</span> <span class="n">komma</span><span class="p">(</span><span class="n">rij</span><span class="p">[</span><span class="s2">"temp"</span><span class="p">]),</span>
+        <span class="s2">"luchtdruk"</span><span class="p">:</span> <span class="n">komma</span><span class="p">(</span><span class="n">rij</span><span class="p">[</span><span class="s2">"luchtdruk"</span><span class="p">]),</span>
+    <span class="p">}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">voor_grafiek</span><span class="p">(</span><span class="n">rij</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">"tijd"</span><span class="p">:</span> <span class="n">rij</span><span class="p">[</span><span class="s2">"tijd"</span><span class="p">][</span><span class="mi">11</span><span class="p">:</span><span class="mi">16</span><span class="p">],</span> <span class="s2">"temp"</span><span class="p">:</span> <span class="n">rij</span><span class="p">[</span><span class="s2">"temp"</span><span class="p">]}</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"/"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">home</span><span class="p">(</span><span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">):</span>
+    <span class="n">station_id</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">rijen</span> <span class="o">=</span> <span class="n">database</span><span class="o">.</span><span class="n">metingen_van_station</span><span class="p">(</span><span class="n">station_id</span><span class="p">)</span>
+    <span class="n">grafiek</span> <span class="o">=</span> <span class="p">[</span><span class="n">voor_grafiek</span><span class="p">(</span><span class="n">rij</span><span class="p">)</span> <span class="k">for</span> <span class="n">rij</span> <span class="ow">in</span> <span class="n">rijen</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">templates</span><span class="o">.</span><span class="n">TemplateResponse</span><span class="p">(</span>
+        <span class="n">request</span><span class="p">,</span>
+        <span class="s2">"index.html"</span><span class="p">,</span>
+        <span class="p">{</span>
+            <span class="s2">"station"</span><span class="p">:</span> <span class="n">database</span><span class="o">.</span><span class="n">naam_van_station</span><span class="p">(</span><span class="n">station_id</span><span class="p">),</span>
+            <span class="s2">"metingen"</span><span class="p">:</span> <span class="p">[</span><span class="n">voor_tabel</span><span class="p">(</span><span class="n">rij</span><span class="p">)</span> <span class="k">for</span> <span class="n">rij</span> <span class="ow">in</span> <span class="n">rijen</span><span class="p">],</span>
+            <span class="s2">"grafiek_json"</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">grafiek</span><span class="p">),</span>
+        <span class="p">},</span>
+    <span class="p">)</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"/metingen"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">lijst_metingen</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">database</span><span class="o">.</span><span class="n">alle_metingen</span><span class="p">()</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">"/metingen"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">nieuwe_meting</span><span class="p">(</span><span class="n">meting</span><span class="p">:</span> <span class="n">Meting</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">"ontvangen"</span><span class="p">:</span> <span class="n">database</span><span class="o">.</span><span class="n">voeg_meting_toe</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">meting</span><span class="o">.</span><span class="n">temp</span><span class="p">,</span> <span class="n">meting</span><span class="o">.</span><span class="n">luchtdruk</span><span class="p">)}</span>
+</code></pre></div>
+<p><code>database.start()</code> maakt de tabellen en de voorbeeldrijen als het bestand er nog niet is. <code>komma</code> zet de punt om voor de tabel. De grafiek krijgt de getallen zelf, dus de as gebruikt een punt. <code>json.dumps</code> maakt daar tekst van die de browser kan lezen.</p>
+<p>Vervang <code>templates/index.html</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"nl"</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"utf-8"</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Weerstation<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">href</span><span class="o">=</span><span class="s">"/static/style.css"</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
+    {% if station %}
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>{{ station }}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>De metingen van dit station. De tijd staat in UTC.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">thead</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Tijd<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Temperatuur<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Luchtdruk<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">thead</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">tbody</span><span class="p">&gt;</span>
+        {% for meting in metingen %}
+        <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>{{ meting.tijd }}<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>{{ meting.temperatuur }} °C<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>{{ meting.luchtdruk }} hPa<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+        {% else %}
+        <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">td</span> <span class="na">colspan</span><span class="o">=</span><span class="s">"3"</span><span class="p">&gt;</span>Er zijn nog geen metingen voor dit station.<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+        {% endfor %}
+      <span class="p">&lt;/</span><span class="nt">tbody</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+    {% if metingen %}
+    <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Temperatuur<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">canvas</span> <span class="na">id</span><span class="o">=</span><span class="s">"grafiek"</span><span class="p">&gt;&lt;/</span><span class="nt">canvas</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.min.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">punten</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{{</span><span class="w"> </span><span class="nx">grafiek_json</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">safe</span><span class="w"> </span><span class="p">}};</span>
+<span class="w">      </span><span class="ow">new</span><span class="w"> </span><span class="nx">Chart</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"grafiek"</span><span class="p">),</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"line"</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">labels</span><span class="o">:</span><span class="w"> </span><span class="nx">punten</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">punt</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">punt</span><span class="p">.</span><span class="nx">tijd</span><span class="p">;</span><span class="w"> </span><span class="p">}),</span>
+<span class="w">          </span><span class="nx">datasets</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">            </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Temperatuur (°C)"</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="nx">punten</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">punt</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">punt</span><span class="p">.</span><span class="nx">temp</span><span class="p">;</span><span class="w"> </span><span class="p">}),</span>
+<span class="w">            </span><span class="nx">borderColor</span><span class="o">:</span><span class="w"> </span><span class="s2">"#3f51b5"</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">tension</span><span class="o">:</span><span class="w"> </span><span class="mf">0.2</span>
+<span class="w">          </span><span class="p">}]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">});</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    {% endif %}
+    {% else %}
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Weerstation<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Dit station staat niet in de database.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    {% endif %}
+  <span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+<p><code>{% for meting in metingen %}</code> maakt een rij per meting. <code>{% else %}</code> hoort bij die lus. De zin verschijnt als het station geen metingen heeft. De grafiek komt er dan niet bij.</p>
+<p><code>| safe</code> laat de aanhalingstekens in de JSON staan. Zonder die filter vervangt Jinja ze, en het script in de browser stopt.</p>
+<p>Zet onderaan <code>static/style.css</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">canvas</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">max-width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>De grafiek tekent alleen de temperatuur. Luchtdruk zit rond 1013 en temperatuur rond 18. Op dezelfde as wordt de temperatuur een platte lijn. De luchtdruk blijft in de tabel.</p>
+<p>Het script onder de tabel is JavaScript. Het draait in de browser. Chart.js tekent de lijn. Python heeft de getallen al gekozen. Voor die bibliotheek heb je internet nodig.</p>
+<h2 id="nakijken">Nakijken<a class="headerlink" href="#nakijken" title="Permanent link">&para;</a></h2>
+<p>Start de server opnieuw:</p>
+<div class="highlight"><pre><span></span><code><span class="n">python</span> <span class="n">-m</span> <span class="n">uvicorn</span> <span class="n">main</span><span class="p">:</span><span class="n">app</span> <span class="p">-</span><span class="n">-reload</span>
+</code></pre></div>
+<p>Open <a href="http://127.0.0.1:8000">http://127.0.0.1:8000</a>. Je ziet Klaslokaal, zeven rijen, en een lijn die overdag stijgt en daarna zakt.</p>
+<p>Voeg via <a href="http://127.0.0.1:8000/docs">http://127.0.0.1:8000/docs</a> een meting toe. Vernieuw de pagina. De rij staat erbij. Stop de server met <code>Ctrl+C</code> en start hem opnieuw. De rij staat er nog.</p>
+<h2 id="de-test">De test<a class="headerlink" href="#de-test" title="Permanent link">&para;</a></h2>
+<p>Vervang <code>test_main.py</code>. De eerste regels kiezen een ander databasebestand, en ze staan bóven <code>import main</code>. Python leest een bestand van boven naar beneden. <code>main.py</code> opent de database op het moment dat de test hem importeert.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tempfile</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"WEERSTATION_DB"</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tempfile</span><span class="o">.</span><span class="n">gettempdir</span><span class="p">(),</span> <span class="s2">"weerstation-test.db"</span><span class="p">)</span>
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"WEERSTATION_DB"</span><span class="p">]):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"WEERSTATION_DB"</span><span class="p">])</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi.testclient</span><span class="w"> </span><span class="kn">import</span> <span class="n">TestClient</span>
+
+<span class="kn">from</span><span class="w"> </span><span class="nn">main</span><span class="w"> </span><span class="kn">import</span> <span class="n">app</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">TestClient</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_home</span><span class="p">():</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">"/metingen"</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">"temp"</span><span class="p">:</span> <span class="mf">21.7</span><span class="p">,</span> <span class="s2">"luchtdruk"</span><span class="p">:</span> <span class="mf">1004.3</span><span class="p">})</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"/"</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+    <span class="k">assert</span> <span class="s2">"21,7"</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span>
+    <span class="k">assert</span> <span class="s2">"1004,3"</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_metingen_is_een_lijst</span><span class="p">():</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"/metingen"</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">(),</span> <span class="nb">list</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_nieuwe_meting_komt_terug</span><span class="p">():</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+        <span class="s2">"/metingen"</span><span class="p">,</span>
+        <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">"temp"</span><span class="p">:</span> <span class="mf">21.5</span><span class="p">,</span> <span class="s2">"luchtdruk"</span><span class="p">:</span> <span class="mi">1013</span><span class="p">},</span>
+    <span class="p">)</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+    <span class="n">ontvangen</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"ontvangen"</span><span class="p">]</span>
+    <span class="k">assert</span> <span class="n">ontvangen</span><span class="p">[</span><span class="s2">"temp"</span><span class="p">]</span> <span class="o">==</span> <span class="mf">21.5</span>
+    <span class="k">assert</span> <span class="n">ontvangen</span><span class="p">[</span><span class="s2">"luchtdruk"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1013</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_onvolledige_meting_wordt_geweigerd</span><span class="p">():</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">"/metingen"</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">"temp"</span><span class="p">:</span> <span class="mf">21.5</span><span class="p">})</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">422</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_meting_blijft_bewaard</span><span class="p">():</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">"/metingen"</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">"temp"</span><span class="p">:</span> <span class="mf">12.3</span><span class="p">,</span> <span class="s2">"luchtdruk"</span><span class="p">:</span> <span class="mf">1002.5</span><span class="p">})</span>
+    <span class="n">verbinding</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"WEERSTATION_DB"</span><span class="p">])</span>
+    <span class="n">rij</span> <span class="o">=</span> <span class="n">verbinding</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+        <span class="s2">"SELECT temp FROM meting WHERE temp = 12.3"</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+    <span class="n">verbinding</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">rij</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+</code></pre></div>
+<p>De laatste test opent het testbestand en zoekt de temperatuur. Een lijst in het geheugen staat niet in dat bestand. Je eigen <code>weerstation.db</code> blijft onaangeroerd.</p>
+<div class="highlight"><pre><span></span><code><span class="n">pytest</span>
+</code></pre></div>
+<p>Vijf tests passed.</p>
+<h2 id="bewaren-op-github">Bewaren op GitHub<a class="headerlink" href="#bewaren-op-github" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="n">git</span> <span class="n">add</span> <span class="n">database</span><span class="p">.</span><span class="n">py</span> <span class="n">main</span><span class="p">.</span><span class="n">py</span> <span class="n">test_main</span><span class="p">.</span><span class="n">py</span> <span class="n">templates</span><span class="p">/</span><span class="n">index</span><span class="p">.</span><span class="n">html</span> <span class="n">static</span><span class="p">/</span><span class="n">style</span><span class="p">.</span><span class="n">css</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="n">-m</span> <span class="s2">"Toon de metingen uit de database in een tabel en een grafiek"</span>
+<span class="n">git</span> <span class="n">push</span>
+</code></pre></div>
+<h2 id="klaar-als">Klaar als<a class="headerlink" href="#klaar-als" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="http://127.0.0.1:8000">http://127.0.0.1:8000</a> toont zeven metingen van Klaslokaal en een grafiek van de temperatuur.</li>
+<li>Een meting via <code>/docs</code> blijft staan nadat je de server herstart.</li>
+<li><code>pytest</code> eindigt met 5 geslaagde tests.</li>
+<li>De aangepaste bestanden staan op GitHub. <code>weerstation.db</code> niet.</li>
+</ul>
+<details class="note">
+<summary>Als het niet lukt</summary>
+<p><strong>De pagina toont nog één rij met 18,2 °C.</strong> <code>main.py</code> gebruikt nog de lijst. Vervang het bestand door dat uit dit hoofdstuk en herstart de server.</p>
+<p><strong>De tabel staat er, de grafiek niet.</strong> Chart.js komt van internet. Controleer de verbinding en vernieuw met <code>Ctrl+F5</code>. Blijft het vlak leeg, open dan de pagina op een netwerk dat <code>cdn.jsdelivr.net</code> toelaat.</p>
+<p><strong>De pagina toont veertien rijen.</strong> De query in <code>metingen_van_station</code> filtert niet op <code>station_id</code>. Het klaslokaal heeft zeven metingen, plus elke meting die je zelf toevoegde.</p>
+<p><strong>De test voegt rijen toe aan <code>weerstation.db</code>.</strong> De regels met <code>WEERSTATION_DB</code> staan onder <code>import main</code>, of ze ontbreken. Ze horen bovenaan <code>test_main.py</code>.</p>
+<p><strong><code>jinja2.exceptions.TemplateSyntaxError</code>.</strong> Een <code>{% if %}</code> of <code>{% for %}</code> heeft geen bijpassende <code>{% endif %}</code> of <code>{% endfor %}</code>. Vergelijk <code>templates/index.html</code> met het bestand in dit hoofdstuk.</p>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Terug naar boven
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../database/" class="md-footer__link md-footer__link--prev" aria-label="Vorige: Database">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Vorige
+              </span>
+              <div class="md-ellipsis">
+                Database
+              </div>
+            </div>
+          </a>
+        
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.footer", "navigation.sections", "navigation.top", "content.code.copy", "search.suggest", "search.highlight"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Gekopieerd naar klembord", "clipboard.copy": "Kopi\u00ebren naar klembord", "search.result.more.one": "1 extra overeenkomst op deze pagina", "search.result.more.other": "# extra overeenkomsten op deze pagina", "search.result.none": "Geen overeenkomende documenten", "search.result.one": "1 overeenkomende document", "search.result.other": "# overeenkomende documenten", "search.result.placeholder": "Typ om te beginnen met zoeken", "search.result.term.missing": "Ontbreekt", "select.version": "Selecteer versie"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>

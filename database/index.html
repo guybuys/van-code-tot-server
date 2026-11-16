@@ -1,0 +1,1296 @@
+
+<!doctype html>
+<html lang="nl" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Een weerstation bouwen, van de laptop tot een site op een server">
+      
+      
+        <meta name="author" content="Guy Buys">
+      
+      
+        <link rel="canonical" href="https://guybuys.github.io/van-code-tot-server/database/">
+      
+      
+        <link rel="prev" href="../pagina/">
+      
+      
+        <link rel="next" href="../metingen/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Database - Van code tot server</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#database" class="md-skip">
+          Ga naar inhoud
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Van code tot server" class="md-header__button md-logo" aria-label="Van code tot server" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Van code tot server
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Database
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Zoeken" placeholder="Zoeken" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Zoeken">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Leegmaken" aria-label="Leegmaken" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Zoeken initialiseren
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/guybuys/van-code-tot-server" title="Ga naar repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    guybuys/van-code-tot-server
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigatie" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Van code tot server" class="md-nav__button md-logo" aria-label="Van code tot server" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Van code tot server
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/guybuys/van-code-tot-server" title="Ga naar repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    guybuys/van-code-tot-server
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introductie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Werkomgeving
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Werkomgeving
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vscode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VS Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git en GitHub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backend
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Backend
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fastapi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Een eerste API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pagina
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Pagina
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../html/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HTML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../css/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CSS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pagina/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    De pagina uit FastAPI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gegevens
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Gegevens
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhoudsopgave">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#drie-soorten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Drie soorten
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#drie-tabellen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Drie tabellen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#voorbeeldmetingen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voorbeeldmetingen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#het-programma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Het programma
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nakijken" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nakijken
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#niet-mee-naar-github" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Niet mee naar GitHub
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bewaren-op-github" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bewaren op GitHub
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#klaar-als" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Klaar als
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metingen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metingen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhoudsopgave">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#drie-soorten" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Drie soorten
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#drie-tabellen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Drie tabellen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#voorbeeldmetingen" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Voorbeeldmetingen
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#het-programma" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Het programma
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nakijken" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nakijken
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#niet-mee-naar-github" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Niet mee naar GitHub
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bewaren-op-github" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bewaren op GitHub
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#klaar-als" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Klaar als
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="database">Database<a class="headerlink" href="#database" title="Permanent link">&para;</a></h1>
+<p>De lijst in <code>main.py</code> verdwijnt als je het programma stopt. Een database bewaart de rijen in een bestand. Afsluiten wist ze niet.</p>
+<p>Het weerstation zelf stuurt nog geen metingen. Dat programma komt later. Tot dan zet je voorbeeldmetingen in de database. Zonder die rijen heeft de volgende pagina niets om te tonen.</p>
+<h2 id="drie-soorten">Drie soorten<a class="headerlink" href="#drie-soorten" title="Permanent link">&para;</a></h2>
+<p>Een meting hoort bij een station. Een station hoort later bij een gebruiker. De vraag die we stellen is: de metingen van dit station, op deze dag.</p>
+<p><strong>SQL</strong> legt de gegevens in tabellen. Een rij is één station of één meting. SQLite is SQL in één bestand, <code>weerstation.db</code>. Er hoeft geen apart databaseprogramma te draaien. Op de server gebruiken we later PostgreSQL. De vragen lijken op elkaar.</p>
+<p><strong>InfluxDB</strong> is gemaakt voor een lange reeks metingen in de tijd. Die database kan zelf gemiddelden per uur uitrekenen. Voor twee stations en één schooldag volstaat een SQL-vraag.</p>
+<p><strong>MongoDB</strong> bewaart documenten. Elk station kan daar andere velden in hebben. Onze stations sturen allebei temperatuur en luchtdruk. Vaste kolommen maken de tabel op de pagina duidelijk. Een extra sensor wordt later een extra kolom.</p>
+<p>Deze cursus gebruikt SQLite.</p>
+<h2 id="drie-tabellen">Drie tabellen<a class="headerlink" href="#drie-tabellen" title="Permanent link">&para;</a></h2>
+<p><code>gebruiker</code> is iemand die later inlogt. De tabel maken we al. Er komen nog geen rijen in. Een wachtwoord bewaren we dan als hash, niet als leesbare tekst. Dat is het volgende grote hoofdstuk na de grafiek.</p>
+<p><code>station</code> is een weerstation op een vaste plaats. Er zit geen GPS-module in. De coördinaten typ je zelf. Het klaslokaal en de speelplaats zijn twee punten bij de school.</p>
+<p><code>meting</code> is één moment: tijd, temperatuur en luchtdruk. De tijd staat in UTC. <code>2026-11-16T06:00:00Z</code> is 07:00 uur in de winter in België.</p>
+<p>Een gebruiker heeft nul of meer stations. Een station heeft nul of meer metingen.</p>
+<pre class="mermaid"><code>erDiagram
+  GEBRUIKER ||--o{ STATION : heeft
+  STATION ||--o{ METING : levert</code></pre>
+<h2 id="voorbeeldmetingen">Voorbeeldmetingen<a class="headerlink" href="#voorbeeldmetingen" title="Permanent link">&para;</a></h2>
+<p>De dag is 16 november 2026. Om de twee uur, van 06:00 tot 18:00 UTC, komt er een meting. Zeven per station, veertien in totaal.</p>
+<p>Het klaslokaal blijft rond 18 °C. De speelplaats gaat van 7,4 °C 's morgens naar 13,8 °C in de namiddag. De luchtdruk daalt bij allebei van ongeveer 1016 hPa naar 1013 hPa. Buiten en binnen hebben hetzelfde weer. De temperatuur verschilt, want het lokaal is binnen.</p>
+<h2 id="het-programma">Het programma<a class="headerlink" href="#het-programma" title="Permanent link">&para;</a></h2>
+<p>Maak <code>database.py</code> naast <code>main.py</code>. <code>sqlite3</code> zit bij Python. Je installeert geen extra pakket.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
+
+<span class="n">DATABASE</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"WEERSTATION_DB"</span><span class="p">,</span> <span class="s2">"weerstation.db"</span><span class="p">)</span>
+
+<span class="n">STATIONS</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">"Klaslokaal"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"breedte"</span><span class="p">:</span> <span class="mf">51.0298</span><span class="p">,</span>
+        <span class="s2">"lengte"</span><span class="p">:</span> <span class="mf">4.4765</span><span class="p">,</span>
+        <span class="s2">"metingen"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">(</span><span class="s2">"2026-11-16T06:00:00Z"</span><span class="p">,</span> <span class="mf">17.8</span><span class="p">,</span> <span class="mf">1016.2</span><span class="p">),</span>
+            <span class="p">(</span><span class="s2">"2026-11-16T08:00:00Z"</span><span class="p">,</span> <span class="mf">18.1</span><span class="p">,</span> <span class="mf">1016.0</span><span class="p">),</span>
+            <span class="p">(</span><span class="s2">"2026-11-16T10:00:00Z"</span><span class="p">,</span> <span class="mf">18.6</span><span class="p">,</span> <span class="mf">1015.4</span><span class="p">),</span>
+            <span class="p">(</span><span class="s2">"2026-11-16T12:00:00Z"</span><span class="p">,</span> <span class="mf">19.2</span><span class="p">,</span> <span class="mf">1014.8</span><span class="p">),</span>
+            <span class="p">(</span><span class="s2">"2026-11-16T14:00:00Z"</span><span class="p">,</span> <span class="mf">19.4</span><span class="p">,</span> <span class="mf">1014.2</span><span class="p">),</span>
+            <span class="p">(</span><span class="s2">"2026-11-16T16:00:00Z"</span><span class="p">,</span> <span class="mf">18.9</span><span class="p">,</span> <span class="mf">1013.8</span><span class="p">),</span>
+            <span class="p">(</span><span class="s2">"2026-11-16T18:00:00Z"</span><span class="p">,</span> <span class="mf">18.4</span><span class="p">,</span> <span class="mf">1013.5</span><span class="p">),</span>
+        <span class="p">],</span>
+    <span class="p">},</span>
+    <span class="s2">"Speelplaats"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"breedte"</span><span class="p">:</span> <span class="mf">51.0301</span><span class="p">,</span>
+        <span class="s2">"lengte"</span><span class="p">:</span> <span class="mf">4.4769</span><span class="p">,</span>
+        <span class="s2">"metingen"</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">(</span><span class="s2">"2026-11-16T06:00:00Z"</span><span class="p">,</span> <span class="mf">7.4</span><span class="p">,</span> <span class="mf">1016.4</span><span class="p">),</span>
+            <span class="p">(</span><span class="s2">"2026-11-16T08:00:00Z"</span><span class="p">,</span> <span class="mf">8.6</span><span class="p">,</span> <span class="mf">1016.1</span><span class="p">),</span>
+            <span class="p">(</span><span class="s2">"2026-11-16T10:00:00Z"</span><span class="p">,</span> <span class="mf">11.2</span><span class="p">,</span> <span class="mf">1015.2</span><span class="p">),</span>
+            <span class="p">(</span><span class="s2">"2026-11-16T12:00:00Z"</span><span class="p">,</span> <span class="mf">13.1</span><span class="p">,</span> <span class="mf">1014.6</span><span class="p">),</span>
+            <span class="p">(</span><span class="s2">"2026-11-16T14:00:00Z"</span><span class="p">,</span> <span class="mf">13.8</span><span class="p">,</span> <span class="mf">1014.1</span><span class="p">),</span>
+            <span class="p">(</span><span class="s2">"2026-11-16T16:00:00Z"</span><span class="p">,</span> <span class="mf">12.4</span><span class="p">,</span> <span class="mf">1013.9</span><span class="p">),</span>
+            <span class="p">(</span><span class="s2">"2026-11-16T18:00:00Z"</span><span class="p">,</span> <span class="mf">10.1</span><span class="p">,</span> <span class="mf">1013.6</span><span class="p">),</span>
+        <span class="p">],</span>
+    <span class="p">},</span>
+<span class="p">}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">verbind</span><span class="p">():</span>
+    <span class="n">verbinding</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">DATABASE</span><span class="p">)</span>
+    <span class="n">verbinding</span><span class="o">.</span><span class="n">row_factory</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">Row</span>
+    <span class="n">verbinding</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"PRAGMA foreign_keys = ON"</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">verbinding</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">maak_tabellen</span><span class="p">(</span><span class="n">verbinding</span><span class="p">):</span>
+    <span class="n">verbinding</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        CREATE TABLE IF NOT EXISTS gebruiker (</span>
+<span class="sd">            id INTEGER PRIMARY KEY,</span>
+<span class="sd">            naam TEXT NOT NULL,</span>
+<span class="sd">            email TEXT NOT NULL UNIQUE,</span>
+<span class="sd">            wachtwoord_hash TEXT NOT NULL,</span>
+<span class="sd">            rol TEXT NOT NULL</span>
+<span class="sd">        )</span>
+<span class="sd">        """</span>
+    <span class="p">)</span>
+    <span class="n">verbinding</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        CREATE TABLE IF NOT EXISTS station (</span>
+<span class="sd">            id INTEGER PRIMARY KEY,</span>
+<span class="sd">            naam TEXT NOT NULL,</span>
+<span class="sd">            breedte REAL,</span>
+<span class="sd">            lengte REAL,</span>
+<span class="sd">            gebruiker_id INTEGER,</span>
+<span class="sd">            FOREIGN KEY (gebruiker_id) REFERENCES gebruiker (id)</span>
+<span class="sd">        )</span>
+<span class="sd">        """</span>
+    <span class="p">)</span>
+    <span class="n">verbinding</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        CREATE TABLE IF NOT EXISTS meting (</span>
+<span class="sd">            id INTEGER PRIMARY KEY,</span>
+<span class="sd">            station_id INTEGER NOT NULL,</span>
+<span class="sd">            tijd TEXT NOT NULL,</span>
+<span class="sd">            temp REAL NOT NULL,</span>
+<span class="sd">            luchtdruk REAL NOT NULL,</span>
+<span class="sd">            FOREIGN KEY (station_id) REFERENCES station (id)</span>
+<span class="sd">        )</span>
+<span class="sd">        """</span>
+    <span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">vul_voorbeeld</span><span class="p">(</span><span class="n">verbinding</span><span class="p">):</span>
+    <span class="n">aantal</span> <span class="o">=</span> <span class="n">verbinding</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"SELECT COUNT(*) AS aantal FROM station"</span><span class="p">)</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()[</span><span class="s2">"aantal"</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">aantal</span><span class="p">:</span>
+        <span class="k">return</span>
+
+    <span class="k">for</span> <span class="n">naam</span><span class="p">,</span> <span class="n">station</span> <span class="ow">in</span> <span class="n">STATIONS</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">cursor</span> <span class="o">=</span> <span class="n">verbinding</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+            <span class="s2">"INSERT INTO station (naam, breedte, lengte) VALUES (?, ?, ?)"</span><span class="p">,</span>
+            <span class="p">(</span><span class="n">naam</span><span class="p">,</span> <span class="n">station</span><span class="p">[</span><span class="s2">"breedte"</span><span class="p">],</span> <span class="n">station</span><span class="p">[</span><span class="s2">"lengte"</span><span class="p">]),</span>
+        <span class="p">)</span>
+        <span class="n">verbinding</span><span class="o">.</span><span class="n">executemany</span><span class="p">(</span>
+            <span class="s2">"INSERT INTO meting (station_id, tijd, temp, luchtdruk) VALUES (?, ?, ?, ?)"</span><span class="p">,</span>
+            <span class="p">[</span>
+                <span class="p">(</span><span class="n">cursor</span><span class="o">.</span><span class="n">lastrowid</span><span class="p">,</span> <span class="n">tijd</span><span class="p">,</span> <span class="n">temp</span><span class="p">,</span> <span class="n">luchtdruk</span><span class="p">)</span>
+                <span class="k">for</span> <span class="n">tijd</span><span class="p">,</span> <span class="n">temp</span><span class="p">,</span> <span class="n">luchtdruk</span> <span class="ow">in</span> <span class="n">station</span><span class="p">[</span><span class="s2">"metingen"</span><span class="p">]</span>
+            <span class="p">],</span>
+        <span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">start</span><span class="p">():</span>
+    <span class="n">verbinding</span> <span class="o">=</span> <span class="n">verbind</span><span class="p">()</span>
+    <span class="n">maak_tabellen</span><span class="p">(</span><span class="n">verbinding</span><span class="p">)</span>
+    <span class="n">vul_voorbeeld</span><span class="p">(</span><span class="n">verbinding</span><span class="p">)</span>
+    <span class="n">verbinding</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="n">verbinding</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">toon</span><span class="p">():</span>
+    <span class="n">verbinding</span> <span class="o">=</span> <span class="n">verbind</span><span class="p">()</span>
+    <span class="n">stations</span> <span class="o">=</span> <span class="n">verbinding</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"SELECT COUNT(*) AS aantal FROM station"</span><span class="p">)</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+    <span class="n">metingen</span> <span class="o">=</span> <span class="n">verbinding</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"SELECT COUNT(*) AS aantal FROM meting"</span><span class="p">)</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">stations</span><span class="p">[</span><span class="s1">'aantal'</span><span class="p">]</span><span class="si">}</span><span class="s2"> stations"</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">metingen</span><span class="p">[</span><span class="s1">'aantal'</span><span class="p">]</span><span class="si">}</span><span class="s2"> metingen"</span><span class="p">)</span>
+    <span class="n">laatste</span> <span class="o">=</span> <span class="n">verbinding</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        SELECT station.naam, meting.tijd, meting.temp, meting.luchtdruk</span>
+<span class="sd">        FROM meting</span>
+<span class="sd">        JOIN station ON station.id = meting.station_id</span>
+<span class="sd">        ORDER BY meting.tijd, station.id</span>
+<span class="sd">        """</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">rij</span> <span class="ow">in</span> <span class="n">laatste</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">rij</span><span class="p">[</span><span class="s2">"naam"</span><span class="p">],</span> <span class="n">rij</span><span class="p">[</span><span class="s2">"tijd"</span><span class="p">],</span> <span class="n">rij</span><span class="p">[</span><span class="s2">"temp"</span><span class="p">],</span> <span class="n">rij</span><span class="p">[</span><span class="s2">"luchtdruk"</span><span class="p">])</span>
+    <span class="n">verbinding</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">"__main__"</span><span class="p">:</span>
+    <span class="n">start</span><span class="p">()</span>
+    <span class="n">toon</span><span class="p">()</span>
+</code></pre></div>
+<p><code>DATABASE</code> is normaal <code>weerstation.db</code>. Een test kan een andere naam kiezen. Dat gebruiken we in het volgende hoofdstuk, zodat de test je voorbeeldmetingen laat staan.</p>
+<p><code>?</code> is een plaats voor een waarde. SQLite vult die in. De waarde wordt geen stuk van de SQL-zin. Een temperatuur met een aanhalingsteken kan de vraag dan niet openbreken.</p>
+<p><code>vul_voorbeeld</code> stopt zodra er al een station in het bestand staat. Het programma een tweede keer starten maakt geen dubbele rijen. <code>commit</code> schrijft de rijen naar het bestand.</p>
+<p><code>JOIN</code> plakt de naam van het station aan de meting. Zonder die regel zie je alleen een nummer.</p>
+<h2 id="nakijken">Nakijken<a class="headerlink" href="#nakijken" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="n">python</span> <span class="n">database</span><span class="p">.</span><span class="n">py</span>
+</code></pre></div>
+<p>Je ziet:</p>
+<div class="highlight"><pre><span></span><code>2 stations
+14 metingen
+Klaslokaal 2026-11-16T18:00:00Z 18.4 1013.5
+Speelplaats 2026-11-16T18:00:00Z 10.1 1013.6
+</code></pre></div>
+<p>De getallen hebben hier een punt. Zo staan ze in de database. Op de pagina komt de komma terug.</p>
+<p>Draai het programma nog eens. De aantallen blijven 2 en 14. In de map staat nu <code>weerstation.db</code>.</p>
+<h2 id="niet-mee-naar-github">Niet mee naar GitHub<a class="headerlink" href="#niet-mee-naar-github" title="Permanent link">&para;</a></h2>
+<p>Het bestand verandert zodra er een meting bij komt. Elke leerling heeft zijn eigen bestand. Zet deze regel in <code>.gitignore</code>, onder de regels die er al staan:</p>
+<div class="highlight"><pre><span></span><code>weerstation.db
+</code></pre></div>
+<h2 id="bewaren-op-github">Bewaren op GitHub<a class="headerlink" href="#bewaren-op-github" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="n">git</span> <span class="n">add</span> <span class="n">database</span><span class="p">.</span><span class="n">py</span> <span class="p">.</span><span class="n">gitignore</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="n">-m</span> <span class="s2">"Bewaar stations en voorbeeldmetingen in SQLite"</span>
+<span class="n">git</span> <span class="n">push</span>
+</code></pre></div>
+<p><code>git status</code> toont <code>weerstation.db</code> niet.</p>
+<h2 id="klaar-als">Klaar als<a class="headerlink" href="#klaar-als" title="Permanent link">&para;</a></h2>
+<ul>
+<li><code>python database.py</code> toont 2 stations en 14 metingen.</li>
+<li>Een tweede keer draaien houdt die aantallen.</li>
+<li><code>database.py</code> staat op GitHub. <code>weerstation.db</code> niet.</li>
+</ul>
+<p>In <a href="../metingen/">Metingen op de pagina</a> leest de pagina deze rijen.</p>
+<details class="note">
+<summary>Als het niet lukt</summary>
+<p><strong><code>unable to open database file</code>.</strong> De terminal staat niet in <code>C:\dev\weerstation</code>. Links in de titelbalk van VS Code zie je de map.</p>
+<p><strong>Je ziet 4 stations, of 28 metingen.</strong> Het bestand is gevuld en daarna nog eens gevuld. Verwijder <code>weerstation.db</code> en draai <code>python database.py</code> opnieuw. De controle op <code>aantal</code> hoort bovenaan <code>vul_voorbeeld</code>.</p>
+<p><strong><code>git status</code> toont <code>weerstation.db</code>.</strong> De regel in <code>.gitignore</code> ontbreekt, of de naam wijkt af. De regel is exact <code>weerstation.db</code>.</p>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Terug naar boven
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../pagina/" class="md-footer__link md-footer__link--prev" aria-label="Vorige: De pagina uit FastAPI">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Vorige
+              </span>
+              <div class="md-ellipsis">
+                De pagina uit FastAPI
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../metingen/" class="md-footer__link md-footer__link--next" aria-label="Volgende: Metingen">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Volgende
+              </span>
+              <div class="md-ellipsis">
+                Metingen
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.footer", "navigation.sections", "navigation.top", "content.code.copy", "search.suggest", "search.highlight"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Gekopieerd naar klembord", "clipboard.copy": "Kopi\u00ebren naar klembord", "search.result.more.one": "1 extra overeenkomst op deze pagina", "search.result.more.other": "# extra overeenkomsten op deze pagina", "search.result.none": "Geen overeenkomende documenten", "search.result.one": "1 overeenkomende document", "search.result.other": "# overeenkomende documenten", "search.result.placeholder": "Typ om te beginnen met zoeken", "search.result.term.missing": "Ontbreekt", "select.version": "Selecteer versie"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
