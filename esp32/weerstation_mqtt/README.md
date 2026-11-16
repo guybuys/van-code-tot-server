@@ -14,6 +14,12 @@ Kopieer `secrets.py.example` naar `secrets.py` als dat bestand er nog niet is. V
 
 Elk bord krijgt een eigen `MQTT_CLIENT_ID` en een eigen `MQTT_TOPIC`, bijvoorbeeld `weerstation/2/meting`. Gebruik niet hetzelfde topic als een Uno die al publiceert.
 
+`STATION_NAAM`, `TEAMLEDEN`, `BREEDTEGRAAD` en `LENGTEGRAAD` zijn de naam, de ploeg en een vast punt op de kaart. Het voorbeeld is de school. Er zit geen GPS-module in. Na een geslaagde verbinding stuurt het bord dat één keer naar `weerstation/2/info`, met retain. De broker onthoudt dat bericht. Wie later luistert, krijgt de naam en de coördinaten meteen, ook als het bord op dat moment niets stuurt. Een nieuwe verbinding stuurt het opnieuw. De metingen zelf zijn niet retained.
+
+```json
+{"naam":"Weerstation","leden":"Voornaam, Voornaam","breedte":51.029756,"lengte":4.476549}
+```
+
 Het programma gebruikt poort 1883, MQTT met gebruikersnaam en wachtwoord, zonder TLS. `umqtt.simple` zit in de standaard MicroPython-firmware voor de ESP32.
 
 ## Zonder BMP280

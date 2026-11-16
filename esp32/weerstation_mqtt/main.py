@@ -1,6 +1,8 @@
 # ESP32 met MicroPython
 # Stuurt temperatuur en luchtdruk naar een EMQX-broker.
-# Zelfde bericht als de Uno R4-sketch.
+# Zelfde berichten als de Uno R4-sketch.
+# Na verbinden gaat de naam en de plaats één keer naar .../info, retained.
+# De metingen gaan naar .../meting en zijn niet retained.
 #
 # SIMULEER_SENSOR True: verzonnen metingen, geen BMP280 nodig.
 # SIMULEER_SENSOR False: echte BMP280. Zet dan ook bmp280.py op het bord.
@@ -33,6 +35,7 @@ temperatuur = 21.0
 luchtdruk = 1013.0
 sensor = None
 client = None
+info_verstuurd = False
 wlan = network.WLAN(network.STA_IF)
 
 
@@ -102,7 +105,7 @@ def verbind_mqtt():
         nieuw.connect()
     except OSError as fout:
         print("MQTT-verbinding mislukt:", fout)
-        client = None
+        verbinding_weg()
         time.sleep(2)
         return False
 
@@ -111,8 +114,48 @@ def verbind_mqtt():
     return True
 
 
+def verbinding_weg():
+    global client, info_verstuurd
+    client = None
+    info_verstuurd = False
+
+
+def json_escape(tekst):
+    return str(tekst).replace("\\", "\\\\").replace('"', '\\"')
+
+
+def info_topic():
+    topic = secrets.MQTT_TOPIC
+    staart = "/meting"
+    if topic.endswith(staart):
+        return topic[: -len(staart)] + "/info"
+    return topic + "/info"
+
+
+def publiceer_info():
+    global info_verstuurd
+    if info_verstuurd or client is None:
+        return
+
+    bericht = '{"naam":"%s","leden":"%s","breedte":%.6f,"lengte":%.6f}' % (
+        json_escape(secrets.STATION_NAAM),
+        json_escape(secrets.TEAMLEDEN),
+        secrets.BREEDTEGRAAD,
+        secrets.LENGTEGRAAD,
+    )
+    topic = info_topic()
+    print(topic, bericht)
+    try:
+        client.publish(topic, bericht, retain=True)
+    except OSError as fout:
+        print("Info-bericht niet verstuurd:", fout)
+        verbinding_weg()
+        return
+
+    info_verstuurd = True
+
+
 def publiceer_meting():
-    global client
     lees_sensor()
     bericht = '{"temp":%.1f,"luchtdruk":%.1f}' % (temperatuur, luchtdruk)
     print(secrets.MQTT_TOPIC, bericht)
@@ -122,7 +165,7 @@ def publiceer_meting():
         client.publish(secrets.MQTT_TOPIC, bericht)
     except OSError as fout:
         print("Publiceren mislukt:", fout)
-        client = None
+        verbinding_weg()
 
 
 def main():
@@ -142,6 +185,7 @@ def main():
             verbind_wifi()
         if client is None and wlan.isconnected():
             verbind_mqtt()
+        publiceer_info()
 
         nu = time.ticks_ms()
         if time.ticks_diff(nu, laatste) >= MEET_INTERVAL_S * 1000:
