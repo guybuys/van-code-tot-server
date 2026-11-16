@@ -17,8 +17,8 @@ Deze cursus is niet de enige plaats waar een doel aan bod komt. Algoritmiek, num
 | HTML | klaar | LPD 10, de structuur van de pagina. |
 | CSS | klaar | LPD 10, de vorm. Responsive blijft een uitbreiding. |
 | De pagina uit FastAPI | klaar | LPD 7, 10 en 11. De presentatielaag wordt de HTML-pagina. |
-| Databases | onder constructie | LPD 4, 6, 7 en 12. Ontwerp van gebruiker, station en meting, daarna SQL. |
-| Metingen op de pagina | onder constructie | LPD 9, 10 en 11. Eerst een tabel, daarna een grafiek. |
+| Databases | klaar | LPD 4, 6, 7 en 12. Ontwerp van gebruiker, station en meting, daarna SQLite. De gebruikerstabel blijft leeg. |
+| Metingen op de pagina | klaar | LPD 9, 10 en 11. Eerst een tabel, daarna een grafiek van de temperatuur. |
 | Wachtwoorden, login en rollen | onder constructie | LPD 8, 9 en 13. Hash, sessie, en het verschil tussen gebruiker en beheerder. |
 | MQTT | onder constructie | LPD 4, 7 en 11. Een apart programma schrijft metingen in de database. |
 | SSH en de computer op school | onder constructie | Geen extra leerplandoel. Nodig om het systeem van de laptop los te maken. |
@@ -37,21 +37,21 @@ Python, en bibliotheken in plaats van alles zelf te schrijven.
 JSON, een database, en later berichten van het weerstation. Niet elk bestandsformaat uit de wenk moet aan bod komen.
 
 - Een eerste API (klaar): JSON ontvangen en teruggeven.
-- Databases (onder constructie): metingen blijven bewaard.
+- Databases (klaar): voorbeeldmetingen blijven in `weerstation.db` staan na een herstart.
 - MQTT (onder constructie): het station stuurt metingen binnen.
 
 ### LPD 6. Ontwerp van een softwaremodule, objectgeoriënteerd
 
 Een klein ontwerp vóór de tabellen: welke gegevens bij gebruiker, station en meting horen, en welke verantwoordelijkheid elke module heeft. Een klassendiagram op papier volstaat.
 
-- Databases (onder constructie).
+- Databases (klaar): drie tabellen, gebruiker heeft stations, een station heeft metingen. De klassen zelf komen niet aan bod. Een tabel is hier voldoende.
 
 ### LPD 7. Modulair ontwerp met een 3-lagenarchitectuur
 
 Presentatie, domein en data blijven uit elkaar. Lage koppeling: de pagina werkt zonder broker, de ingester werkt zonder de pagina.
 
 - De pagina uit FastAPI (klaar): presentatielaag. `GET /` levert de HTML, de JSON-routes blijven apart.
-- Databases (onder constructie): datalaag, en het domein dat beslist wat een geldige meting is.
+- Databases (klaar): de SQL staat in `database.py`, los van de pagina. Wat een geldige meting is, beslist nog het Pydantic-model in de route.
 - MQTT (onder constructie): de ingester is een tweede programma, geen code in de webroute.
 
 ### LPD 8. Herbruikbare modules, en samenwerking
@@ -66,7 +66,7 @@ Het doel gaat over modules die iemand anders kan lezen en verder gebruiken. Vers
 Validatie, een begrijpelijke fout, en een interface die een fout voorkomt in plaats van te crashen.
 
 - Een eerste API (klaar): een meting zonder luchtdruk krijgt status 422. Het programma blijft draaien.
-- Metingen op de pagina (onder constructie): een lege periode of een ontbrekend station krijgt een leesbare boodschap, geen lege grafiek zonder uitleg.
+- Metingen op de pagina (klaar): een station zonder metingen krijgt een zin in de tabel. De grafiek wordt dan niet getekend. Een onbekend station krijgt een eigen zin. Een gekozen periode komt later.
 - Wachtwoorden, login en rollen (onder constructie): een fout wachtwoord en een onbekende gebruiker krijgen dezelfde boodschap. Een gebruiker ziet geen stations van iemand anders.
 
 ### LPD 10. Een webinterface met hedendaagse webtechnologie
@@ -76,7 +76,7 @@ HTML voor de structuur, CSS voor de vorm. Responsive is een wenk, geen minimumei
 - HTML (klaar): een pagina met titel, zin en tabel. De cijfers staan vast in het bestand.
 - CSS (klaar): een apart bestand bepaalt lettertype, kolom en tabel. Geen media queries.
 - De pagina uit FastAPI (klaar): dezelfde pagina, nu door het programma geleverd. De laatste meting uit de lijst vult twee cellen.
-- Metingen op de pagina (onder constructie): tabel en grafiek.
+- Metingen op de pagina (klaar): tabel met de dag van het klaslokaal, en een lijngrafiek van de temperatuur.
 
 ### LPD 11. Client-side of server-side scripts bij een modulair ontwerp
 
@@ -84,7 +84,7 @@ Het doel vraagt één van beide. Deze cursus doet server-side als basis. Het stu
 
 - Een eerste API (klaar): server-side routes.
 - De pagina uit FastAPI (klaar): de server bouwt de HTML met Jinja.
-- Metingen op de pagina (onder constructie): een script in de browser tekent de grafiek.
+- Metingen op de pagina (klaar): Chart.js in de browser tekent de grafiek. De getallen komen uit de server.
 - MQTT (onder constructie): server-side ingester.
 
 ### LPD 12. Hulpbronnen gebruiken, en documentatie bij eigen modules
@@ -92,7 +92,7 @@ Het doel vraagt één van beide. Deze cursus doet server-side als basis. Het stu
 Twee kanten. Hulpbronnen zijn al deels aanwezig. Documentatie bij de eigen modules nog niet.
 
 - Een eerste API (klaar): `/docs` en de foutmeldingen van de bibliotheek. De leerlingen schrijven nog geen documentatie bij een eigen module.
-- Databases (onder constructie): de databasecursus van je collega als naslag, en een korte beschrijving bij het eigen ontwerp van de drie modules.
+- Databases (klaar): het eigen ontwerp van gebruiker, station en meting staat in het hoofdstuk. De cursus van je collega blijft naslag die je zelf aanwijst. Het hoofdstuk linkt er niet naartoe.
 
 ### LPD 13. Eigen implementaties testen
 

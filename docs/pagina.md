@@ -177,6 +177,8 @@ De tweede `git add` bewaart dat de oude bestanden uit de root weg zijn. In `git 
 - `pytest` eindigt met 4 geslaagde tests.
 - `templates/index.html` en `static/style.css` staan op GitHub. De oude bestanden in de root zijn weg.
 
+De lijst verdwijnt nog bij een herstart. In [Database](database.md) blijven de metingen in een bestand staan.
+
 ??? note "Als het niet lukt"
 
     **De pagina is kaal.** De `link` wijst nog naar `style.css`, of dat bestand staat niet in `static`. Open [http://127.0.0.1:8000/static/style.css](http://127.0.0.1:8000/static/style.css). Je hoort daar de CSS als tekst te zien.

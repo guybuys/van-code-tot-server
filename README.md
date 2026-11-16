@@ -4,7 +4,7 @@ Cursus voor het zesde jaar. Leerlingen bouwen een echt softwaresysteem: van de e
 
 Het project is een **weerstation**. Het station publiceert temperatuur en luchtdruk. De site bewaart die metingen, toont ze in een tabel en een grafiek, en laat iemand inloggen. Een gewone gebruiker ziet alleen zijn eigen station. Een beheerder ziet alle stations.
 
-De cursus volgt die weg in vaste stappen: VS Code, Git en GitHub, een API, HTML en CSS, die pagina uit FastAPI, een database, accounts en rollen, MQTT, en daarna de server. Het weerstation is het systeem dat ze onderweg maken. De stappen zelf zijn dezelfde voor een volgend project.
+De cursus volgt die weg in vaste stappen: VS Code, Git en GitHub, een API, HTML en CSS, die pagina uit FastAPI, een SQLite-database, de metingen als tabel en grafiek, accounts en rollen, MQTT, en daarna de server. Het weerstation is het systeem dat ze onderweg maken. De stappen zelf zijn dezelfde voor een volgend project.
 
 ## Bekijken
 

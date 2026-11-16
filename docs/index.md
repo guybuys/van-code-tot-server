@@ -64,8 +64,8 @@ Daarna, in deze volgorde:
 4. [HTML](html.md), de structuur van de pagina.
 5. [CSS](css.md), de vorm.
 6. [De pagina uit FastAPI](pagina.md). Je programma stuurt de HTML-pagina.
-7. Databases vergelijken, en daarna SQL gebruiken voor gebruikers, stations en metingen.
-8. De metingen op de pagina zetten, eerst als tabel, dan als grafiek.
+7. [Database](database.md). SQLite bewaart gebruikers, stations en voorbeeldmetingen.
+8. [Metingen op de pagina](metingen.md). Eerst een tabel, daarna een grafiek.
 9. Wachtwoorden en inloggen. Een wachtwoord heeft pas zin als de site data van een gebruiker toont. Dan bespreken we waarom dat wachtwoord gehasht in de database staat. Een gewone gebruiker ziet alleen zijn eigen stations. Een beheerder ziet ze allemaal. Die controle zit in het programma, niet alleen in een verborgen menu.
 10. MQTT, zodat metingen van het weerstation in de database belanden.
 11. SSH en de computer op school.

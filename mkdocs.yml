@@ -43,3 +43,6 @@ nav:
       - HTML: html.md
       - CSS: css.md
       - De pagina uit FastAPI: pagina.md
+  - Gegevens:
+      - Database: database.md
+      - Metingen: metingen.md
