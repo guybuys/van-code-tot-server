@@ -42,3 +42,4 @@ nav:
   - Pagina:
       - HTML: html.md
       - CSS: css.md
+      - De pagina uit FastAPI: pagina.md

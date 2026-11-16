@@ -32,7 +32,7 @@ Zeg de gebruikersnaam in de les. Ze staat bewust niet in de cursustekst.
 
 De leerlingen schrijven gewone `def`-functies. Geen `async`.
 
-- `GET /` geeft `{"status": "ok", "service": "weerstation"}`.
+- `GET /` geeft in het eerste API-hoofdstuk `{"status": "ok", "service": "weerstation"}`. Vanaf het hoofdstuk over de pagina geeft `GET /` de HTML. De JSON-lijst blijft op `GET /metingen`.
 - `GET /metingen` geeft een lijst in het geheugen.
 - `POST /metingen` voegt een meting toe. FastAPI leest de JSON en vult het type `Meting`.
 - Een POST zonder een verplicht veld krijgt status **422**. Het programma crasht niet.
@@ -61,7 +61,11 @@ python -m uvicorn main:app --reload
 
 ## HTML en CSS
 
-`index.html` toont één meting met vaste cijfers. `style.css` zet die pagina in een witte kolom. De leerlingen openen het bestand met `start index.html`. FastAPI draait daarbij niet. Geen Jinja, geen media queries. Het voorbeeld na beide hoofdstukken staat in `voorbeelden/02-pagina/`. Het volgende hoofdstuk laat FastAPI die pagina serveren.
+`index.html` toont één meting met vaste cijfers. `style.css` zet die pagina in een witte kolom. De leerlingen openen het bestand met `start index.html`. FastAPI draait daarbij niet. Geen Jinja, geen media queries. Het voorbeeld na beide hoofdstukken staat in `voorbeelden/02-pagina/`.
+
+## De pagina uit FastAPI
+
+`index.html` verhuist naar `templates/`, `style.css` naar `static/`. De link wordt `/static/style.css`. `GET /` vult met Jinja de laatste meting uit de lijst in, met een komma op de pagina. Een POST via `/docs` en een vernieuwde `/` tonen die nieuwe meting. `test_home` stuurt zelf een meting en zoekt de komma-getallen in de HTML. De andere drie tests blijven. Het voorbeeld staat in `voorbeelden/03-pagina/`.
 
 ## Wachtwoorden
 

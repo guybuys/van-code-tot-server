@@ -85,6 +85,8 @@ git push
 - De tabel heeft ruimte in de cellen en een lijn tussen de rijen.
 - `index.html` en `style.css` staan op GitHub.
 
+De browser leest die bestanden nog rechtstreeks van je laptop. In [De pagina uit FastAPI](pagina.md) stuurt je programma de pagina.
+
 ??? note "Als het niet lukt"
 
     **Er verandert niets.** De `link`-regel ontbreekt, `href` wijst naar een andere naam, of `style.css` is niet bewaard. Open `index.html` in de browser, niet `style.css`. Daarna `Ctrl+F5`.

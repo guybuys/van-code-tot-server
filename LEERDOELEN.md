@@ -16,7 +16,7 @@ Deze cursus is niet de enige plaats waar een doel aan bod komt. Algoritmiek, num
 | Een eerste API | klaar | LPD 1, 4, 9, 11, 12 en 13. LPD 14 alleen als fouten lezen. |
 | HTML | klaar | LPD 10, de structuur van de pagina. |
 | CSS | klaar | LPD 10, de vorm. Responsive blijft een uitbreiding. |
-| De pagina uit FastAPI | onder constructie | LPD 7, 10 en 11. De presentatielaag wordt de HTML-pagina. |
+| De pagina uit FastAPI | klaar | LPD 7, 10 en 11. De presentatielaag wordt de HTML-pagina. |
 | Databases | onder constructie | LPD 4, 6, 7 en 12. Ontwerp van gebruiker, station en meting, daarna SQL. |
 | Metingen op de pagina | onder constructie | LPD 9, 10 en 11. Eerst een tabel, daarna een grafiek. |
 | Wachtwoorden, login en rollen | onder constructie | LPD 8, 9 en 13. Hash, sessie, en het verschil tussen gebruiker en beheerder. |
@@ -50,7 +50,7 @@ Een klein ontwerp vóór de tabellen: welke gegevens bij gebruiker, station en m
 
 Presentatie, domein en data blijven uit elkaar. Lage koppeling: de pagina werkt zonder broker, de ingester werkt zonder de pagina.
 
-- De pagina uit FastAPI (onder constructie): presentatielaag.
+- De pagina uit FastAPI (klaar): presentatielaag. `GET /` levert de HTML, de JSON-routes blijven apart.
 - Databases (onder constructie): datalaag, en het domein dat beslist wat een geldige meting is.
 - MQTT (onder constructie): de ingester is een tweede programma, geen code in de webroute.
 
@@ -75,7 +75,7 @@ HTML voor de structuur, CSS voor de vorm. Responsive is een wenk, geen minimumei
 
 - HTML (klaar): een pagina met titel, zin en tabel. De cijfers staan vast in het bestand.
 - CSS (klaar): een apart bestand bepaalt lettertype, kolom en tabel. Geen media queries.
-- De pagina uit FastAPI (onder constructie): dezelfde pagina, nu door het programma geleverd.
+- De pagina uit FastAPI (klaar): dezelfde pagina, nu door het programma geleverd. De laatste meting uit de lijst vult twee cellen.
 - Metingen op de pagina (onder constructie): tabel en grafiek.
 
 ### LPD 11. Client-side of server-side scripts bij een modulair ontwerp
@@ -83,7 +83,7 @@ HTML voor de structuur, CSS voor de vorm. Responsive is een wenk, geen minimumei
 Het doel vraagt één van beide. Deze cursus doet server-side als basis. Het stuk JavaScript voor de grafiek is extra, en dekt de client-side kant.
 
 - Een eerste API (klaar): server-side routes.
-- De pagina uit FastAPI (onder constructie): de server bouwt de HTML.
+- De pagina uit FastAPI (klaar): de server bouwt de HTML met Jinja.
 - Metingen op de pagina (onder constructie): een script in de browser tekent de grafiek.
 - MQTT (onder constructie): server-side ingester.
 
