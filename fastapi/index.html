@@ -1106,7 +1106,16 @@
     <span class="n">metingen</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">meting</span><span class="o">.</span><span class="n">model_dump</span><span class="p">())</span>
     <span class="k">return</span> <span class="p">{</span><span class="s2">"ontvangen"</span><span class="p">:</span> <span class="n">meting</span><span class="o">.</span><span class="n">model_dump</span><span class="p">()}</span>
 </code></pre></div>
-<p><code>Meting</code> beschrijft welke velden een meting heeft en welk type die hebben. FastAPI gebruikt dat om een onvolledige vraag te weigeren. <code>@app.get</code> en <code>@app.post</code> koppelen een URL aan een functie. We gebruiken gewone functies met <code>def</code>. Dat is dezelfde soort functie als in je andere Python-programma's.</p>
+<p><code>Meting</code> is een klasse, van dezelfde soort als de klassen die je al schreef. Uitgeschreven ziet ze er zo uit:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Meting</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">temp</span><span class="p">,</span> <span class="n">luchtdruk</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">temp</span> <span class="o">=</span> <span class="n">temp</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">luchtdruk</span> <span class="o">=</span> <span class="n">luchtdruk</span>
+</code></pre></div>
+<p><code>self</code> is het object zelf. <code>__init__</code> hangt de twee waarden aan dat object. Daarna lees je <code>meting.temp</code> en <code>meting.luchtdruk</code>. Deze versie typ je niet. Ze toont wat de korte klasse in <code>main.py</code> voor je doet.</p>
+<p><code>(BaseModel)</code> achter de naam betekent dat <code>Meting</code> de <code>__init__</code> van <code>BaseModel</code> gebruikt. Die klasse komt uit Pydantic. <code>temp: float</code> is het veld, en het zegt dat de waarde een kommagetal is. FastAPI maakt het object met de JSON van de POST. De sleutels worden de parameters. <code>meting.model_dump()</code> geeft de velden terug als dictionary, dezelfde vorm als de rijen in de lijst <code>metingen</code>.</p>
+<p>Ontbreekt een veld, of staat er tekst waar een getal hoort, dan is het antwoord status 422. <code>nieuwe_meting</code> draait dan niet.</p>
+<p><code>@app.get</code> en <code>@app.post</code> koppelen een URL aan een functie. We gebruiken gewone functies met <code>def</code>. Dat is dezelfde soort functie als in je andere Python-programma's.</p>
 <p>De namen <code>temp</code> en <code>luchtdruk</code> zijn de afspraak met iedereen die later een meting stuurt, ook het weerstation. Die namen veranderen we niet zomaar. Een extra sensor wordt een extra veld in die afspraak.</p>
 <h2 id="de-server-starten">De server starten<a class="headerlink" href="#de-server-starten" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><span class="n">python</span> <span class="n">-m</span> <span class="n">uvicorn</span> <span class="n">main</span><span class="p">:</span><span class="n">app</span> <span class="p">-</span><span class="n">-reload</span>
