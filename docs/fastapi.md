@@ -80,7 +80,22 @@ def nieuwe_meting(meting: Meting):
     return {"ontvangen": meting.model_dump()}
 ```
 
-`Meting` beschrijft welke velden een meting heeft en welk type die hebben. FastAPI gebruikt dat om een onvolledige vraag te weigeren. `@app.get` en `@app.post` koppelen een URL aan een functie. We gebruiken gewone functies met `def`. Dat is dezelfde soort functie als in je andere Python-programma's.
+`Meting` is een klasse, van dezelfde soort als de klassen die je al schreef. Uitgeschreven ziet ze er zo uit:
+
+```python
+class Meting:
+    def __init__(self, temp, luchtdruk):
+        self.temp = temp
+        self.luchtdruk = luchtdruk
+```
+
+`self` is het object zelf. `__init__` hangt de twee waarden aan dat object. Daarna lees je `meting.temp` en `meting.luchtdruk`. Deze versie typ je niet. Ze toont wat de korte klasse in `main.py` voor je doet.
+
+`(BaseModel)` achter de naam betekent dat `Meting` de `__init__` van `BaseModel` gebruikt. Die klasse komt uit Pydantic. `temp: float` is het veld, en het zegt dat de waarde een kommagetal is. FastAPI maakt het object met de JSON van de POST. De sleutels worden de parameters. `meting.model_dump()` geeft de velden terug als dictionary, dezelfde vorm als de rijen in de lijst `metingen`.
+
+Ontbreekt een veld, of staat er tekst waar een getal hoort, dan is het antwoord status 422. `nieuwe_meting` draait dan niet.
+
+`@app.get` en `@app.post` koppelen een URL aan een functie. We gebruiken gewone functies met `def`. Dat is dezelfde soort functie als in je andere Python-programma's.
 
 De namen `temp` en `luchtdruk` zijn de afspraak met iedereen die later een meting stuurt, ook het weerstation. Die namen veranderen we niet zomaar. Een extra sensor wordt een extra veld in die afspraak.
 
