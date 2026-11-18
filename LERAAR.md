@@ -44,6 +44,8 @@ De leerlingen schrijven gewone `def`-functies. Geen `async`.
 - `POST /metingen` voegt een meting toe. FastAPI leest de JSON en vult het type `Meting`.
 - Een POST zonder een verplicht veld krijgt status **422**. Het programma crasht niet.
 - `Meting` staat in het hoofdstuk ook uitgeschreven met `__init__` en `self`. Die versie typen ze niet. `BaseModel` schrijft die constructor. Zo hangt Pydantic aan de klassen die ze al kennen.
+- `@` heet daar een decorator. De functie draait pas bij een vraag. `return metingen` is de hele lijst als JSON. De return van de POST is alleen de binnengekomen meting.
+- Pytest vindt `test_*.py` en roept elke `test_`-functie zelf aan. `TestClient` praat met `app` zonder uvicorn.
 - De lijst verdwijnt bij een herstart. Dat is de brug naar de database. Vanaf dat hoofdstuk staat dezelfde informatie in `weerstation.db`.
 
 Testen, van minst naar meest formeel:

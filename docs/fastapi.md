@@ -95,7 +95,9 @@ class Meting:
 
 Ontbreekt een veld, of staat er tekst waar een getal hoort, dan is het antwoord status 422. `nieuwe_meting` draait dan niet.
 
-`@app.get` en `@app.post` koppelen een URL aan een functie. We gebruiken gewone functies met `def`. Dat is dezelfde soort functie als in je andere Python-programma's.
+Het teken `@` is een decorator. `app.get("/")` is die decorator. Hij zet de functie eronder op het object `app`, gekoppeld aan een GET-vraag voor `/`. `app.post("/metingen")` doet hetzelfde voor een POST. Bij het starten draait `home()` nog niet. Ze draait pas wanneer die vraag binnenkomt. De functies zelf zijn gewone functies met `def`.
+
+`return` is het antwoord op die ene vraag. FastAPI zet een dictionary of een lijst om naar JSON. `return metingen` wordt de hele lijst. `return {"ontvangen": meting.model_dump()}` wordt alleen de meting die net binnenkwam. `metingen.append(...)` zet die meting in de lijst. Een volgende GET toont ze mee.
 
 De namen `temp` en `luchtdruk` zijn de afspraak met iedereen die later een meting stuurt, ook het weerstation. Die namen veranderen we niet zomaar. Een extra sensor wordt een extra veld in die afspraak.
 
@@ -213,7 +215,9 @@ def test_onvolledige_meting_wordt_geweigerd():
     assert response.status_code == 422
 ```
 
-`TestClient` praat rechtstreeks met `app`. De functies waarvan de naam met `test_` begint, voert pytest uit. `assert` stopt die ene test als de voorwaarde niet klopt.
+`pytest` kijkt in de map van de terminal. Een bestand waarvan de naam met `test_` begint, wordt gelezen. Daarin voert pytest elke functie uit waarvan de naam ook met `test_` begint. In `test_main.py` zijn dat de vier functies hierboven. Het bestand roept ze zelf niet aan. Pytest doet dat.
+
+`TestClient` stuurt de vraag rechtstreeks naar `app`. Daarvoor hoeft uvicorn niet te draaien. `response.json()` is de return-waarde van de route. `assert` vergelijkt die met wat je verwacht. Klopt een vergelijking niet, dan stopt die ene test. Pytest toont de functie en de twee waarden.
 
 ```powershell
 pytest
