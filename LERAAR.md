@@ -101,7 +101,7 @@ Het voorbeeld staat in `voorbeelden/05-metingen/`.
 
 ## Van MQTT naar de database
 
-Dit hoofdstuk is er nog niet. De website praat niet met de broker. Een tweede programma, de ingester, doet dat. Zo zien ze twee programma's op dezelfde database.
+Het hoofdstuk staat in `docs/mqtt.md`. Het voorbeeld staat in `voorbeelden/07-mqtt/`. De website praat niet met de broker. Een tweede programma, de ingester, doet dat. Zo zien ze twee programma's op dezelfde database.
 
 1. Het bord publiceert naar EMQX.
 2. De ingester is geabonneerd op `weerstation/+/info` en `weerstation/+/meting`.
@@ -113,9 +113,9 @@ Lokaal is dat hetzelfde `weerstation.db`. Op de server wordt dat PostgreSQL, met
 
 ## Wachtwoorden
 
-Nog geen hoofdstuk. Een hash uitleggen voor er een gebruikerstabel is, blijft los zand.
+Het hoofdstuk staat in `docs/inloggen.md`. Het voorbeeld staat in `voorbeelden/06-inloggen/`. bcrypt, een sessiecookie via `SessionMiddleware`, formulieren met `Form`. `python-multipart` en `itsdangerous` horen bij de installatie. De JSON-route `/metingen` blijft open. De pagina niet. De eerste beheerder komt uit `maak_beheerder.py`. Registreren zet de rol altijd op `gebruiker`.
 
-Het loginhoofdstuk krijgt drie delen, na SQLite:
+Het loginhoofdstuk heeft drie delen:
 
 1. Begrijpen. Wie `station.db` kopieert, leest leesbare wachtwoorden als die er als tekst in staan. Een hash is eenrichting. Een salt zorgt dat twee dezelfde wachtwoorden er verschillend uitzien. Controleren is het ingetypte wachtwoord opnieuw hashen en vergelijken.
 2. Inbouwen. Registreren bewaart de hash. Inloggen maakt een sessie. De query filtert op de gebruiker. Een fout wachtwoord en een onbekende gebruiker krijgen dezelfde foutboodschap.

@@ -66,8 +66,8 @@ Daarna, in deze volgorde:
 6. [De pagina uit FastAPI](pagina.md). Je programma stuurt de HTML-pagina.
 7. [Database](database.md). SQLite bewaart gebruikers, stations en voorbeeldmetingen.
 8. [Metingen op de pagina](metingen.md). Eerst een tabel, daarna een grafiek.
-9. Wachtwoorden en inloggen. Een wachtwoord heeft pas zin als de site data van een gebruiker toont. Dan bespreken we waarom dat wachtwoord gehasht in de database staat. Een gewone gebruiker ziet alleen zijn eigen stations. Een beheerder ziet ze allemaal. Die controle zit in het programma, niet alleen in een verborgen menu.
-10. MQTT, zodat metingen van het weerstation in de database belanden.
+9. [Inloggen](inloggen.md). Een wachtwoord staat als hash in de database. Een gebruiker ziet alleen zijn eigen station. Een beheerder ziet ze allemaal. Die controle zit in het programma, niet alleen in een verborgen menu.
+10. [MQTT](mqtt.md). Een apart programma schrijft de metingen van het weerstation in de database.
 11. SSH en de computer op school.
 12. De site op een server zetten.
 

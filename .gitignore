@@ -9,3 +9,4 @@ arduino/**/secrets.h
 thonny/**/secrets.py
 thonny/demo_metingen.py
 esp32/**/secrets.py
+voorbeelden/**/secrets.py

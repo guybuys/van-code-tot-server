@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <title>Beheer</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main>
+    <h1>Beheer</h1>
+    <p>{{ gebruiker.naam }}</p>
+    {% if fout %}
+    <p class="fout">{{ fout }}</p>
+    {% endif %}
+    <table>
+      <thead>
+        <tr>
+          <th>Station</th>
+          <th>E-mail van de eigenaar</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for station in stations %}
+        <tr>
+          <td>{{ station.id }}. {{ station.naam }}</td>
+          <td>{{ station.email or "niemand" }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <form method="post" action="/beheer">
+      <label>Nummer van het station
+        <input name="station_id" type="number" required>
+      </label>
+      <label>E-mail van de gebruiker
+        <input name="email" type="email" required>
+      </label>
+      <button type="submit">Koppelen</button>
+    </form>
+    <p><a href="/">Terug naar de metingen</a></p>
+  </main>
+</body>
+</html>

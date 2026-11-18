@@ -318,6 +318,8 @@ git push
 - `pytest` eindigt met 5 geslaagde tests.
 - De aangepaste bestanden staan op GitHub. `weerstation.db` niet.
 
+In [Inloggen](inloggen.md) ziet een gebruiker alleen zijn eigen station.
+
 ??? note "Als het niet lukt"
 
     **De pagina toont nog één rij met 18,2 °C.** `main.py` gebruikt nog de lijst. Vervang het bestand door dat uit dit hoofdstuk en herstart de server.

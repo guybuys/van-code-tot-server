@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+httpx2
+pytest
+jinja2
+bcrypt
+python-multipart
+itsdangerous

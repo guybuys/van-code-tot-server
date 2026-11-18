@@ -46,3 +46,5 @@ nav:
   - Gegevens:
       - Database: database.md
       - Metingen: metingen.md
+      - Inloggen: inloggen.md
+      - MQTT: mqtt.md

@@ -19,8 +19,8 @@ Deze cursus is niet de enige plaats waar een doel aan bod komt. Algoritmiek, num
 | De pagina uit FastAPI | klaar | LPD 7, 10 en 11. De presentatielaag wordt de HTML-pagina. |
 | Databases | klaar | LPD 4, 6, 7 en 12. Ontwerp van gebruiker, station en meting, daarna SQLite. De gebruikerstabel blijft leeg. |
 | Metingen op de pagina | klaar | LPD 9, 10 en 11. Eerst een tabel, daarna een grafiek van de temperatuur. |
-| Wachtwoorden, login en rollen | onder constructie | LPD 8, 9 en 13. Hash, sessie, en het verschil tussen gebruiker en beheerder. |
-| MQTT | onder constructie | LPD 4, 7 en 11. Een apart programma schrijft metingen in de database. |
+| Wachtwoorden, login en rollen | klaar | LPD 8, 9 en 13. bcrypt, een sessiecookie, en 403 voor een gebruiker op `/beheer`. |
+| MQTT | klaar | LPD 4, 7 en 11. `ingester.py` schrijft info en metingen. De website leest alleen de database. |
 | SSH en de computer op school | onder constructie | Geen extra leerplandoel. Nodig om het systeem van de laptop los te maken. |
 | De site op een server | onder constructie | Geen extra leerplandoel. Zelfde systeem, nu bereikbaar buiten de klas. |
 
@@ -38,7 +38,7 @@ JSON, een database, en later berichten van het weerstation. Niet elk bestandsfor
 
 - Een eerste API (klaar): JSON ontvangen en teruggeven.
 - Databases (klaar): voorbeeldmetingen blijven in `weerstation.db` staan na een herstart.
-- MQTT (onder constructie): het station stuurt metingen binnen.
+- MQTT (klaar): `verwerk_info` en `verwerk_meting` schrijven het bericht van het bord in SQLite. De test doet dat zonder broker.
 
 ### LPD 6. Ontwerp van een softwaremodule, objectgeoriënteerd
 
@@ -52,14 +52,14 @@ Presentatie, domein en data blijven uit elkaar. Lage koppeling: de pagina werkt 
 
 - De pagina uit FastAPI (klaar): presentatielaag. `GET /` levert de HTML, de JSON-routes blijven apart.
 - Databases (klaar): de SQL staat in `database.py`, los van de pagina. Wat een geldige meting is, beslist nog het Pydantic-model in de route.
-- MQTT (onder constructie): de ingester is een tweede programma, geen code in de webroute.
+- MQTT (klaar): `ingester.py` is een tweede programma. De routes in `main.py` abonneren niet.
 
 ### LPD 8. Herbruikbare modules, en samenwerking
 
 Het doel gaat over modules die iemand anders kan lezen en verder gebruiken. Versiebeheer staat in de wenk bij dit doel.
 
 - Git en GitHub (klaar): commits, een gedeelde repository, niets van `.venv` of `.env` op GitHub.
-- Wachtwoorden, login en rollen (onder constructie): de controle "van wie is dit station?" zit in één module, die de pagina en de tests allebei gebruiken.
+- Wachtwoorden, login en rollen (klaar): `station_van_gebruiker` en de rolcontrole zitten in `database.py` en `main.py`. De pagina en de tests gebruiken dezelfde functies.
 
 ### LPD 9. Gebruiksvriendelijkheid
 
@@ -67,7 +67,7 @@ Validatie, een begrijpelijke fout, en een interface die een fout voorkomt in pla
 
 - Een eerste API (klaar): een meting zonder luchtdruk krijgt status 422. Het programma blijft draaien.
 - Metingen op de pagina (klaar): een station zonder metingen krijgt een zin in de tabel. De grafiek wordt dan niet getekend. Een onbekend station krijgt een eigen zin. Een gekozen periode komt later.
-- Wachtwoorden, login en rollen (onder constructie): een fout wachtwoord en een onbekende gebruiker krijgen dezelfde boodschap. Een gebruiker ziet geen stations van iemand anders.
+- Wachtwoorden, login en rollen (klaar): een fout wachtwoord en een onbekende gebruiker krijgen allebei status 401 en dezelfde zin. Een ander station toont geen metingen.
 
 ### LPD 10. Een webinterface met hedendaagse webtechnologie
 
@@ -85,7 +85,7 @@ Het doel vraagt één van beide. Deze cursus doet server-side als basis. Het stu
 - Een eerste API (klaar): server-side routes.
 - De pagina uit FastAPI (klaar): de server bouwt de HTML met Jinja.
 - Metingen op de pagina (klaar): Chart.js in de browser tekent de grafiek. De getallen komen uit de server.
-- MQTT (onder constructie): server-side ingester.
+- MQTT (klaar): de ingester draait op de computer naast de site, niet in de browser.
 
 ### LPD 12. Hulpbronnen gebruiken, en documentatie bij eigen modules
 
@@ -99,7 +99,7 @@ Twee kanten. Hulpbronnen zijn al deels aanwezig. Documentatie bij de eigen modul
 Fouten vinden in het eigen programma: een geslaagd geval en een geval dat geweigerd moet worden.
 
 - Een eerste API (klaar): pytest met een geldige meting en een onvolledige meting.
-- Wachtwoorden, login en rollen (onder constructie): een beheerder ziet alle stations, een gebruiker krijgt 403 op `/beheer` en op het station van iemand anders.
+- Wachtwoorden, login en rollen (klaar): een beheerder koppelt stations. Een gebruiker krijgt 403 op `/beheer`.
 
 ### LPD 14. Debuggen
 

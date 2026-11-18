@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <title>Weerstation</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <main>
+    <p>
+      {{ gebruiker.naam }}
+      {% if beheerder %}
+      · <a href="/beheer">Beheer</a>
+      {% endif %}
+    </p>
+    <form method="post" action="/afmelden">
+      <button type="submit">Afmelden</button>
+    </form>
+    {% if stations %}
+    <nav>
+      {% for item in stations %}
+      <a href="/?station_id={{ item.id }}">{{ item.naam }}</a>
+      {% endfor %}
+    </nav>
+    {% endif %}
+    {% if geweigerd %}
+    <h1>Weerstation</h1>
+    <p>Dit station is niet van jou.</p>
+    {% elif station %}
+    <h1>{{ station }}</h1>
+    <p>De metingen van dit station. De tijd staat in UTC.</p>
+    <table>
+      <thead>
+        <tr>
+          <th>Tijd</th>
+          <th>Temperatuur</th>
+          <th>Luchtdruk</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for meting in metingen %}
+        <tr>
+          <td>{{ meting.tijd }}</td>
+          <td>{{ meting.temperatuur }} °C</td>
+          <td>{{ meting.luchtdruk }} hPa</td>
+        </tr>
+        {% else %}
+        <tr>
+          <td colspan="3">Er zijn nog geen metingen voor dit station.</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    {% if metingen %}
+    <h2>Temperatuur</h2>
+    <canvas id="grafiek"></canvas>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.min.js"></script>
+    <script>
+      const punten = {{ grafiek_json | safe }};
+      new Chart(document.getElementById("grafiek"), {
+        type: "line",
+        data: {
+          labels: punten.map(function (punt) { return punt.tijd; }),
+          datasets: [{
+            label: "Temperatuur (°C)",
+            data: punten.map(function (punt) { return punt.temp; }),
+            borderColor: "#3f51b5",
+            tension: 0.2
+          }]
+        }
+      });
+    </script>
+    {% endif %}
+    {% elif stations %}
+    <h1>Kies een station</h1>
+    {% else %}
+    <h1>Weerstation</h1>
+    <p>Je hebt nog geen station.</p>
+    {% endif %}
+  </main>
+</body>
+</html>
