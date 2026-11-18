@@ -287,6 +287,8 @@ git push
 
     **`name 'json' is not defined`.** Bovenaan `database.py` ontbreekt `import json`.
 
+    **`KeyError: 'nummer'`.** De INSERT in `vul_voorbeeld` leest `station["nummer"]`, maar in `STATIONS` bovenaan `database.py` staat die regel nog niet. Zet `"nummer": 1` bij Klaslokaal en `"nummer": 2` bij Speelplaats, boven `breedte`. De lijst `metingen` blijft staan.
+
     **De terminal zegt `Overgeslagen` bij een meting.** Voor dat nummer is nog geen info-bericht verwerkt. Het retained bericht komt normaal meteen. Een nummer dat de broker niet kent, blijft overgeslagen.
 
     **De pagina verandert niet vanzelf.** Ze leest de database bij een vernieuwing. MQTT zit niet in de browser.
