@@ -14,11 +14,27 @@ Een meting voor een nummer zonder station slaan we over. Eerst info, daarna meti
 
 ## Het nummer
 
-Het nummer in het topic is niet automatisch het id dat SQLite kiest. Een kolom `nummer` koppelt `weerstation/7` aan één station.
+Het nummer in het topic is niet automatisch het id dat SQLite kiest. Een kolom `nummer` koppelt `weerstation/7` aan één station. Alles in dit deel staat in `database.py`.
 
-In `STATIONS` krijgt het klaslokaal `"nummer": 1` en de speelplaats `"nummer": 2`, naast breedte en lengte.
+Bovenaan dat bestand staat `STATIONS`. Zet in het klaslokaal en de speelplaats een regel `"nummer"`, boven `breedte`.
 
-Vervang de INSERT van een station in `vul_voorbeeld` door:
+```python
+    "Klaslokaal": {
+        "nummer": 1,
+        "breedte": 51.0298,
+        "lengte": 4.4765,
+```
+
+```python
+    "Speelplaats": {
+        "nummer": 2,
+        "breedte": 51.0301,
+        "lengte": 4.4769,
+```
+
+De lijst `metingen` onder `lengte` laat je staan. Je voegt alleen de regel `"nummer"` toe.
+
+In dezelfde `database.py` staat `vul_voorbeeld`. Vervang daar de INSERT van een station door:
 
 ```python
         cursor = verbinding.execute(
@@ -27,7 +43,7 @@ Vervang de INSERT van een station in `vul_voorbeeld` door:
         )
 ```
 
-Zet deze functie boven `start`, en roep ze aan vóór `vul_voorbeeld`.
+Nog in `database.py`: zet `zorg_voor_nummer` boven `start`, en vervang `start` door dit. `zorg_voor_nummer` hoort vóór `vul_voorbeeld` te draaien.
 
 ```python
 def zorg_voor_nummer(verbinding):
@@ -52,7 +68,7 @@ Zet bovenaan `database.py` ook `import json`, bij de andere imports.
 
 ## Verwerken
 
-Zet deze functies boven `koppel_station`. `verwerk_info` maakt het station of werkt de naam en de plaats bij. De eigenaar, `gebruiker_id`, blijft staan. `verwerk_meting` schrijft een rij via `voeg_meting_toe`. Die functie zet de UTC-tijd. Bestaat het nummer nog niet, dan geeft ze `False` terug en komt er geen rij.
+Zet deze functies in `database.py`, boven `koppel_station`. `verwerk_info` maakt het station of werkt de naam en de plaats bij. De eigenaar, `gebruiker_id`, blijft staan. `verwerk_meting` schrijft een rij via `voeg_meting_toe`. Die functie zet de UTC-tijd. Bestaat het nummer nog niet, dan geeft ze `False` terug en komt er geen rij.
 
 ```python
 def nummer_uit_topic(topic, soort):
