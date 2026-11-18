@@ -1263,6 +1263,7 @@
 <p><strong><code>No module named 'broker'</code>.</strong> <code>broker.py</code> ontbreekt. Kopieer <code>broker.py.example</code> en vul de waarden in.</p>
 <p><strong><code>no such column: nummer</code>.</strong> <code>zorg_voor_nummer</code> draait niet vanuit <code>start</code>, of de server is niet herstart na het bewaren van <code>database.py</code>.</p>
 <p><strong><code>name 'json' is not defined</code>.</strong> Bovenaan <code>database.py</code> ontbreekt <code>import json</code>.</p>
+<p><strong><code>KeyError: 'nummer'</code>.</strong> De INSERT in <code>vul_voorbeeld</code> leest <code>station["nummer"]</code>, maar in <code>STATIONS</code> bovenaan <code>database.py</code> staat die regel nog niet. Zet <code>"nummer": 1</code> bij Klaslokaal en <code>"nummer": 2</code> bij Speelplaats, boven <code>breedte</code>. De lijst <code>metingen</code> blijft staan.</p>
 <p><strong>De terminal zegt <code>Overgeslagen</code> bij een meting.</strong> Voor dat nummer is nog geen info-bericht verwerkt. Het retained bericht komt normaal meteen. Een nummer dat de broker niet kent, blijft overgeslagen.</p>
 <p><strong>De pagina verandert niet vanzelf.</strong> Ze leest de database bij een vernieuwing. MQTT zit niet in de browser.</p>
 <p><strong><code>git status</code> toont <code>broker.py</code>.</strong> De regel in <code>.gitignore</code> ontbreekt. De regel is exact <code>broker.py</code>.</p>
