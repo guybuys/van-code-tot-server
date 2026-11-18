@@ -1154,7 +1154,7 @@
 <div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">paho.mqtt.client</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mqtt</span>
 
 <span class="kn">import</span><span class="w"> </span><span class="nn">database</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">secrets</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">broker</span>
 
 <span class="n">database</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
 
@@ -1184,12 +1184,12 @@
 
 
 <span class="k">def</span><span class="w"> </span><span class="nf">main</span><span class="p">():</span>
-    <span class="n">client</span> <span class="o">=</span> <span class="n">mqtt</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">mqtt</span><span class="o">.</span><span class="n">CallbackAPIVersion</span><span class="o">.</span><span class="n">VERSION2</span><span class="p">,</span> <span class="n">client_id</span><span class="o">=</span><span class="n">secrets</span><span class="o">.</span><span class="n">MQTT_CLIENT_ID</span><span class="p">)</span>
-    <span class="n">client</span><span class="o">.</span><span class="n">username_pw_set</span><span class="p">(</span><span class="n">secrets</span><span class="o">.</span><span class="n">MQTT_GEBRUIKER</span><span class="p">,</span> <span class="n">secrets</span><span class="o">.</span><span class="n">MQTT_WACHTWOORD</span><span class="p">)</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">mqtt</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">mqtt</span><span class="o">.</span><span class="n">CallbackAPIVersion</span><span class="o">.</span><span class="n">VERSION2</span><span class="p">,</span> <span class="n">client_id</span><span class="o">=</span><span class="n">broker</span><span class="o">.</span><span class="n">MQTT_CLIENT_ID</span><span class="p">)</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">username_pw_set</span><span class="p">(</span><span class="n">broker</span><span class="o">.</span><span class="n">MQTT_GEBRUIKER</span><span class="p">,</span> <span class="n">broker</span><span class="o">.</span><span class="n">MQTT_WACHTWOORD</span><span class="p">)</span>
     <span class="n">client</span><span class="o">.</span><span class="n">on_connect</span> <span class="o">=</span> <span class="n">on_connect</span>
     <span class="n">client</span><span class="o">.</span><span class="n">on_message</span> <span class="o">=</span> <span class="n">on_message</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">"Verbinden met EMQX op </span><span class="si">%s</span><span class="s2">:</span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">secrets</span><span class="o">.</span><span class="n">MQTT_BROKER</span><span class="p">,</span> <span class="n">secrets</span><span class="o">.</span><span class="n">MQTT_POORT</span><span class="p">))</span>
-    <span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">secrets</span><span class="o">.</span><span class="n">MQTT_BROKER</span><span class="p">,</span> <span class="n">secrets</span><span class="o">.</span><span class="n">MQTT_POORT</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Verbinden met EMQX op </span><span class="si">%s</span><span class="s2">:</span><span class="si">%s</span><span class="s2">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">broker</span><span class="o">.</span><span class="n">MQTT_BROKER</span><span class="p">,</span> <span class="n">broker</span><span class="o">.</span><span class="n">MQTT_POORT</span><span class="p">))</span>
+    <span class="n">client</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">broker</span><span class="o">.</span><span class="n">MQTT_BROKER</span><span class="p">,</span> <span class="n">broker</span><span class="o">.</span><span class="n">MQTT_POORT</span><span class="p">)</span>
     <span class="n">client</span><span class="o">.</span><span class="n">loop_forever</span><span class="p">()</span>
 
 
@@ -1197,9 +1197,9 @@
     <span class="n">main</span><span class="p">()</span>
 </code></pre></div>
 <p><code>on_connect</code> abonneert pas als de verbinding gelukt is. <code>+</code> is één stuk van het topic: elk nummer, zowel <code>info</code> als <code>meting</code>. <code>loop_forever</code> blijft luisteren. Dit programma serveert geen pagina.</p>
-<p>Maak <code>secrets.py.example</code>.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># Kopieer dit bestand naar secrets.py en vul de waarden in.</span>
-<span class="c1"># secrets.py staat in .gitignore en gaat niet naar GitHub.</span>
+<p>Maak <code>broker.py.example</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Kopieer dit bestand naar broker.py en vul de waarden in.</span>
+<span class="c1"># broker.py staat in .gitignore en gaat niet naar GitHub.</span>
 <span class="c1"># De leerkracht geeft het adres, de gebruikersnaam en het wachtwoord.</span>
 
 <span class="n">MQTT_BROKER</span> <span class="o">=</span> <span class="s2">"192.168.1.10"</span>
@@ -1208,8 +1208,9 @@
 <span class="n">MQTT_WACHTWOORD</span> <span class="o">=</span> <span class="s2">"WACHTWOORD"</span>
 <span class="n">MQTT_CLIENT_ID</span> <span class="o">=</span> <span class="s2">"ingester-laptop"</span>
 </code></pre></div>
-<p>Kopieer dat bestand naar <code>secrets.py</code> en vul de waarden in die je van de leerkracht krijgt. Zet deze regel in <code>.gitignore</code>:</p>
-<div class="highlight"><pre><span></span><code>secrets.py
+<p>Kopieer dat bestand naar <code>broker.py</code> en vul de waarden in die je van de leerkracht krijgt. Het bestand heet bewust niet <code>secrets.py</code>. Python heeft zelf een module <code>secrets</code>, en FastAPI importeert daar <code>token_hex</code> uit. Een bestand <code>secrets.py</code> in deze map verbergt die module. <code>pytest</code> stopt dan met <code>cannot import name 'token_hex'</code>.</p>
+<p>Zet deze regel in <code>.gitignore</code>:</p>
+<div class="highlight"><pre><span></span><code>broker.py
 </code></pre></div>
 <p><code>python ingester.py</code> verbindt. Laat dat venster open. De website draait in een andere terminal. Vernieuw de pagina om een nieuwe rij te zien. De pagina luistert zelf niet naar MQTT.</p>
 <p>Zonder de brokergegevens lopen de tests hieronder toch. Die roepen <code>verwerk_info</code> aan, zonder netwerk.</p>
@@ -1244,26 +1245,27 @@
 </code></pre></div>
 <p>Twaalf tests passed. De tweede info-regel verandert de naam en laat de meting staan.</p>
 <h2 id="bewaren-op-github">Bewaren op GitHub<a class="headerlink" href="#bewaren-op-github" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><span class="n">git</span> <span class="n">add</span> <span class="n">database</span><span class="p">.</span><span class="n">py</span> <span class="n">ingester</span><span class="p">.</span><span class="n">py</span> <span class="n">secrets</span><span class="p">.</span><span class="n">py</span><span class="p">.</span><span class="n">example</span> <span class="n">test_main</span><span class="p">.</span><span class="n">py</span> <span class="p">.</span><span class="n">gitignore</span>
+<div class="highlight"><pre><span></span><code><span class="n">git</span> <span class="n">add</span> <span class="n">database</span><span class="p">.</span><span class="n">py</span> <span class="n">ingester</span><span class="p">.</span><span class="n">py</span> <span class="n">broker</span><span class="p">.</span><span class="n">py</span><span class="p">.</span><span class="n">example</span> <span class="n">test_main</span><span class="p">.</span><span class="n">py</span> <span class="p">.</span><span class="n">gitignore</span>
 <span class="n">git</span> <span class="n">commit</span> <span class="n">-m</span> <span class="s2">"Schrijf MQTT-berichten met een apart programma in de database"</span>
 <span class="n">git</span> <span class="n">push</span>
 </code></pre></div>
-<p><code>git status</code> toont <code>secrets.py</code> niet.</p>
+<p><code>git status</code> toont <code>broker.py</code> niet.</p>
 <h2 id="klaar-als">Klaar als<a class="headerlink" href="#klaar-als" title="Permanent link">&para;</a></h2>
 <ul>
 <li><code>pytest</code> eindigt met 12 geslaagde tests.</li>
 <li>Een info-bericht voor een nieuw nummer maakt een station. Een meting zonder station maakt geen rij.</li>
 <li><code>ingester.py</code> is een apart bestand. Er is geen MQTT-code in een route van <code>main.py</code>.</li>
-<li><code>secrets.py</code> staat niet op GitHub.</li>
+<li><code>broker.py</code> staat niet op GitHub.</li>
 </ul>
 <details class="note">
 <summary>Als het niet lukt</summary>
-<p><strong><code>No module named 'secrets'</code>.</strong> <code>secrets.py</code> ontbreekt. Kopieer <code>secrets.py.example</code> en vul de waarden in. De module <code>secrets</code> van Python is een andere. Jouw bestand in de projectmap wint zolang je de ingester vanuit die map start.</p>
+<p><strong><code>cannot import name 'token_hex' from 'secrets'</code>.</strong> In de projectmap staat <code>secrets.py</code>. Hernoem dat bestand naar <code>broker.py</code>. In <code>ingester.py</code> wordt dat <code>import broker</code>, en <code>broker.MQTT_BROKER</code> in plaats van <code>secrets.MQTT_BROKER</code>. Verwijder <code>secrets.py</code>. Zolang dat bestand er ligt, blijft pytest stoppen.</p>
+<p><strong><code>No module named 'broker'</code>.</strong> <code>broker.py</code> ontbreekt. Kopieer <code>broker.py.example</code> en vul de waarden in.</p>
 <p><strong><code>no such column: nummer</code>.</strong> <code>zorg_voor_nummer</code> draait niet vanuit <code>start</code>, of de server is niet herstart na het bewaren van <code>database.py</code>.</p>
 <p><strong><code>name 'json' is not defined</code>.</strong> Bovenaan <code>database.py</code> ontbreekt <code>import json</code>.</p>
 <p><strong>De terminal zegt <code>Overgeslagen</code> bij een meting.</strong> Voor dat nummer is nog geen info-bericht verwerkt. Het retained bericht komt normaal meteen. Een nummer dat de broker niet kent, blijft overgeslagen.</p>
 <p><strong>De pagina verandert niet vanzelf.</strong> Ze leest de database bij een vernieuwing. MQTT zit niet in de browser.</p>
-<p><strong><code>git status</code> toont <code>secrets.py</code>.</strong> De regel in <code>.gitignore</code> ontbreekt. De regel is exact <code>secrets.py</code>.</p>
+<p><strong><code>git status</code> toont <code>broker.py</code>.</strong> De regel in <code>.gitignore</code> ontbreekt. De regel is exact <code>broker.py</code>.</p>
 </details>
 
 
