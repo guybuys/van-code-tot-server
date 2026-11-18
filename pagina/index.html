@@ -1015,8 +1015,9 @@
 <p>In <code>templates/index.html</code> wordt de link naar de CSS:</p>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">href</span><span class="o">=</span><span class="s">"/static/style.css"</span><span class="p">&gt;</span>
 </code></pre></div>
-<p>De browser vraagt die CSS aan je programma, op <code>http://127.0.0.1:8000/static/style.css</code>. De bestandsnaam alleen zoekt naast het HTML-bestand. Dat pad bestond bij <code>file:///</code>. Op de server bestaat het niet, en de pagina blijft kaal.</p>
+<p>De browser vraagt die CSS later aan je programma, op <code>http://127.0.0.1:8000/static/style.css</code>. De schuine streep vooraan begint bij dat adres. Het is geen pad vanuit de map <code>templates</code>, en ook geen map hoger met <code>../</code>. De bestandsnaam alleen zoekt naast het HTML-bestand. Dat pad bestond bij <code>file:///</code>.</p>
 <p><code>style.css</code> zelf verandert niet.</p>
+<p>Op dit moment toont <code>http://127.0.0.1:8000</code> nog de JSON uit de eerste API, <code>status</code> en <code>service</code>. De tabel komt terug in de route hieronder. Het HTML-bestand zelf openen toont de opmaak niet meer. De CSS hoort dan bij de server, en die server stuurt de pagina nog niet.</p>
 <h2 id="de-cijfers-uit-de-lijst">De cijfers uit de lijst<a class="headerlink" href="#de-cijfers-uit-de-lijst" title="Permanent link">&para;</a></h2>
 <p>Vervang in de tabel de twee vaste waarden door een plek die Jinja invult:</p>
 <div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>{{ temperatuur }} °C<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
@@ -1067,7 +1068,7 @@
     <span class="n">metingen</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">meting</span><span class="o">.</span><span class="n">model_dump</span><span class="p">())</span>
     <span class="k">return</span> <span class="p">{</span><span class="s2">"ontvangen"</span><span class="p">:</span> <span class="n">meting</span><span class="o">.</span><span class="n">model_dump</span><span class="p">()}</span>
 </code></pre></div>
-<p><code>mount</code> koppelt het adres <code>/static</code> aan de map <code>static</code>. <code>Jinja2Templates</code> leest de map <code>templates</code>.</p>
+<p><code>mount</code> koppelt het adres <code>/static</code> aan de map <code>static</code>. <code>Jinja2Templates</code> leest de map <code>templates</code>. Plak het hele bestand. Alleen de functie <code>home</code> overnemen laat <code>Request</code> en <code>templates</code> onbekend. FastAPI ziet <code>request</code> dan als een verplicht vraagteken in het adres, en antwoordt met een fout over <code>query</code>.</p>
 <p><code>request</code> is de vraag die de browser stuurde. <code>TemplateResponse</code> verwacht dat argument. <code>metingen[-1]</code> is de laatste meting. Bij de start is dat de meting van 18,2 °C.</p>
 <p>In de lijst staat een punt, <code>18.2</code>. Op de pagina hoort een komma, <code>18,2</code>. <code>f"{laatste['temp']:.1f}"</code> maakt tekst met één cijfer na de punt. <code>replace</code> zet die punt om in een komma.</p>
 <h2 id="nakijken">Nakijken<a class="headerlink" href="#nakijken" title="Permanent link">&para;</a></h2>
