@@ -1041,15 +1041,26 @@
 <p><code>weerstation/N/info</code> is retained. Het bericht is <code>{"naam","leden","breedte","lengte"}</code>. De broker onthoudt het laatste info-bericht. Zodra de ingester zich abonneert, krijgt ze dat bericht, ook als het bord op dat moment niets stuurt. We bewaren naam, breedte en lengte. <code>leden</code> blijft in het bericht en komt nog niet in de tabel.</p>
 <p>Een meting voor een nummer zonder station slaan we over. Eerst info, daarna metingen. Het retained info-bericht komt meestal meteen na het abonneren binnen.</p>
 <h2 id="het-nummer">Het nummer<a class="headerlink" href="#het-nummer" title="Permanent link">&para;</a></h2>
-<p>Het nummer in het topic is niet automatisch het id dat SQLite kiest. Een kolom <code>nummer</code> koppelt <code>weerstation/7</code> aan één station.</p>
-<p>In <code>STATIONS</code> krijgt het klaslokaal <code>"nummer": 1</code> en de speelplaats <code>"nummer": 2</code>, naast breedte en lengte.</p>
-<p>Vervang de INSERT van een station in <code>vul_voorbeeld</code> door:</p>
+<p>Het nummer in het topic is niet automatisch het id dat SQLite kiest. Een kolom <code>nummer</code> koppelt <code>weerstation/7</code> aan één station. Alles in dit deel staat in <code>database.py</code>.</p>
+<p>Bovenaan dat bestand staat <code>STATIONS</code>. Zet in het klaslokaal en de speelplaats een regel <code>"nummer"</code>, boven <code>breedte</code>.</p>
+<div class="highlight"><pre><span></span><code>    <span class="s2">"Klaslokaal"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"nummer"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">"breedte"</span><span class="p">:</span> <span class="mf">51.0298</span><span class="p">,</span>
+        <span class="s2">"lengte"</span><span class="p">:</span> <span class="mf">4.4765</span><span class="p">,</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>    <span class="s2">"Speelplaats"</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">"nummer"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">"breedte"</span><span class="p">:</span> <span class="mf">51.0301</span><span class="p">,</span>
+        <span class="s2">"lengte"</span><span class="p">:</span> <span class="mf">4.4769</span><span class="p">,</span>
+</code></pre></div>
+<p>De lijst <code>metingen</code> onder <code>lengte</code> laat je staan. Je voegt alleen de regel <code>"nummer"</code> toe.</p>
+<p>In dezelfde <code>database.py</code> staat <code>vul_voorbeeld</code>. Vervang daar de INSERT van een station door:</p>
 <div class="highlight"><pre><span></span><code>        <span class="n">cursor</span> <span class="o">=</span> <span class="n">verbinding</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
             <span class="s2">"INSERT INTO station (naam, breedte, lengte, nummer) VALUES (?, ?, ?, ?)"</span><span class="p">,</span>
             <span class="p">(</span><span class="n">naam</span><span class="p">,</span> <span class="n">station</span><span class="p">[</span><span class="s2">"breedte"</span><span class="p">],</span> <span class="n">station</span><span class="p">[</span><span class="s2">"lengte"</span><span class="p">],</span> <span class="n">station</span><span class="p">[</span><span class="s2">"nummer"</span><span class="p">]),</span>
         <span class="p">)</span>
 </code></pre></div>
-<p>Zet deze functie boven <code>start</code>, en roep ze aan vóór <code>vul_voorbeeld</code>.</p>
+<p>Nog in <code>database.py</code>: zet <code>zorg_voor_nummer</code> boven <code>start</code>, en vervang <code>start</code> door dit. <code>zorg_voor_nummer</code> hoort vóór <code>vul_voorbeeld</code> te draaien.</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">zorg_voor_nummer</span><span class="p">(</span><span class="n">verbinding</span><span class="p">):</span>
     <span class="n">kolommen</span> <span class="o">=</span> <span class="p">[</span><span class="n">rij</span><span class="p">[</span><span class="s2">"name"</span><span class="p">]</span> <span class="k">for</span> <span class="n">rij</span> <span class="ow">in</span> <span class="n">verbinding</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"PRAGMA table_info(station)"</span><span class="p">)]</span>
     <span class="k">if</span> <span class="s2">"nummer"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">kolommen</span><span class="p">:</span>
@@ -1068,7 +1079,7 @@
 <p>Een database die je al had, krijgt de kolom erbij. Lege nummers worden het id. Klaslokaal wordt dan 1. Een bord op <code>weerstation/1</code> werkt dat station bij. Een nieuw station krijgt een vrij nummer, bijvoorbeeld 3.</p>
 <p>Zet bovenaan <code>database.py</code> ook <code>import json</code>, bij de andere imports.</p>
 <h2 id="verwerken">Verwerken<a class="headerlink" href="#verwerken" title="Permanent link">&para;</a></h2>
-<p>Zet deze functies boven <code>koppel_station</code>. <code>verwerk_info</code> maakt het station of werkt de naam en de plaats bij. De eigenaar, <code>gebruiker_id</code>, blijft staan. <code>verwerk_meting</code> schrijft een rij via <code>voeg_meting_toe</code>. Die functie zet de UTC-tijd. Bestaat het nummer nog niet, dan geeft ze <code>False</code> terug en komt er geen rij.</p>
+<p>Zet deze functies in <code>database.py</code>, boven <code>koppel_station</code>. <code>verwerk_info</code> maakt het station of werkt de naam en de plaats bij. De eigenaar, <code>gebruiker_id</code>, blijft staan. <code>verwerk_meting</code> schrijft een rij via <code>voeg_meting_toe</code>. Die functie zet de UTC-tijd. Bestaat het nummer nog niet, dan geeft ze <code>False</code> terug en komt er geen rij.</p>
 <div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">nummer_uit_topic</span><span class="p">(</span><span class="n">topic</span><span class="p">,</span> <span class="n">soort</span><span class="p">):</span>
     <span class="n">delen</span> <span class="o">=</span> <span class="n">topic</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">"/"</span><span class="p">)</span>
     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">delen</span><span class="p">)</span> <span class="o">!=</span> <span class="mi">3</span> <span class="ow">or</span> <span class="n">delen</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">"weerstation"</span> <span class="ow">or</span> <span class="n">delen</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">!=</span> <span class="n">soort</span><span class="p">:</span>
