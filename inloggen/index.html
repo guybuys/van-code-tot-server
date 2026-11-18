@@ -1,0 +1,1923 @@
+
+<!doctype html>
+<html lang="nl" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Een weerstation bouwen, van de laptop tot een site op een server">
+      
+      
+        <meta name="author" content="Guy Buys">
+      
+      
+        <link rel="canonical" href="https://guybuys.github.io/van-code-tot-server/inloggen/">
+      
+      
+        <link rel="prev" href="../metingen/">
+      
+      
+        <link rel="next" href="../mqtt/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.7">
+    
+    
+      
+        <title>Inloggen - Van code tot server</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.ec1eaa64.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#inloggen" class="md-skip">
+          Ga naar inhoud
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Van code tot server" class="md-header__button md-logo" aria-label="Van code tot server" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Van code tot server
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Inloggen
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="indigo"  aria-hidden="true"  type="radio" name="__palette" id="__palette_0">
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Zoeken" placeholder="Zoeken" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Zoeken">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Leegmaken" aria-label="Leegmaken" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Zoeken initialiseren
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/guybuys/van-code-tot-server" title="Ga naar repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    guybuys/van-code-tot-server
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigatie" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Van code tot server" class="md-nav__button md-logo" aria-label="Van code tot server" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+
+    </a>
+    Van code tot server
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/guybuys/van-code-tot-server" title="Ga naar repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    guybuys/van-code-tot-server
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Introductie
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Werkomgeving
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Werkomgeving
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../vscode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    VS Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../github/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Git en GitHub
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Backend
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Backend
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../fastapi/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Een eerste API
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pagina
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Pagina
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../html/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    HTML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../css/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CSS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../pagina/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    De pagina uit FastAPI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gegevens
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Gegevens
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../database/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Database
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../metingen/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Metingen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inloggen
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Inloggen
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhoudsopgave">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#een-hash" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Een hash
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accounts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accounts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#de-sessie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        De sessie
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#de-formulieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        De formulieren
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#de-eerste-beheerder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        De eerste beheerder
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#de-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        De test
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bewaren-op-github" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bewaren op GitHub
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#klaar-als" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Klaar als
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mqtt/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MQTT
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Inhoudsopgave">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Inhoudsopgave
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#een-hash" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Een hash
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accounts" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Accounts
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#de-sessie" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        De sessie
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#de-formulieren" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        De formulieren
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#de-eerste-beheerder" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        De eerste beheerder
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#de-test" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        De test
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#bewaren-op-github" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bewaren op GitHub
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#klaar-als" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Klaar als
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="inloggen">Inloggen<a class="headerlink" href="#inloggen" title="Permanent link">&para;</a></h1>
+<p>De pagina toont het klaslokaal aan iedereen die <code>http://127.0.0.1:8000</code> opent. Een wachtwoord heeft nu pas zin: de metingen horen bij iemand.</p>
+<p>Een gewone gebruiker ziet alleen zijn eigen station. Een beheerder ziet ze allemaal. Die controle zit in het programma. Een link die je verbergt, houdt niemand tegen: wie <code>/beheer</code> intypt, komt er toch.</p>
+<h2 id="een-hash">Een hash<a class="headerlink" href="#een-hash" title="Permanent link">&para;</a></h2>
+<p>Een wachtwoord dat als leesbare tekst in <code>weerstation.db</code> staat, leest iedereen die het bestand kopieert. Een hash is eenrichting. Uit de hash lees je het wachtwoord niet terug. Controleren is het ingetypte wachtwoord opnieuw hashen en vergelijken.</p>
+<p><code>bcrypt</code> maakt de hash, en een salt. De salt zorgt dat twee hashes van hetzelfde wachtwoord er verschillend uitzien. Typ dit eens in een tijdelijk bestand en voer het uit. Je bewaart het bestand niet.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">bcrypt</span>
+
+<span class="n">wachtwoord</span> <span class="o">=</span> <span class="s2">"geheim123"</span><span class="o">.</span><span class="n">encode</span><span class="p">()</span>
+<span class="n">eerste</span> <span class="o">=</span> <span class="n">bcrypt</span><span class="o">.</span><span class="n">hashpw</span><span class="p">(</span><span class="n">wachtwoord</span><span class="p">,</span> <span class="n">bcrypt</span><span class="o">.</span><span class="n">gensalt</span><span class="p">())</span>
+<span class="n">tweede</span> <span class="o">=</span> <span class="n">bcrypt</span><span class="o">.</span><span class="n">hashpw</span><span class="p">(</span><span class="n">wachtwoord</span><span class="p">,</span> <span class="n">bcrypt</span><span class="o">.</span><span class="n">gensalt</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">eerste</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tweede</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bcrypt</span><span class="o">.</span><span class="n">checkpw</span><span class="p">(</span><span class="n">wachtwoord</span><span class="p">,</span> <span class="n">eerste</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bcrypt</span><span class="o">.</span><span class="n">checkpw</span><span class="p">(</span><span class="n">wachtwoord</span><span class="p">,</span> <span class="n">tweede</span><span class="p">))</span>
+</code></pre></div>
+<p>Je ziet twee verschillende regels, en twee keer <code>True</code>. In de database bewaren we de hash als tekst, met <code>.decode()</code>.</p>
+<p>Installeer de pakketten in de omgeving van het project:</p>
+<div class="highlight"><pre><span></span><code><span class="n">python</span> <span class="n">-m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">bcrypt</span> <span class="n">python-multipart</span> <span class="n">itsdangerous</span>
+</code></pre></div>
+<p><code>bcrypt</code> maakt de hash. <code>python-multipart</code> leest een formulier. <code>itsdangerous</code> ondertekent de cookie van de sessie.</p>
+<h2 id="accounts">Accounts<a class="headerlink" href="#accounts" title="Permanent link">&para;</a></h2>
+<p>Een registratie zet de rol altijd op <code>gebruiker</code>. Het formulier heeft geen veld voor de rol. Wie daar beheerder zou kunnen kiezen, maakt iedereen beheerder. De eerste beheerder komt uit een script, verderop.</p>
+<p>Een fout wachtwoord en een onbekend e-mailadres krijgen dezelfde zin: <code>Onbekend e-mailadres of wachtwoord.</code> Zo verklapt de site niet welk van de twee fout was.</p>
+<p>Zet deze functies in <code>database.py</code>, boven <code>toon</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">als_dict</span><span class="p">(</span><span class="n">rij</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">rij</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="nb">dict</span><span class="p">(</span><span class="n">rij</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">voeg_account_toe</span><span class="p">(</span><span class="n">naam</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">wachtwoord_hash</span><span class="p">,</span> <span class="n">rol</span><span class="p">):</span>
+    <span class="n">verbinding</span> <span class="o">=</span> <span class="n">verbind</span><span class="p">()</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">cursor</span> <span class="o">=</span> <span class="n">verbinding</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+<span class="w">            </span><span class="sd">"""</span>
+<span class="sd">            INSERT INTO gebruiker (naam, email, wachtwoord_hash, rol)</span>
+<span class="sd">            VALUES (?, ?, ?, ?)</span>
+<span class="sd">            """</span><span class="p">,</span>
+            <span class="p">(</span><span class="n">naam</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">wachtwoord_hash</span><span class="p">,</span> <span class="n">rol</span><span class="p">),</span>
+        <span class="p">)</span>
+        <span class="n">verbinding</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+        <span class="k">return</span> <span class="n">cursor</span><span class="o">.</span><span class="n">lastrowid</span>
+    <span class="k">except</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">IntegrityError</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">finally</span><span class="p">:</span>
+        <span class="n">verbinding</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">voeg_gebruiker_toe</span><span class="p">(</span><span class="n">naam</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">wachtwoord_hash</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">voeg_account_toe</span><span class="p">(</span><span class="n">naam</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">wachtwoord_hash</span><span class="p">,</span> <span class="s2">"gebruiker"</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">voeg_beheerder_toe</span><span class="p">(</span><span class="n">naam</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">wachtwoord_hash</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">voeg_account_toe</span><span class="p">(</span><span class="n">naam</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">wachtwoord_hash</span><span class="p">,</span> <span class="s2">"beheerder"</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">gebruiker_van_email</span><span class="p">(</span><span class="n">email</span><span class="p">):</span>
+    <span class="n">verbinding</span> <span class="o">=</span> <span class="n">verbind</span><span class="p">()</span>
+    <span class="n">rij</span> <span class="o">=</span> <span class="n">verbinding</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+        <span class="s2">"SELECT id, naam, email, wachtwoord_hash, rol FROM gebruiker WHERE email = ?"</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">email</span><span class="p">,),</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+    <span class="n">verbinding</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">als_dict</span><span class="p">(</span><span class="n">rij</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">gebruiker_van_id</span><span class="p">(</span><span class="n">gebruiker_id</span><span class="p">):</span>
+    <span class="n">verbinding</span> <span class="o">=</span> <span class="n">verbind</span><span class="p">()</span>
+    <span class="n">rij</span> <span class="o">=</span> <span class="n">verbinding</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+        <span class="s2">"SELECT id, naam, email, rol FROM gebruiker WHERE id = ?"</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">gebruiker_id</span><span class="p">,),</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+    <span class="n">verbinding</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">als_dict</span><span class="p">(</span><span class="n">rij</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">stations_van_gebruiker</span><span class="p">(</span><span class="n">gebruiker_id</span><span class="p">):</span>
+    <span class="n">verbinding</span> <span class="o">=</span> <span class="n">verbind</span><span class="p">()</span>
+    <span class="n">rijen</span> <span class="o">=</span> <span class="n">verbinding</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        SELECT id, naam</span>
+<span class="sd">        FROM station</span>
+<span class="sd">        WHERE gebruiker_id = ?</span>
+<span class="sd">        ORDER BY id</span>
+<span class="sd">        """</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">gebruiker_id</span><span class="p">,),</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+    <span class="n">verbinding</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">return</span> <span class="p">[</span><span class="nb">dict</span><span class="p">(</span><span class="n">rij</span><span class="p">)</span> <span class="k">for</span> <span class="n">rij</span> <span class="ow">in</span> <span class="n">rijen</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">alle_stations</span><span class="p">():</span>
+    <span class="n">verbinding</span> <span class="o">=</span> <span class="n">verbind</span><span class="p">()</span>
+    <span class="n">rijen</span> <span class="o">=</span> <span class="n">verbinding</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        SELECT station.id, station.naam, gebruiker.email</span>
+<span class="sd">        FROM station</span>
+<span class="sd">        LEFT JOIN gebruiker ON gebruiker.id = station.gebruiker_id</span>
+<span class="sd">        ORDER BY station.id</span>
+<span class="sd">        """</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">fetchall</span><span class="p">()</span>
+    <span class="n">verbinding</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">return</span> <span class="p">[</span><span class="nb">dict</span><span class="p">(</span><span class="n">rij</span><span class="p">)</span> <span class="k">for</span> <span class="n">rij</span> <span class="ow">in</span> <span class="n">rijen</span><span class="p">]</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">station_van_gebruiker</span><span class="p">(</span><span class="n">station_id</span><span class="p">,</span> <span class="n">gebruiker_id</span><span class="p">):</span>
+    <span class="n">verbinding</span> <span class="o">=</span> <span class="n">verbind</span><span class="p">()</span>
+    <span class="n">rij</span> <span class="o">=</span> <span class="n">verbinding</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+<span class="w">        </span><span class="sd">"""</span>
+<span class="sd">        SELECT id, naam</span>
+<span class="sd">        FROM station</span>
+<span class="sd">        WHERE id = ? AND gebruiker_id = ?</span>
+<span class="sd">        """</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">station_id</span><span class="p">,</span> <span class="n">gebruiker_id</span><span class="p">),</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+    <span class="n">verbinding</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">als_dict</span><span class="p">(</span><span class="n">rij</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">koppel_station</span><span class="p">(</span><span class="n">station_id</span><span class="p">,</span> <span class="n">email</span><span class="p">):</span>
+    <span class="n">gebruiker</span> <span class="o">=</span> <span class="n">gebruiker_van_email</span><span class="p">(</span><span class="n">email</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">gebruiker</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">False</span>
+    <span class="n">verbinding</span> <span class="o">=</span> <span class="n">verbind</span><span class="p">()</span>
+    <span class="n">cursor</span> <span class="o">=</span> <span class="n">verbinding</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span>
+        <span class="s2">"UPDATE station SET gebruiker_id = ? WHERE id = ?"</span><span class="p">,</span>
+        <span class="p">(</span><span class="n">gebruiker</span><span class="p">[</span><span class="s2">"id"</span><span class="p">],</span> <span class="n">station_id</span><span class="p">),</span>
+    <span class="p">)</span>
+    <span class="n">verbinding</span><span class="o">.</span><span class="n">commit</span><span class="p">()</span>
+    <span class="n">gewijzigd</span> <span class="o">=</span> <span class="n">cursor</span><span class="o">.</span><span class="n">rowcount</span> <span class="o">==</span> <span class="mi">1</span>
+    <span class="n">verbinding</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">gewijzigd</span>
+</code></pre></div>
+<p><code>voeg_gebruiker_toe</code> zet de rol zelf op <code>gebruiker</code>. <code>?</code> blijft de plaats voor een waarde. Bestaat het e-mailadres al, dan geeft de functie <code>None</code> terug. <code>station_van_gebruiker</code> vindt een station alleen als het van die gebruiker is. De query weigert het andere station, niet een verborgen menu.</p>
+<h2 id="de-sessie">De sessie<a class="headerlink" href="#de-sessie" title="Permanent link">&para;</a></h2>
+<p>Een sessie is een cookie. De browser stuurt ze bij elke vraag mee. In de cookie staat het id van de gebruiker, ondertekend met een sleutel. Wie de cookie wijzigt, maakt de ondertekening stuk, en de sessie is leeg.</p>
+<p><code>WEERSTATION_SLEUTEL</code> is die sleutel. De waarde <code>alleen-op-deze-laptop</code> volstaat zolang de site op jouw computer draait. Op de server wordt dat een echte sleutel, buiten de repository.</p>
+<p>Vervang <code>main.py</code> door dit bestand. De routes voor <code>/metingen</code> blijven. Die JSON-route is nog open. De pagina is wat dit hoofdstuk afsluit. Het programma dat metingen van het bord schrijft, komt in het volgende hoofdstuk.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">bcrypt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi</span><span class="w"> </span><span class="kn">import</span> <span class="n">FastAPI</span><span class="p">,</span> <span class="n">Form</span><span class="p">,</span> <span class="n">HTTPException</span><span class="p">,</span> <span class="n">Request</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi.responses</span><span class="w"> </span><span class="kn">import</span> <span class="n">RedirectResponse</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi.staticfiles</span><span class="w"> </span><span class="kn">import</span> <span class="n">StaticFiles</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi.templating</span><span class="w"> </span><span class="kn">import</span> <span class="n">Jinja2Templates</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">pydantic</span><span class="w"> </span><span class="kn">import</span> <span class="n">BaseModel</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">starlette.middleware.sessions</span><span class="w"> </span><span class="kn">import</span> <span class="n">SessionMiddleware</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">database</span>
+
+<span class="n">app</span> <span class="o">=</span> <span class="n">FastAPI</span><span class="p">()</span>
+<span class="n">app</span><span class="o">.</span><span class="n">add_middleware</span><span class="p">(</span>
+    <span class="n">SessionMiddleware</span><span class="p">,</span>
+    <span class="n">secret_key</span><span class="o">=</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"WEERSTATION_SLEUTEL"</span><span class="p">,</span> <span class="s2">"alleen-op-deze-laptop"</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">app</span><span class="o">.</span><span class="n">mount</span><span class="p">(</span><span class="s2">"/static"</span><span class="p">,</span> <span class="n">StaticFiles</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="s2">"static"</span><span class="p">),</span> <span class="n">name</span><span class="o">=</span><span class="s2">"static"</span><span class="p">)</span>
+<span class="n">templates</span> <span class="o">=</span> <span class="n">Jinja2Templates</span><span class="p">(</span><span class="n">directory</span><span class="o">=</span><span class="s2">"templates"</span><span class="p">)</span>
+
+<span class="n">database</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+<span class="n">FOUT_AANMELDEN</span> <span class="o">=</span> <span class="s2">"Onbekend e-mailadres of wachtwoord."</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">Meting</span><span class="p">(</span><span class="n">BaseModel</span><span class="p">):</span>
+    <span class="n">temp</span><span class="p">:</span> <span class="nb">float</span>
+    <span class="n">luchtdruk</span><span class="p">:</span> <span class="nb">float</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">hash_wachtwoord</span><span class="p">(</span><span class="n">wachtwoord</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">bcrypt</span><span class="o">.</span><span class="n">hashpw</span><span class="p">(</span><span class="n">wachtwoord</span><span class="o">.</span><span class="n">encode</span><span class="p">(),</span> <span class="n">bcrypt</span><span class="o">.</span><span class="n">gensalt</span><span class="p">())</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">wachtwoord_klopt</span><span class="p">(</span><span class="n">wachtwoord</span><span class="p">,</span> <span class="n">wachtwoord_hash</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">bcrypt</span><span class="o">.</span><span class="n">checkpw</span><span class="p">(</span><span class="n">wachtwoord</span><span class="o">.</span><span class="n">encode</span><span class="p">(),</span> <span class="n">wachtwoord_hash</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">huidige_gebruiker</span><span class="p">(</span><span class="n">request</span><span class="p">):</span>
+    <span class="n">gebruiker_id</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"gebruiker_id"</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">gebruiker_id</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="k">return</span> <span class="n">database</span><span class="o">.</span><span class="n">gebruiker_van_id</span><span class="p">(</span><span class="n">gebruiker_id</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">komma</span><span class="p">(</span><span class="n">getal</span><span class="p">):</span>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">"</span><span class="si">{</span><span class="n">getal</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">"</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"."</span><span class="p">,</span> <span class="s2">","</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">voor_tabel</span><span class="p">(</span><span class="n">rij</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="s2">"tijd"</span><span class="p">:</span> <span class="n">rij</span><span class="p">[</span><span class="s2">"tijd"</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"T"</span><span class="p">,</span> <span class="s2">" "</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">"Z"</span><span class="p">,</span> <span class="s2">""</span><span class="p">)[:</span><span class="mi">16</span><span class="p">],</span>
+        <span class="s2">"temperatuur"</span><span class="p">:</span> <span class="n">komma</span><span class="p">(</span><span class="n">rij</span><span class="p">[</span><span class="s2">"temp"</span><span class="p">]),</span>
+        <span class="s2">"luchtdruk"</span><span class="p">:</span> <span class="n">komma</span><span class="p">(</span><span class="n">rij</span><span class="p">[</span><span class="s2">"luchtdruk"</span><span class="p">]),</span>
+    <span class="p">}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">voor_grafiek</span><span class="p">(</span><span class="n">rij</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">"tijd"</span><span class="p">:</span> <span class="n">rij</span><span class="p">[</span><span class="s2">"tijd"</span><span class="p">][</span><span class="mi">11</span><span class="p">:</span><span class="mi">16</span><span class="p">],</span> <span class="s2">"temp"</span><span class="p">:</span> <span class="n">rij</span><span class="p">[</span><span class="s2">"temp"</span><span class="p">]}</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">pagina</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">gebruiker</span><span class="p">,</span> <span class="n">stations</span><span class="p">,</span> <span class="n">station</span><span class="p">,</span> <span class="n">geweigerd</span><span class="p">,</span> <span class="n">rijen</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">templates</span><span class="o">.</span><span class="n">TemplateResponse</span><span class="p">(</span>
+        <span class="n">request</span><span class="p">,</span>
+        <span class="s2">"index.html"</span><span class="p">,</span>
+        <span class="p">{</span>
+            <span class="s2">"gebruiker"</span><span class="p">:</span> <span class="n">gebruiker</span><span class="p">,</span>
+            <span class="s2">"beheerder"</span><span class="p">:</span> <span class="n">gebruiker</span><span class="p">[</span><span class="s2">"rol"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"beheerder"</span><span class="p">,</span>
+            <span class="s2">"stations"</span><span class="p">:</span> <span class="n">stations</span><span class="p">,</span>
+            <span class="s2">"station"</span><span class="p">:</span> <span class="n">station</span><span class="p">,</span>
+            <span class="s2">"geweigerd"</span><span class="p">:</span> <span class="n">geweigerd</span><span class="p">,</span>
+            <span class="s2">"metingen"</span><span class="p">:</span> <span class="p">[</span><span class="n">voor_tabel</span><span class="p">(</span><span class="n">rij</span><span class="p">)</span> <span class="k">for</span> <span class="n">rij</span> <span class="ow">in</span> <span class="n">rijen</span><span class="p">],</span>
+            <span class="s2">"grafiek_json"</span><span class="p">:</span> <span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">([</span><span class="n">voor_grafiek</span><span class="p">(</span><span class="n">rij</span><span class="p">)</span> <span class="k">for</span> <span class="n">rij</span> <span class="ow">in</span> <span class="n">rijen</span><span class="p">]),</span>
+        <span class="p">},</span>
+    <span class="p">)</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"/login"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">login_pagina</span><span class="p">(</span><span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">templates</span><span class="o">.</span><span class="n">TemplateResponse</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">"login.html"</span><span class="p">,</span> <span class="p">{</span><span class="s2">"fout"</span><span class="p">:</span> <span class="s2">""</span><span class="p">})</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">"/login"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">meld_aan</span><span class="p">(</span><span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">,</span> <span class="n">email</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Form</span><span class="p">(),</span> <span class="n">wachtwoord</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Form</span><span class="p">()):</span>
+    <span class="n">gebruiker</span> <span class="o">=</span> <span class="n">database</span><span class="o">.</span><span class="n">gebruiker_van_email</span><span class="p">(</span><span class="n">email</span><span class="p">)</span>
+    <span class="n">klopt</span> <span class="o">=</span> <span class="p">(</span>
+        <span class="n">gebruiker</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+        <span class="ow">and</span> <span class="n">wachtwoord_klopt</span><span class="p">(</span><span class="n">wachtwoord</span><span class="p">,</span> <span class="n">gebruiker</span><span class="p">[</span><span class="s2">"wachtwoord_hash"</span><span class="p">])</span>
+    <span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">klopt</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">templates</span><span class="o">.</span><span class="n">TemplateResponse</span><span class="p">(</span>
+            <span class="n">request</span><span class="p">,</span>
+            <span class="s2">"login.html"</span><span class="p">,</span>
+            <span class="p">{</span><span class="s2">"fout"</span><span class="p">:</span> <span class="n">FOUT_AANMELDEN</span><span class="p">},</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="mi">401</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="n">request</span><span class="o">.</span><span class="n">session</span><span class="p">[</span><span class="s2">"gebruiker_id"</span><span class="p">]</span> <span class="o">=</span> <span class="n">gebruiker</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]</span>
+    <span class="k">return</span> <span class="n">RedirectResponse</span><span class="p">(</span><span class="s2">"/"</span><span class="p">,</span> <span class="n">status_code</span><span class="o">=</span><span class="mi">303</span><span class="p">)</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"/registreren"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">registratie_pagina</span><span class="p">(</span><span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">templates</span><span class="o">.</span><span class="n">TemplateResponse</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="s2">"registreren.html"</span><span class="p">,</span> <span class="p">{</span><span class="s2">"fout"</span><span class="p">:</span> <span class="s2">""</span><span class="p">})</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">"/registreren"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">registreer</span><span class="p">(</span>
+    <span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">,</span>
+    <span class="n">naam</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Form</span><span class="p">(),</span>
+    <span class="n">email</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Form</span><span class="p">(),</span>
+    <span class="n">wachtwoord</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Form</span><span class="p">(),</span>
+<span class="p">):</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">wachtwoord</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">templates</span><span class="o">.</span><span class="n">TemplateResponse</span><span class="p">(</span>
+            <span class="n">request</span><span class="p">,</span>
+            <span class="s2">"registreren.html"</span><span class="p">,</span>
+            <span class="p">{</span><span class="s2">"fout"</span><span class="p">:</span> <span class="s2">"Kies een wachtwoord van minstens 8 tekens."</span><span class="p">},</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="n">gebruiker_id</span> <span class="o">=</span> <span class="n">database</span><span class="o">.</span><span class="n">voeg_gebruiker_toe</span><span class="p">(</span><span class="n">naam</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">hash_wachtwoord</span><span class="p">(</span><span class="n">wachtwoord</span><span class="p">))</span>
+    <span class="k">if</span> <span class="n">gebruiker_id</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">templates</span><span class="o">.</span><span class="n">TemplateResponse</span><span class="p">(</span>
+            <span class="n">request</span><span class="p">,</span>
+            <span class="s2">"registreren.html"</span><span class="p">,</span>
+            <span class="p">{</span><span class="s2">"fout"</span><span class="p">:</span> <span class="s2">"Dit e-mailadres bestaat al."</span><span class="p">},</span>
+            <span class="n">status_code</span><span class="o">=</span><span class="mi">400</span><span class="p">,</span>
+        <span class="p">)</span>
+    <span class="n">request</span><span class="o">.</span><span class="n">session</span><span class="p">[</span><span class="s2">"gebruiker_id"</span><span class="p">]</span> <span class="o">=</span> <span class="n">gebruiker_id</span>
+    <span class="k">return</span> <span class="n">RedirectResponse</span><span class="p">(</span><span class="s2">"/"</span><span class="p">,</span> <span class="n">status_code</span><span class="o">=</span><span class="mi">303</span><span class="p">)</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">"/afmelden"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">meld_af</span><span class="p">(</span><span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">):</span>
+    <span class="n">request</span><span class="o">.</span><span class="n">session</span><span class="o">.</span><span class="n">clear</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">RedirectResponse</span><span class="p">(</span><span class="s2">"/login"</span><span class="p">,</span> <span class="n">status_code</span><span class="o">=</span><span class="mi">303</span><span class="p">)</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"/"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">home</span><span class="p">(</span><span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">,</span> <span class="n">station_id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="kc">None</span><span class="p">):</span>
+    <span class="n">gebruiker</span> <span class="o">=</span> <span class="n">huidige_gebruiker</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">gebruiker</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">RedirectResponse</span><span class="p">(</span><span class="s2">"/login"</span><span class="p">,</span> <span class="n">status_code</span><span class="o">=</span><span class="mi">303</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">gebruiker</span><span class="p">[</span><span class="s2">"rol"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"beheerder"</span><span class="p">:</span>
+        <span class="n">stations</span> <span class="o">=</span> <span class="n">database</span><span class="o">.</span><span class="n">alle_stations</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">station_id</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">stations</span><span class="p">:</span>
+            <span class="n">station_id</span> <span class="o">=</span> <span class="n">stations</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"id"</span><span class="p">]</span>
+        <span class="n">naam</span> <span class="o">=</span> <span class="n">database</span><span class="o">.</span><span class="n">naam_van_station</span><span class="p">(</span><span class="n">station_id</span><span class="p">)</span> <span class="k">if</span> <span class="n">station_id</span> <span class="k">else</span> <span class="kc">None</span>
+        <span class="n">rijen</span> <span class="o">=</span> <span class="n">database</span><span class="o">.</span><span class="n">metingen_van_station</span><span class="p">(</span><span class="n">station_id</span><span class="p">)</span> <span class="k">if</span> <span class="n">naam</span> <span class="k">else</span> <span class="p">[]</span>
+        <span class="k">return</span> <span class="n">pagina</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">gebruiker</span><span class="p">,</span> <span class="n">stations</span><span class="p">,</span> <span class="n">naam</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="n">rijen</span><span class="p">)</span>
+
+    <span class="n">stations</span> <span class="o">=</span> <span class="n">database</span><span class="o">.</span><span class="n">stations_van_gebruiker</span><span class="p">(</span><span class="n">gebruiker</span><span class="p">[</span><span class="s2">"id"</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">station_id</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">stations</span><span class="p">)</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">station_id</span> <span class="o">=</span> <span class="n">stations</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s2">"id"</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">station_id</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pagina</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">gebruiker</span><span class="p">,</span> <span class="n">stations</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="p">[])</span>
+    <span class="n">eigen</span> <span class="o">=</span> <span class="n">database</span><span class="o">.</span><span class="n">station_van_gebruiker</span><span class="p">(</span><span class="n">station_id</span><span class="p">,</span> <span class="n">gebruiker</span><span class="p">[</span><span class="s2">"id"</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">eigen</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">pagina</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">gebruiker</span><span class="p">,</span> <span class="n">stations</span><span class="p">,</span> <span class="kc">None</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="p">[])</span>
+    <span class="n">rijen</span> <span class="o">=</span> <span class="n">database</span><span class="o">.</span><span class="n">metingen_van_station</span><span class="p">(</span><span class="n">station_id</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">pagina</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="n">gebruiker</span><span class="p">,</span> <span class="n">stations</span><span class="p">,</span> <span class="n">eigen</span><span class="p">[</span><span class="s2">"naam"</span><span class="p">],</span> <span class="kc">False</span><span class="p">,</span> <span class="n">rijen</span><span class="p">)</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"/beheer"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">beheer_pagina</span><span class="p">(</span><span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">):</span>
+    <span class="n">gebruiker</span> <span class="o">=</span> <span class="n">huidige_gebruiker</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">gebruiker</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">RedirectResponse</span><span class="p">(</span><span class="s2">"/login"</span><span class="p">,</span> <span class="n">status_code</span><span class="o">=</span><span class="mi">303</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">gebruiker</span><span class="p">[</span><span class="s2">"rol"</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">"beheerder"</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">403</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">templates</span><span class="o">.</span><span class="n">TemplateResponse</span><span class="p">(</span>
+        <span class="n">request</span><span class="p">,</span>
+        <span class="s2">"beheer.html"</span><span class="p">,</span>
+        <span class="p">{</span>
+            <span class="s2">"gebruiker"</span><span class="p">:</span> <span class="n">gebruiker</span><span class="p">,</span>
+            <span class="s2">"stations"</span><span class="p">:</span> <span class="n">database</span><span class="o">.</span><span class="n">alle_stations</span><span class="p">(),</span>
+            <span class="s2">"fout"</span><span class="p">:</span> <span class="s2">""</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">)</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">"/beheer"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">koppel</span><span class="p">(</span><span class="n">request</span><span class="p">:</span> <span class="n">Request</span><span class="p">,</span> <span class="n">station_id</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="n">Form</span><span class="p">(),</span> <span class="n">email</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="n">Form</span><span class="p">()):</span>
+    <span class="n">gebruiker</span> <span class="o">=</span> <span class="n">huidige_gebruiker</span><span class="p">(</span><span class="n">request</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">gebruiker</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">RedirectResponse</span><span class="p">(</span><span class="s2">"/login"</span><span class="p">,</span> <span class="n">status_code</span><span class="o">=</span><span class="mi">303</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">gebruiker</span><span class="p">[</span><span class="s2">"rol"</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">"beheerder"</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">HTTPException</span><span class="p">(</span><span class="n">status_code</span><span class="o">=</span><span class="mi">403</span><span class="p">)</span>
+    <span class="n">fout</span> <span class="o">=</span> <span class="s2">""</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">database</span><span class="o">.</span><span class="n">koppel_station</span><span class="p">(</span><span class="n">station_id</span><span class="p">,</span> <span class="n">email</span><span class="p">):</span>
+        <span class="n">fout</span> <span class="o">=</span> <span class="s2">"Dat station of dat e-mailadres staat niet in de database."</span>
+    <span class="k">return</span> <span class="n">templates</span><span class="o">.</span><span class="n">TemplateResponse</span><span class="p">(</span>
+        <span class="n">request</span><span class="p">,</span>
+        <span class="s2">"beheer.html"</span><span class="p">,</span>
+        <span class="p">{</span>
+            <span class="s2">"gebruiker"</span><span class="p">:</span> <span class="n">gebruiker</span><span class="p">,</span>
+            <span class="s2">"stations"</span><span class="p">:</span> <span class="n">database</span><span class="o">.</span><span class="n">alle_stations</span><span class="p">(),</span>
+            <span class="s2">"fout"</span><span class="p">:</span> <span class="n">fout</span><span class="p">,</span>
+        <span class="p">},</span>
+    <span class="p">)</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"/metingen"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">lijst_metingen</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">database</span><span class="o">.</span><span class="n">alle_metingen</span><span class="p">()</span>
+
+
+<span class="nd">@app</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">"/metingen"</span><span class="p">)</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">nieuwe_meting</span><span class="p">(</span><span class="n">meting</span><span class="p">:</span> <span class="n">Meting</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">{</span><span class="s2">"ontvangen"</span><span class="p">:</span> <span class="n">database</span><span class="o">.</span><span class="n">voeg_meting_toe</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">meting</span><span class="o">.</span><span class="n">temp</span><span class="p">,</span> <span class="n">meting</span><span class="o">.</span><span class="n">luchtdruk</span><span class="p">)}</span>
+</code></pre></div>
+<p><code>Form()</code> leest de velden van het formulier. Dat is geen JSON. <code>request</code> moet <code>Request</code> zijn, geïmporteerd uit FastAPI. Zonder die import eist FastAPI een <code>?request=</code> in het adres.</p>
+<p><code>huidige_gebruiker</code> leest het id uit de sessie. Geen cookie, geen gebruiker, en <code>/</code> stuurt je naar <code>/login</code>. Een beheerder krijgt alle stations. Een gebruiker krijgt de query met zijn id. Een station van iemand anders wordt de zin <code>Dit station is niet van jou.</code> De temperaturen van dat station zitten niet in het antwoord.</p>
+<p><code>/beheer</code> van een gewone gebruiker stopt met status 403. De link op de pagina van de beheerder is alleen een snelkoppeling. De weigering zit in de functie.</p>
+<h2 id="de-formulieren">De formulieren<a class="headerlink" href="#de-formulieren" title="Permanent link">&para;</a></h2>
+<p>Maak <code>templates/login.html</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"nl"</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"utf-8"</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Aanmelden<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">href</span><span class="o">=</span><span class="s">"/static/style.css"</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Aanmelden<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    {% if fout %}
+    <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"fout"</span><span class="p">&gt;</span>{{ fout }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    {% endif %}
+    <span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">"post"</span> <span class="na">action</span><span class="o">=</span><span class="s">"/login"</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>E-mail
+        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">name</span><span class="o">=</span><span class="s">"email"</span> <span class="na">type</span><span class="o">=</span><span class="s">"email"</span> <span class="na">required</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Wachtwoord
+        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">name</span><span class="o">=</span><span class="s">"wachtwoord"</span> <span class="na">type</span><span class="o">=</span><span class="s">"password"</span> <span class="na">required</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"submit"</span><span class="p">&gt;</span>Aanmelden<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"/registreren"</span><span class="p">&gt;</span>Nog geen account<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>Maak <code>templates/registreren.html</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"nl"</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"utf-8"</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Registreren<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">href</span><span class="o">=</span><span class="s">"/static/style.css"</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Registreren<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    {% if fout %}
+    <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"fout"</span><span class="p">&gt;</span>{{ fout }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    {% endif %}
+    <span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">"post"</span> <span class="na">action</span><span class="o">=</span><span class="s">"/registreren"</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Naam
+        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">name</span><span class="o">=</span><span class="s">"naam"</span> <span class="na">required</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>E-mail
+        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">name</span><span class="o">=</span><span class="s">"email"</span> <span class="na">type</span><span class="o">=</span><span class="s">"email"</span> <span class="na">required</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Wachtwoord
+        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">name</span><span class="o">=</span><span class="s">"wachtwoord"</span> <span class="na">type</span><span class="o">=</span><span class="s">"password"</span> <span class="na">required</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"submit"</span><span class="p">&gt;</span>Account maken<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"/login"</span><span class="p">&gt;</span>Al een account<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>Maak <code>templates/beheer.html</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"nl"</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"utf-8"</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Beheer<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">href</span><span class="o">=</span><span class="s">"/static/style.css"</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Beheer<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>{{ gebruiker.naam }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    {% if fout %}
+    <span class="p">&lt;</span><span class="nt">p</span> <span class="na">class</span><span class="o">=</span><span class="s">"fout"</span><span class="p">&gt;</span>{{ fout }}<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    {% endif %}
+    <span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">thead</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Station<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>E-mail van de eigenaar<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">thead</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">tbody</span><span class="p">&gt;</span>
+        {% for station in stations %}
+        <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>{{ station.id }}. {{ station.naam }}<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>{{ station.email or "niemand" }}<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+        {% endfor %}
+      <span class="p">&lt;/</span><span class="nt">tbody</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">"post"</span> <span class="na">action</span><span class="o">=</span><span class="s">"/beheer"</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>Nummer van het station
+        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">name</span><span class="o">=</span><span class="s">"station_id"</span> <span class="na">type</span><span class="o">=</span><span class="s">"number"</span> <span class="na">required</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">label</span><span class="p">&gt;</span>E-mail van de gebruiker
+        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">name</span><span class="o">=</span><span class="s">"email"</span> <span class="na">type</span><span class="o">=</span><span class="s">"email"</span> <span class="na">required</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"submit"</span><span class="p">&gt;</span>Koppelen<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"/"</span><span class="p">&gt;</span>Terug naar de metingen<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+  <span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>Vervang <code>templates/index.html</code>. Bovenaan staan je naam, de knop afmelden, en de stations die je mag zien. De tabel en de grafiek blijven.</p>
+<div class="highlight"><pre><span></span><code><span class="cp">&lt;!DOCTYPE html&gt;</span>
+<span class="p">&lt;</span><span class="nt">html</span> <span class="na">lang</span><span class="o">=</span><span class="s">"nl"</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">head</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">meta</span> <span class="na">charset</span><span class="o">=</span><span class="s">"utf-8"</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">title</span><span class="p">&gt;</span>Weerstation<span class="p">&lt;/</span><span class="nt">title</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">link</span> <span class="na">rel</span><span class="o">=</span><span class="s">"stylesheet"</span> <span class="na">href</span><span class="o">=</span><span class="s">"/static/style.css"</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">head</span><span class="p">&gt;</span>
+<span class="p">&lt;</span><span class="nt">body</span><span class="p">&gt;</span>
+  <span class="p">&lt;</span><span class="nt">main</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>
+      {{ gebruiker.naam }}
+      {% if beheerder %}
+      · <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"/beheer"</span><span class="p">&gt;</span>Beheer<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+      {% endif %}
+    <span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">form</span> <span class="na">method</span><span class="o">=</span><span class="s">"post"</span> <span class="na">action</span><span class="o">=</span><span class="s">"/afmelden"</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">"submit"</span><span class="p">&gt;</span>Afmelden<span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+    {% if stations %}
+    <span class="p">&lt;</span><span class="nt">nav</span><span class="p">&gt;</span>
+      {% for item in stations %}
+      <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">"/?station_id={{ item.id }}"</span><span class="p">&gt;</span>{{ item.naam }}<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+      {% endfor %}
+    <span class="p">&lt;/</span><span class="nt">nav</span><span class="p">&gt;</span>
+    {% endif %}
+    {% if geweigerd %}
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Weerstation<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Dit station is niet van jou.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    {% elif station %}
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>{{ station }}<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>De metingen van dit station. De tijd staat in UTC.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">table</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">thead</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Tijd<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Temperatuur<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">th</span><span class="p">&gt;</span>Luchtdruk<span class="p">&lt;/</span><span class="nt">th</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+      <span class="p">&lt;/</span><span class="nt">thead</span><span class="p">&gt;</span>
+      <span class="p">&lt;</span><span class="nt">tbody</span><span class="p">&gt;</span>
+        {% for meting in metingen %}
+        <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>{{ meting.tijd }}<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>{{ meting.temperatuur }} °C<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">td</span><span class="p">&gt;</span>{{ meting.luchtdruk }} hPa<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+        {% else %}
+        <span class="p">&lt;</span><span class="nt">tr</span><span class="p">&gt;</span>
+          <span class="p">&lt;</span><span class="nt">td</span> <span class="na">colspan</span><span class="o">=</span><span class="s">"3"</span><span class="p">&gt;</span>Er zijn nog geen metingen voor dit station.<span class="p">&lt;/</span><span class="nt">td</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">tr</span><span class="p">&gt;</span>
+        {% endfor %}
+      <span class="p">&lt;/</span><span class="nt">tbody</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">table</span><span class="p">&gt;</span>
+    {% if metingen %}
+    <span class="p">&lt;</span><span class="nt">h2</span><span class="p">&gt;</span>Temperatuur<span class="p">&lt;/</span><span class="nt">h2</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">canvas</span> <span class="na">id</span><span class="o">=</span><span class="s">"grafiek"</span><span class="p">&gt;&lt;/</span><span class="nt">canvas</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span> <span class="na">src</span><span class="o">=</span><span class="s">"https://cdn.jsdelivr.net/npm/chart.js@4.4.6/dist/chart.umd.min.js"</span><span class="p">&gt;&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">script</span><span class="p">&gt;</span>
+<span class="w">      </span><span class="kd">const</span><span class="w"> </span><span class="nx">punten</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{{</span><span class="w"> </span><span class="nx">grafiek_json</span><span class="w"> </span><span class="o">|</span><span class="w"> </span><span class="nx">safe</span><span class="w"> </span><span class="p">}};</span>
+<span class="w">      </span><span class="ow">new</span><span class="w"> </span><span class="nx">Chart</span><span class="p">(</span><span class="nb">document</span><span class="p">.</span><span class="nx">getElementById</span><span class="p">(</span><span class="s2">"grafiek"</span><span class="p">),</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s2">"line"</span><span class="p">,</span>
+<span class="w">        </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">labels</span><span class="o">:</span><span class="w"> </span><span class="nx">punten</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">punt</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">punt</span><span class="p">.</span><span class="nx">tijd</span><span class="p">;</span><span class="w"> </span><span class="p">}),</span>
+<span class="w">          </span><span class="nx">datasets</span><span class="o">:</span><span class="w"> </span><span class="p">[{</span>
+<span class="w">            </span><span class="nx">label</span><span class="o">:</span><span class="w"> </span><span class="s2">"Temperatuur (°C)"</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">data</span><span class="o">:</span><span class="w"> </span><span class="nx">punten</span><span class="p">.</span><span class="nx">map</span><span class="p">(</span><span class="kd">function</span><span class="w"> </span><span class="p">(</span><span class="nx">punt</span><span class="p">)</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="nx">punt</span><span class="p">.</span><span class="nx">temp</span><span class="p">;</span><span class="w"> </span><span class="p">}),</span>
+<span class="w">            </span><span class="nx">borderColor</span><span class="o">:</span><span class="w"> </span><span class="s2">"#3f51b5"</span><span class="p">,</span>
+<span class="w">            </span><span class="nx">tension</span><span class="o">:</span><span class="w"> </span><span class="mf">0.2</span>
+<span class="w">          </span><span class="p">}]</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">      </span><span class="p">});</span>
+<span class="w">    </span><span class="p">&lt;/</span><span class="nt">script</span><span class="p">&gt;</span>
+    {% endif %}
+    {% elif stations %}
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Kies een station<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    {% else %}
+    <span class="p">&lt;</span><span class="nt">h1</span><span class="p">&gt;</span>Weerstation<span class="p">&lt;/</span><span class="nt">h1</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">p</span><span class="p">&gt;</span>Je hebt nog geen station.<span class="p">&lt;/</span><span class="nt">p</span><span class="p">&gt;</span>
+    {% endif %}
+  <span class="p">&lt;/</span><span class="nt">main</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">body</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">html</span><span class="p">&gt;</span>
+</code></pre></div>
+<p>Zet onderaan <code>static/style.css</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="nt">label</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">block</span><span class="p">;</span>
+<span class="w">  </span><span class="k">margin</span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="kt">rem</span><span class="w"> </span><span class="mi">0</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">input</span><span class="o">,</span>
+<span class="nt">button</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">font</span><span class="p">:</span><span class="w"> </span><span class="kc">inherit</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">input</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">display</span><span class="p">:</span><span class="w"> </span><span class="kc">block</span><span class="p">;</span>
+<span class="w">  </span><span class="k">width</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+<span class="w">  </span><span class="k">margin-top</span><span class="p">:</span><span class="w"> </span><span class="mf">0.3</span><span class="kt">rem</span><span class="p">;</span>
+<span class="w">  </span><span class="k">padding</span><span class="p">:</span><span class="w"> </span><span class="mf">0.4</span><span class="kt">rem</span><span class="w"> </span><span class="mf">0.5</span><span class="kt">rem</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">button</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">margin-top</span><span class="p">:</span><span class="w"> </span><span class="mf">0.6</span><span class="kt">rem</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nt">nav</span><span class="w"> </span><span class="nt">a</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">margin-right</span><span class="p">:</span><span class="w"> </span><span class="mf">0.8</span><span class="kt">rem</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">fout</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">color</span><span class="p">:</span><span class="w"> </span><span class="mh">#9b2c2c</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
+<h2 id="de-eerste-beheerder">De eerste beheerder<a class="headerlink" href="#de-eerste-beheerder" title="Permanent link">&para;</a></h2>
+<p>Maak <code>maak_beheerder.py</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">getpass</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">bcrypt</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">database</span>
+
+<span class="n">database</span><span class="o">.</span><span class="n">start</span><span class="p">()</span>
+
+<span class="n">naam</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"Naam: "</span><span class="p">)</span>
+<span class="n">email</span> <span class="o">=</span> <span class="nb">input</span><span class="p">(</span><span class="s2">"E-mail: "</span><span class="p">)</span>
+<span class="n">wachtwoord</span> <span class="o">=</span> <span class="n">getpass</span><span class="o">.</span><span class="n">getpass</span><span class="p">(</span><span class="s2">"Wachtwoord: "</span><span class="p">)</span>
+<span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">wachtwoord</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">8</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">"Kies een wachtwoord van minstens 8 tekens."</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="n">wachtwoord_hash</span> <span class="o">=</span> <span class="n">bcrypt</span><span class="o">.</span><span class="n">hashpw</span><span class="p">(</span><span class="n">wachtwoord</span><span class="o">.</span><span class="n">encode</span><span class="p">(),</span> <span class="n">bcrypt</span><span class="o">.</span><span class="n">gensalt</span><span class="p">())</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">database</span><span class="o">.</span><span class="n">voeg_beheerder_toe</span><span class="p">(</span><span class="n">naam</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">wachtwoord_hash</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Dit e-mailadres bestaat al."</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">"Beheerder bewaard."</span><span class="p">)</span>
+</code></pre></div>
+<p>De server mag hiervoor uit staan. In de terminal:</p>
+<div class="highlight"><pre><span></span><code><span class="n">python</span> <span class="n">maak_beheerder</span><span class="p">.</span><span class="n">py</span>
+</code></pre></div>
+<p>Kies een wachtwoord van minstens 8 tekens. Het script toont het wachtwoord niet. Start daarna de server en meld je aan op <a href="http://127.0.0.1:8000">http://127.0.0.1:8000</a>. Je ziet Klaslokaal en Speelplaats, en de link Beheer.</p>
+<p>Op <code>/beheer</code> koppel je Klaslokaal aan een gewoon account. Dat account maak je via <code>/registreren</code>. Meld je daarna aan als die gebruiker. Je ziet één station. <code>http://127.0.0.1:8000/?station_id=2</code> toont <code>Dit station is niet van jou.</code> Typ je zelf <code>/beheer</code>, dan is het antwoord 403.</p>
+<p>De voorbeeldstations hebben nog geen eigenaar tot je ze koppelt. Een nieuwe gebruiker ziet daarom eerst <code>Je hebt nog geen station.</code></p>
+<h2 id="de-test">De test<a class="headerlink" href="#de-test" title="Permanent link">&para;</a></h2>
+<p>Vervang <code>test_main.py</code>. De tests maken zelf accounts in een tijdelijke database. Jouw <code>weerstation.db</code> en je beheerder blijven staan. De regels met <code>WEERSTATION_DB</code> horen boven <code>import main</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">os</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">tempfile</span>
+
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"WEERSTATION_DB"</span><span class="p">]</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">tempfile</span><span class="o">.</span><span class="n">gettempdir</span><span class="p">(),</span> <span class="s2">"weerstation-test.db"</span><span class="p">)</span>
+<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"WEERSTATION_SLEUTEL"</span><span class="p">]</span> <span class="o">=</span> <span class="s2">"test-sleutel"</span>
+<span class="k">if</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">exists</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"WEERSTATION_DB"</span><span class="p">]):</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"WEERSTATION_DB"</span><span class="p">])</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">bcrypt</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">fastapi.testclient</span><span class="w"> </span><span class="kn">import</span> <span class="n">TestClient</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">database</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">main</span><span class="w"> </span><span class="kn">import</span> <span class="n">app</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">nieuw</span><span class="p">():</span>
+    <span class="k">return</span> <span class="n">TestClient</span><span class="p">(</span><span class="n">app</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">maak</span><span class="p">(</span><span class="n">email</span><span class="p">,</span> <span class="n">wachtwoord</span><span class="p">,</span> <span class="n">beheerder</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="n">wachtwoord_hash</span> <span class="o">=</span> <span class="n">bcrypt</span><span class="o">.</span><span class="n">hashpw</span><span class="p">(</span><span class="n">wachtwoord</span><span class="o">.</span><span class="n">encode</span><span class="p">(),</span> <span class="n">bcrypt</span><span class="o">.</span><span class="n">gensalt</span><span class="p">())</span><span class="o">.</span><span class="n">decode</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">beheerder</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">database</span><span class="o">.</span><span class="n">voeg_beheerder_toe</span><span class="p">(</span><span class="s2">"Beheer"</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">wachtwoord_hash</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">database</span><span class="o">.</span><span class="n">voeg_gebruiker_toe</span><span class="p">(</span><span class="s2">"Leerling"</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">wachtwoord_hash</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">meld_aan</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="n">email</span><span class="p">,</span> <span class="n">wachtwoord</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+        <span class="s2">"/login"</span><span class="p">,</span>
+        <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s2">"email"</span><span class="p">:</span> <span class="n">email</span><span class="p">,</span> <span class="s2">"wachtwoord"</span><span class="p">:</span> <span class="n">wachtwoord</span><span class="p">},</span>
+        <span class="n">follow_redirects</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+    <span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_zonder_login_gaat_naar_login</span><span class="p">():</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">nieuw</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"/"</span><span class="p">,</span> <span class="n">follow_redirects</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">303</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">"location"</span><span class="p">]</span> <span class="o">==</span> <span class="s2">"/login"</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_fout_wachtwoord_en_onbekende_gebruiker</span><span class="p">():</span>
+    <span class="n">maak</span><span class="p">(</span><span class="s2">"leerling@school.be"</span><span class="p">,</span> <span class="s2">"geheim123"</span><span class="p">)</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">nieuw</span><span class="p">()</span>
+    <span class="n">onbekend</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+        <span class="s2">"/login"</span><span class="p">,</span>
+        <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s2">"email"</span><span class="p">:</span> <span class="s2">"niemand@school.be"</span><span class="p">,</span> <span class="s2">"wachtwoord"</span><span class="p">:</span> <span class="s2">"geheim123"</span><span class="p">},</span>
+    <span class="p">)</span>
+    <span class="n">fout</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+        <span class="s2">"/login"</span><span class="p">,</span>
+        <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s2">"email"</span><span class="p">:</span> <span class="s2">"leerling@school.be"</span><span class="p">,</span> <span class="s2">"wachtwoord"</span><span class="p">:</span> <span class="s2">"verkeerd1"</span><span class="p">},</span>
+    <span class="p">)</span>
+    <span class="k">assert</span> <span class="n">onbekend</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">401</span>
+    <span class="k">assert</span> <span class="n">fout</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">401</span>
+    <span class="k">assert</span> <span class="s2">"Onbekend e-mailadres of wachtwoord."</span> <span class="ow">in</span> <span class="n">onbekend</span><span class="o">.</span><span class="n">text</span>
+    <span class="k">assert</span> <span class="s2">"Onbekend e-mailadres of wachtwoord."</span> <span class="ow">in</span> <span class="n">fout</span><span class="o">.</span><span class="n">text</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_gebruiker_ziet_alleen_eigen_station</span><span class="p">():</span>
+    <span class="n">maak</span><span class="p">(</span><span class="s2">"eigenaar@school.be"</span><span class="p">,</span> <span class="s2">"geheim123"</span><span class="p">)</span>
+    <span class="n">database</span><span class="o">.</span><span class="n">koppel_station</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"eigenaar@school.be"</span><span class="p">)</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">nieuw</span><span class="p">()</span>
+    <span class="n">meld_aan</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="s2">"eigenaar@school.be"</span><span class="p">,</span> <span class="s2">"geheim123"</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"/"</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+    <span class="k">assert</span> <span class="s2">"Klaslokaal"</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span>
+    <span class="k">assert</span> <span class="s2">"17,8"</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span>
+    <span class="k">assert</span> <span class="s2">"7,4"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span>
+    <span class="k">assert</span> <span class="s2">"Speelplaats"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_ander_station_blijft_verborgen</span><span class="p">():</span>
+    <span class="n">maak</span><span class="p">(</span><span class="s2">"eigenaar2@school.be"</span><span class="p">,</span> <span class="s2">"geheim123"</span><span class="p">)</span>
+    <span class="n">database</span><span class="o">.</span><span class="n">koppel_station</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="s2">"eigenaar2@school.be"</span><span class="p">)</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">nieuw</span><span class="p">()</span>
+    <span class="n">meld_aan</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="s2">"eigenaar2@school.be"</span><span class="p">,</span> <span class="s2">"geheim123"</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"/?station_id=2"</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="s2">"Dit station is niet van jou."</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span>
+    <span class="k">assert</span> <span class="s2">"7,4"</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_gebruiker_krijgt_403_op_beheer</span><span class="p">():</span>
+    <span class="n">maak</span><span class="p">(</span><span class="s2">"gewone@school.be"</span><span class="p">,</span> <span class="s2">"geheim123"</span><span class="p">)</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">nieuw</span><span class="p">()</span>
+    <span class="n">meld_aan</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="s2">"gewone@school.be"</span><span class="p">,</span> <span class="s2">"geheim123"</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">client</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"/beheer"</span><span class="p">)</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">403</span>
+    <span class="n">geweigerd</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">"/beheer"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s2">"station_id"</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s2">"email"</span><span class="p">:</span> <span class="s2">"gewone@school.be"</span><span class="p">})</span>
+    <span class="k">assert</span> <span class="n">geweigerd</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">403</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_beheerder_koppelt_een_station</span><span class="p">():</span>
+    <span class="n">maak</span><span class="p">(</span><span class="s2">"baas@school.be"</span><span class="p">,</span> <span class="s2">"geheim123"</span><span class="p">,</span> <span class="n">beheerder</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="n">maak</span><span class="p">(</span><span class="s2">"nieuw@school.be"</span><span class="p">,</span> <span class="s2">"geheim123"</span><span class="p">)</span>
+    <span class="n">client</span> <span class="o">=</span> <span class="n">nieuw</span><span class="p">()</span>
+    <span class="n">meld_aan</span><span class="p">(</span><span class="n">client</span><span class="p">,</span> <span class="s2">"baas@school.be"</span><span class="p">,</span> <span class="s2">"geheim123"</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">"/beheer"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">{</span><span class="s2">"station_id"</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">"email"</span><span class="p">:</span> <span class="s2">"nieuw@school.be"</span><span class="p">})</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+    <span class="k">assert</span> <span class="s2">"nieuw@school.be"</span> <span class="ow">in</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span>
+    <span class="n">eigenaar</span> <span class="o">=</span> <span class="n">nieuw</span><span class="p">()</span>
+    <span class="n">meld_aan</span><span class="p">(</span><span class="n">eigenaar</span><span class="p">,</span> <span class="s2">"nieuw@school.be"</span><span class="p">,</span> <span class="s2">"geheim123"</span><span class="p">)</span>
+    <span class="n">pagina</span> <span class="o">=</span> <span class="n">eigenaar</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"/"</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="s2">"Speelplaats"</span> <span class="ow">in</span> <span class="n">pagina</span><span class="o">.</span><span class="n">text</span>
+    <span class="k">assert</span> <span class="s2">"7,4"</span> <span class="ow">in</span> <span class="n">pagina</span><span class="o">.</span><span class="n">text</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_metingen_is_een_lijst</span><span class="p">():</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">nieuw</span><span class="p">()</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"/metingen"</span><span class="p">)</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+    <span class="k">assert</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">(),</span> <span class="nb">list</span><span class="p">)</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_nieuwe_meting_komt_terug</span><span class="p">():</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">nieuw</span><span class="p">()</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">"/metingen"</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">"temp"</span><span class="p">:</span> <span class="mf">21.5</span><span class="p">,</span> <span class="s2">"luchtdruk"</span><span class="p">:</span> <span class="mi">1013</span><span class="p">})</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+    <span class="n">ontvangen</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()[</span><span class="s2">"ontvangen"</span><span class="p">]</span>
+    <span class="k">assert</span> <span class="n">ontvangen</span><span class="p">[</span><span class="s2">"temp"</span><span class="p">]</span> <span class="o">==</span> <span class="mf">21.5</span>
+    <span class="k">assert</span> <span class="n">ontvangen</span><span class="p">[</span><span class="s2">"luchtdruk"</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1013</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_onvolledige_meting_wordt_geweigerd</span><span class="p">():</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">nieuw</span><span class="p">()</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">"/metingen"</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">"temp"</span><span class="p">:</span> <span class="mf">21.5</span><span class="p">})</span>
+    <span class="k">assert</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">422</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">test_meting_blijft_bewaard</span><span class="p">():</span>
+    <span class="n">nieuw</span><span class="p">()</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="s2">"/metingen"</span><span class="p">,</span> <span class="n">json</span><span class="o">=</span><span class="p">{</span><span class="s2">"temp"</span><span class="p">:</span> <span class="mf">12.3</span><span class="p">,</span> <span class="s2">"luchtdruk"</span><span class="p">:</span> <span class="mf">1002.5</span><span class="p">})</span>
+    <span class="n">verbinding</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">"WEERSTATION_DB"</span><span class="p">])</span>
+    <span class="n">rij</span> <span class="o">=</span> <span class="n">verbinding</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"SELECT temp FROM meting WHERE temp = 12.3"</span><span class="p">)</span><span class="o">.</span><span class="n">fetchone</span><span class="p">()</span>
+    <span class="n">verbinding</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="k">assert</span> <span class="n">rij</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="n">pytest</span>
+</code></pre></div>
+<p>Tien tests passed.</p>
+<h2 id="bewaren-op-github">Bewaren op GitHub<a class="headerlink" href="#bewaren-op-github" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><span class="n">git</span> <span class="n">add</span> <span class="n">database</span><span class="p">.</span><span class="n">py</span> <span class="n">main</span><span class="p">.</span><span class="n">py</span> <span class="n">maak_beheerder</span><span class="p">.</span><span class="n">py</span> <span class="n">test_main</span><span class="p">.</span><span class="n">py</span> <span class="n">templates</span> <span class="n">static</span><span class="p">/</span><span class="n">style</span><span class="p">.</span><span class="n">css</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="n">-m</span> <span class="s2">"Laat een gebruiker alleen zijn eigen station zien"</span>
+<span class="n">git</span> <span class="n">push</span>
+</code></pre></div>
+<h2 id="klaar-als">Klaar als<a class="headerlink" href="#klaar-als" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Zonder aanmelden opent <code>/</code> het formulier, niet de metingen.</li>
+<li>Een fout wachtwoord en een onbekend e-mailadres tonen dezelfde zin.</li>
+<li>Een gebruiker ziet alleen het station dat de beheerder koppelde.</li>
+<li><code>/beheer</code> als gebruiker antwoordt met 403.</li>
+<li><code>pytest</code> eindigt met 10 geslaagde tests.</li>
+</ul>
+<p>In <a href="../mqtt/">MQTT</a> schrijft een tweede programma de metingen van het bord in dezelfde database.</p>
+<details class="note">
+<summary>Als het niet lukt</summary>
+<p><strong>Je ziet Klaslokaal zonder aanmelden.</strong> <code>home</code> is nog de oude functie. Vervang heel <code>main.py</code>.</p>
+<p><strong><code>Field required</code> bij <code>query</code> en <code>request</code>.</strong> <code>Request</code> is niet geïmporteerd, of alleen de functie <code>home</code> is geplakt. Het importblok bovenaan hoort bij het bestand uit dit hoofdstuk.</p>
+<p><strong><code>Form data requires "python-multipart"</code>.</strong> Het pakket ontbreekt. Voer <code>python -m pip install python-multipart</code> opnieuw uit in de actieve omgeving.</p>
+<p><strong><code>No module named 'itsdangerous'</code>.</strong> Zelfde stap, met <code>itsdangerous</code>. De sessie ondertekent de cookie daarmee.</p>
+<p><strong><code>No module named 'bcrypt'</code>.</strong> <code>python -m pip install bcrypt</code> in de omgeving waarvan de prompt met <code>(.venv)</code> begint.</p>
+<p><strong>Een gebruiker ziet de speelplaats.</strong> <code>stations_van_gebruiker</code> filtert niet op <code>gebruiker_id</code>, of <code>home</code> gebruikt nog <code>alle_stations</code> voor iedereen.</p>
+<p><strong><code>/beheer</code> lukt als gebruiker.</strong> De controle op <code>rol</code> ontbreekt. Status 403 hoort vóór de template.</p>
+</details>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Terug naar boven
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../metingen/" class="md-footer__link md-footer__link--prev" aria-label="Vorige: Metingen">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Vorige
+              </span>
+              <div class="md-ellipsis">
+                Metingen
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../mqtt/" class="md-footer__link md-footer__link--next" aria-label="Volgende: MQTT">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Volgende
+              </span>
+              <div class="md-ellipsis">
+                MQTT
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "..", "features": ["navigation.footer", "navigation.sections", "navigation.top", "content.code.copy", "search.suggest", "search.highlight"], "search": "../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Gekopieerd naar klembord", "clipboard.copy": "Kopi\u00ebren naar klembord", "search.result.more.one": "1 extra overeenkomst op deze pagina", "search.result.more.other": "# extra overeenkomsten op deze pagina", "search.result.none": "Geen overeenkomende documenten", "search.result.one": "1 overeenkomende document", "search.result.other": "# overeenkomende documenten", "search.result.placeholder": "Typ om te beginnen met zoeken", "search.result.term.missing": "Ontbreekt", "select.version": "Selecteer versie"}, "version": null}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.d7400e89.min.js"></script>
+      
+    
+  </body>
+</html>
