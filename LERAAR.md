@@ -75,7 +75,7 @@ python -m uvicorn main:app --reload
 
 ## De pagina uit FastAPI
 
-`index.html` verhuist naar `templates/`, `style.css` naar `static/`. De link wordt `/static/style.css`. `GET /` vult met Jinja de laatste meting uit de lijst in, met een komma op de pagina. Een POST via `/docs` en een vernieuwde `/` tonen die nieuwe meting. `test_home` stuurt zelf een meting en zoekt de komma-getallen in de HTML. De andere drie tests blijven. Het voorbeeld staat in `voorbeelden/03-pagina/`.
+`index.html` verhuist naar `templates/`, `style.css` naar `static/`. De link wordt `/static/style.css`. Na het verplaatsen toont `/` nog de oude JSON. De tabel komt terug pas als heel `main.py` vervangen is, inclusief `Request`, `mount` en `Jinja2Templates`. Alleen de functie `home` plakken geeft een fout over een queryparameter `request`. `GET /` vult met Jinja de laatste meting uit de lijst in, met een komma op de pagina. Een POST via `/docs` en een vernieuwde `/` tonen die nieuwe meting. `test_home` stuurt zelf een meting en zoekt de komma-getallen in de HTML. De andere drie tests blijven. Het voorbeeld staat in `voorbeelden/03-pagina/`.
 
 ## Database
 

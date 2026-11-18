@@ -26,9 +26,11 @@ In `templates/index.html` wordt de link naar de CSS:
 <link rel="stylesheet" href="/static/style.css">
 ```
 
-De browser vraagt die CSS aan je programma, op `http://127.0.0.1:8000/static/style.css`. De bestandsnaam alleen zoekt naast het HTML-bestand. Dat pad bestond bij `file:///`. Op de server bestaat het niet, en de pagina blijft kaal.
+De browser vraagt die CSS later aan je programma, op `http://127.0.0.1:8000/static/style.css`. De schuine streep vooraan begint bij dat adres. Het is geen pad vanuit de map `templates`, en ook geen map hoger met `../`. De bestandsnaam alleen zoekt naast het HTML-bestand. Dat pad bestond bij `file:///`.
 
 `style.css` zelf verandert niet.
+
+Op dit moment toont `http://127.0.0.1:8000` nog de JSON uit de eerste API, `status` en `service`. De tabel komt terug in de route hieronder. Het HTML-bestand zelf openen toont de opmaak niet meer. De CSS hoort dan bij de server, en die server stuurt de pagina nog niet.
 
 ## De cijfers uit de lijst
 
@@ -89,7 +91,7 @@ def nieuwe_meting(meting: Meting):
     return {"ontvangen": meting.model_dump()}
 ```
 
-`mount` koppelt het adres `/static` aan de map `static`. `Jinja2Templates` leest de map `templates`.
+`mount` koppelt het adres `/static` aan de map `static`. `Jinja2Templates` leest de map `templates`. Plak het hele bestand. Alleen de functie `home` overnemen laat `Request` en `templates` onbekend. FastAPI ziet `request` dan als een verplicht vraagteken in het adres, en antwoordt met een fout over `query`.
 
 `request` is de vraag die de browser stuurde. `TemplateResponse` verwacht dat argument. `metingen[-1]` is de laatste meting. Bij de start is dat de meting van 18,2 °C.
 
