@@ -1,0 +1,11 @@
+# Kopieer dit bestand naar broker.py en vul de waarden in.
+# broker.py staat in .gitignore en gaat niet naar GitHub.
+# De leerkracht geeft het adres, de gebruikersnaam en het wachtwoord.
+# Noem dit bestand niet secrets.py. Python heeft zelf een module secrets.
+# Een bestand met die naam in deze map laat pytest en FastAPI stoppen.
+
+MQTT_BROKER = "192.168.1.10"
+MQTT_POORT = 1883
+MQTT_GEBRUIKER = "GEBRUIKER"
+MQTT_WACHTWOORD = "WACHTWOORD"
+MQTT_CLIENT_ID = "ingester-laptop"

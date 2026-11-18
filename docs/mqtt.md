@@ -152,7 +152,7 @@ Maak `ingester.py`.
 import paho.mqtt.client as mqtt
 
 import database
-import secrets
+import broker
 
 database.start()
 
@@ -182,12 +182,12 @@ def on_message(client, userdata, bericht):
 
 
 def main():
-    client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2, client_id=secrets.MQTT_CLIENT_ID)
-    client.username_pw_set(secrets.MQTT_GEBRUIKER, secrets.MQTT_WACHTWOORD)
+    client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2, client_id=broker.MQTT_CLIENT_ID)
+    client.username_pw_set(broker.MQTT_GEBRUIKER, broker.MQTT_WACHTWOORD)
     client.on_connect = on_connect
     client.on_message = on_message
-    print("Verbinden met EMQX op %s:%s" % (secrets.MQTT_BROKER, secrets.MQTT_POORT))
-    client.connect(secrets.MQTT_BROKER, secrets.MQTT_POORT)
+    print("Verbinden met EMQX op %s:%s" % (broker.MQTT_BROKER, broker.MQTT_POORT))
+    client.connect(broker.MQTT_BROKER, broker.MQTT_POORT)
     client.loop_forever()
 
 
@@ -197,11 +197,11 @@ if __name__ == "__main__":
 
 `on_connect` abonneert pas als de verbinding gelukt is. `+` is één stuk van het topic: elk nummer, zowel `info` als `meting`. `loop_forever` blijft luisteren. Dit programma serveert geen pagina.
 
-Maak `secrets.py.example`.
+Maak `broker.py.example`.
 
 ```python
-# Kopieer dit bestand naar secrets.py en vul de waarden in.
-# secrets.py staat in .gitignore en gaat niet naar GitHub.
+# Kopieer dit bestand naar broker.py en vul de waarden in.
+# broker.py staat in .gitignore en gaat niet naar GitHub.
 # De leerkracht geeft het adres, de gebruikersnaam en het wachtwoord.
 
 MQTT_BROKER = "192.168.1.10"
@@ -211,10 +211,12 @@ MQTT_WACHTWOORD = "WACHTWOORD"
 MQTT_CLIENT_ID = "ingester-laptop"
 ```
 
-Kopieer dat bestand naar `secrets.py` en vul de waarden in die je van de leerkracht krijgt. Zet deze regel in `.gitignore`:
+Kopieer dat bestand naar `broker.py` en vul de waarden in die je van de leerkracht krijgt. Het bestand heet bewust niet `secrets.py`. Python heeft zelf een module `secrets`, en FastAPI importeert daar `token_hex` uit. Een bestand `secrets.py` in deze map verbergt die module. `pytest` stopt dan met `cannot import name 'token_hex'`.
+
+Zet deze regel in `.gitignore`:
 
 ```text
-secrets.py
+broker.py
 ```
 
 `python ingester.py` verbindt. Laat dat venster open. De website draait in een andere terminal. Vernieuw de pagina om een nieuwe rij te zien. De pagina luistert zelf niet naar MQTT.
@@ -261,23 +263,25 @@ Twaalf tests passed. De tweede info-regel verandert de naam en laat de meting st
 ## Bewaren op GitHub
 
 ```powershell
-git add database.py ingester.py secrets.py.example test_main.py .gitignore
+git add database.py ingester.py broker.py.example test_main.py .gitignore
 git commit -m "Schrijf MQTT-berichten met een apart programma in de database"
 git push
 ```
 
-`git status` toont `secrets.py` niet.
+`git status` toont `broker.py` niet.
 
 ## Klaar als
 
 - `pytest` eindigt met 12 geslaagde tests.
 - Een info-bericht voor een nieuw nummer maakt een station. Een meting zonder station maakt geen rij.
 - `ingester.py` is een apart bestand. Er is geen MQTT-code in een route van `main.py`.
-- `secrets.py` staat niet op GitHub.
+- `broker.py` staat niet op GitHub.
 
 ??? note "Als het niet lukt"
 
-    **`No module named 'secrets'`.** `secrets.py` ontbreekt. Kopieer `secrets.py.example` en vul de waarden in. De module `secrets` van Python is een andere. Jouw bestand in de projectmap wint zolang je de ingester vanuit die map start.
+    **`cannot import name 'token_hex' from 'secrets'`.** In de projectmap staat `secrets.py`. Hernoem dat bestand naar `broker.py`. In `ingester.py` wordt dat `import broker`, en `broker.MQTT_BROKER` in plaats van `secrets.MQTT_BROKER`. Verwijder `secrets.py`. Zolang dat bestand er ligt, blijft pytest stoppen.
+
+    **`No module named 'broker'`.** `broker.py` ontbreekt. Kopieer `broker.py.example` en vul de waarden in.
 
     **`no such column: nummer`.** `zorg_voor_nummer` draait niet vanuit `start`, of de server is niet herstart na het bewaren van `database.py`.
 
@@ -287,4 +291,4 @@ git push
 
     **De pagina verandert niet vanzelf.** Ze leest de database bij een vernieuwing. MQTT zit niet in de browser.
 
-    **`git status` toont `secrets.py`.** De regel in `.gitignore` ontbreekt. De regel is exact `secrets.py`.
+    **`git status` toont `broker.py`.** De regel in `.gitignore` ontbreekt. De regel is exact `broker.py`.

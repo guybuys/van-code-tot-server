@@ -1,7 +1,7 @@
 import paho.mqtt.client as mqtt
 
 import database
-import secrets
+import broker
 
 database.start()
 
@@ -31,12 +31,12 @@ def on_message(client, userdata, bericht):
 
 
 def main():
-    client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2, client_id=secrets.MQTT_CLIENT_ID)
-    client.username_pw_set(secrets.MQTT_GEBRUIKER, secrets.MQTT_WACHTWOORD)
+    client = mqtt.Client(mqtt.CallbackAPIVersion.VERSION2, client_id=broker.MQTT_CLIENT_ID)
+    client.username_pw_set(broker.MQTT_GEBRUIKER, broker.MQTT_WACHTWOORD)
     client.on_connect = on_connect
     client.on_message = on_message
-    print("Verbinden met EMQX op %s:%s" % (secrets.MQTT_BROKER, secrets.MQTT_POORT))
-    client.connect(secrets.MQTT_BROKER, secrets.MQTT_POORT)
+    print("Verbinden met EMQX op %s:%s" % (broker.MQTT_BROKER, broker.MQTT_POORT))
+    client.connect(broker.MQTT_BROKER, broker.MQTT_POORT)
     client.loop_forever()
 
 
