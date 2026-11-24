@@ -1,0 +1,13 @@
+[Unit]
+Description=Weerstation website
+After=network.target
+
+[Service]
+User=GEBRUIKER
+WorkingDirectory=/home/GEBRUIKER/weerstation
+EnvironmentFile=/home/GEBRUIKER/weerstation/.env
+ExecStart=/home/GEBRUIKER/weerstation/.venv/bin/python -m uvicorn main:app --host 0.0.0.0 --port 8000
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

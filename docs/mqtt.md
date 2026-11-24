@@ -294,3 +294,5 @@ git push
     **De pagina verandert niet vanzelf.** Ze leest de database bij een vernieuwing. MQTT zit niet in de browser.
 
     **`git status` toont `broker.py`.** De regel in `.gitignore` ontbreekt. De regel is exact `broker.py`.
+
+In [SSH](ssh.md) draait dit programma op de computer op school, niet alleen op je laptop.

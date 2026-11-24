@@ -15,8 +15,8 @@ Eerst de werkomgeving, dan een backend die ze kunnen testen, daarna pas de pagin
 7. Tabel, daarna één grafiek.
 8. Wachtwoorden, login en twee rollen: `gebruiker` en `beheerder`.
 9. MQTT-ingester. Een apart programma, niet de FastAPI-app. De site leest de database, de ingester schrijft metingen. Zo zien ze twee programma's op dezelfde database. Dat verschil hoort in dit hoofdstuk, niet in de introductie.
-10. SSH en de NUC.
-11. Eén gezamenlijke deploy.
+10. SSH en de computer op school. Elke leerling kloont de eigen repository, krijgt een eigen poort, en ziet dat de pagina sterft als de SSH-sessie sluit.
+11. Eén gezamenlijke deploy. Eén account, één SQLite-bestand, twee systemd-diensten. De site blijft draaien na het afmelden.
 
 HTML komt bewust na de eerste API. De leerlingen kennen Python. Een JSON-antwoord kunnen ze testen voor er een pagina bestaat. `/docs` geeft meteen iets om aan te klikken.
 
@@ -79,7 +79,7 @@ python -m uvicorn main:app --reload
 
 ## Database
 
-SQLite in `weerstation.db`, via `sqlite3` uit de standaardbibliotheek. PostgreSQL blijft voor de server. InfluxDB en MongoDB worden genoemd en niet gebruikt. Vaste kolommen, zolang elk station `temp` en `luchtdruk` stuurt.
+SQLite in `weerstation.db`, via `sqlite3` uit de standaardbibliotheek. InfluxDB en MongoDB worden genoemd en niet gebruikt. Vaste kolommen, zolang elk station `temp` en `luchtdruk` stuurt. PostgreSQL blijft een mogelijke vervanging met dezelfde tabellen. De deploy in deze cursus herschrijft de queries niet en houdt SQLite.
 
 Drie tabellen: `gebruiker`, `station`, `meting`. `gebruiker` krijgt nog geen rijen. Een leesbaar oefenwachtwoord in het bestand zou het hash-hoofdstuk onderuit halen. `gebruiker_id` bij de voorbeeldstations blijft leeg.
 
@@ -109,7 +109,17 @@ Het hoofdstuk staat in `docs/mqtt.md`. Het voorbeeld staat in `voorbeelden/07-mq
 4. Bij een meting schrijft ze een rij: station, temperatuur en luchtdruk. De tijd zet de ingester zelf, in UTC. Het bord stuurt geen klok mee.
 5. FastAPI leest alleen de database. De pagina toont de laatste rijen ook als de broker even weg is.
 
-Lokaal is dat hetzelfde `weerstation.db`. Op de server wordt dat PostgreSQL, met dezelfde tabellen. De voorbeeldmetingen in de cursus blijven staan tot dit programma echt schrijft.
+Lokaal en op de server is dat hetzelfde `weerstation.db`. De tabellen blijven die van SQLite. De voorbeeldmetingen in de cursus blijven staan tot dit programma echt schrijft.
+
+## SSH en de server
+
+Het hoofdstuk staat in `docs/ssh.md`. Er komt geen nieuw Python-voorbeeld bij. De code blijft `voorbeelden/07-mqtt/`. Elke leerling kloont de eigen private repository op de schoolcomputer, kopieert `broker.py` met `scp`, en zet `MQTT_CLIENT_ID` op een eigen waarde. Jij geeft in de les het adres, de gebruikersnaam, het wachtwoord en een unieke poort. Die vier staan niet in de cursustekst. Python 3.10+ staat al op die computer. Leerlingen installeren het niet met `sudo`.
+
+Twee ingesters met dezelfde client-id schoppen elkaar van de broker. Twintig ingesters met verschillende id's schrijven elk in hun eigen `weerstation.db`. Dat mag in dit hoofdstuk. De pagina sterft bewust als het SSH-venster dichtgaat.
+
+De deploy staat in `docs/server.md`. De unit-bestanden staan in `voorbeelden/08-server/`. Vervang `GEBRUIKER` door het account op de server voor je ze in `/etc/systemd/system/` zet. Eén repository, één database, één ingester met client-id `ingester-server`. De sessiesleutel staat in `.env` op de server, niet in de unit en niet in Git. Jij doet `sudo` en de firewall. Poort `8000` moet van buiten bereikbaar zijn. HTTPS zit er niet in. Leerlingen controleren `systemctl status` en openen de pagina buiten de schoolwifi.
+
+`POST /metingen` blijft zonder login bereikbaar, ook op die server. De ingester is de bedoelde weg. Een aparte database zoals PostgreSQL, of een paneel zoals Dokploy, zou dezelfde site kunnen draaien en verbergt de twee programma's. Daarom blijven het twee systemd-diensten en het SQLite-bestand.
 
 ## Wachtwoorden
 

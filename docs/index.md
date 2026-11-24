@@ -43,7 +43,7 @@ flowchart TD
   website --> browser[Browser]
 ```
 
-Op het einde draait die site op een computer op school, en daarna op een server. Die stappen komen later. Eerst antwoordt een programma op je laptop.
+Op het einde draait die site op een computer op school, en daarna op een server. Dat zijn de laatste twee hoofdstukken. Eerst antwoordt een programma op je laptop.
 
 ## Wat je eerst maakt
 
@@ -68,8 +68,8 @@ Daarna, in deze volgorde:
 8. [Metingen op de pagina](metingen.md). Eerst een tabel, daarna een grafiek.
 9. [Inloggen](inloggen.md). Een wachtwoord staat als hash in de database. Een gebruiker ziet alleen zijn eigen station. Een beheerder ziet ze allemaal. Die controle zit in het programma, niet alleen in een verborgen menu.
 10. [MQTT](mqtt.md). Een apart programma schrijft de metingen van het weerstation in de database.
-11. SSH en de computer op school.
-12. De site op een server zetten.
+11. [SSH en de computer op school](ssh.md). Je opent een terminal op die computer en start daar de site.
+12. [De site op een server](server.md). Eén site voor de klas blijft draaien, ook als niemand aangemeld is.
 
 ## Hoe je deze cursus gebruikt
 

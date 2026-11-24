@@ -1,0 +1,12 @@
+[Unit]
+Description=Weerstation ingester
+After=network.target
+
+[Service]
+User=GEBRUIKER
+WorkingDirectory=/home/GEBRUIKER/weerstation
+ExecStart=/home/GEBRUIKER/weerstation/.venv/bin/python ingester.py
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

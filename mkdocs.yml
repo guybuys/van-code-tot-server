@@ -48,3 +48,6 @@ nav:
       - Metingen: metingen.md
       - Inloggen: inloggen.md
       - MQTT: mqtt.md
+  - Server:
+      - SSH: ssh.md
+      - De site op een server: server.md

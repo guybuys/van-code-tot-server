@@ -8,7 +8,7 @@ Het weerstation zelf stuurt nog geen metingen. Dat programma komt later. Tot dan
 
 Een meting hoort bij een station. Een station hoort later bij een gebruiker. De vraag die we stellen is: de metingen van dit station, op deze dag.
 
-**SQL** legt de gegevens in tabellen. Een rij is één station of één meting. SQLite is SQL in één bestand, `weerstation.db`. Er hoeft geen apart databaseprogramma te draaien. Op de server gebruiken we later PostgreSQL. De vragen lijken op elkaar.
+**SQL** legt de gegevens in tabellen. Een rij is één station of één meting. SQLite is SQL in één bestand, `weerstation.db`. Er hoeft geen apart databaseprogramma te draaien. Een server kan dezelfde tabellen later in PostgreSQL zetten. De vragen lijken op elkaar. In deze cursus blijft het bestand `weerstation.db`, ook op de server.
 
 **InfluxDB** is gemaakt voor een lange reeks metingen in de tijd. Die database kan zelf gemiddelden per uur uitrekenen. Voor twee stations en één schooldag volstaat een SQL-vraag.
 

@@ -21,8 +21,8 @@ Deze cursus is niet de enige plaats waar een doel aan bod komt. Algoritmiek, num
 | Metingen op de pagina | klaar | LPD 9, 10 en 11. Eerst een tabel, daarna een grafiek van de temperatuur. |
 | Wachtwoorden, login en rollen | klaar | LPD 8, 9 en 13. bcrypt, een sessiecookie, en 403 voor een gebruiker op `/beheer`. |
 | MQTT | klaar | LPD 4, 7 en 11. `ingester.py` schrijft info en metingen. De website leest alleen de database. |
-| SSH en de computer op school | onder constructie | Geen extra leerplandoel. Nodig om het systeem van de laptop los te maken. |
-| De site op een server | onder constructie | Geen extra leerplandoel. Zelfde systeem, nu bereikbaar buiten de klas. |
+| SSH en de computer op school | klaar | Geen extra leerplandoel. De leerling kloont op de schoolcomputer en ziet dat de pagina stopt als de SSH-sessie sluit. |
+| De site op een server | klaar | Geen extra leerplandoel. Eén gedeelde site, twee systemd-diensten, bereikbaar buiten de klas. |
 
 ## Per leerplandoel
 
