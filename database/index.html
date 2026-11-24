@@ -923,6 +923,121 @@
   
 
     
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Server
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Server
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ssh/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    SSH
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../server/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    De site op een server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
   </ul>
 </nav>
                   </div>
@@ -1062,7 +1177,7 @@
 <p>Het weerstation zelf stuurt nog geen metingen. Dat programma komt later. Tot dan zet je voorbeeldmetingen in de database. Zonder die rijen heeft de volgende pagina niets om te tonen.</p>
 <h2 id="drie-soorten">Drie soorten<a class="headerlink" href="#drie-soorten" title="Permanent link">&para;</a></h2>
 <p>Een meting hoort bij een station. Een station hoort later bij een gebruiker. De vraag die we stellen is: de metingen van dit station, op deze dag.</p>
-<p><strong>SQL</strong> legt de gegevens in tabellen. Een rij is één station of één meting. SQLite is SQL in één bestand, <code>weerstation.db</code>. Er hoeft geen apart databaseprogramma te draaien. Op de server gebruiken we later PostgreSQL. De vragen lijken op elkaar.</p>
+<p><strong>SQL</strong> legt de gegevens in tabellen. Een rij is één station of één meting. SQLite is SQL in één bestand, <code>weerstation.db</code>. Er hoeft geen apart databaseprogramma te draaien. Een server kan dezelfde tabellen later in PostgreSQL zetten. De vragen lijken op elkaar. In deze cursus blijft het bestand <code>weerstation.db</code>, ook op de server.</p>
 <p><strong>InfluxDB</strong> is gemaakt voor een lange reeks metingen in de tijd. Die database kan zelf gemiddelden per uur uitrekenen. Voor twee stations en één schooldag volstaat een SQL-vraag.</p>
 <p><strong>MongoDB</strong> bewaart documenten. Elk station kan daar andere velden in hebben. Onze stations sturen allebei temperatuur en luchtdruk. Vaste kolommen maken de tabel op de pagina duidelijk. Een extra sensor wordt later een extra kolom.</p>
 <p>Deze cursus gebruikt SQLite.</p>
