@@ -918,6 +918,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#de-pakketten-in-een-bestand" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        De pakketten in één bestand
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#de-repository-op-de-schoolcomputer" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1054,6 +1065,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#de-pakketten-in-een-bestand" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        De pakketten in één bestand
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#de-repository-op-de-schoolcomputer" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1157,6 +1179,24 @@ python3<span class="w"> </span>--version
 </code></pre></div>
 <p><code>whoami</code> toont de gebruikersnaam van de schoolcomputer. <code>pwd</code> toont een pad zoals <code>/home/gebruiker</code>, niet <code>C:\dev</code>. <code>python3 --version</code> moet 3.10 of hoger zijn. Het commando heet hier <code>python3</code>. <code>python</code> alleen bestaat op deze computer vaak niet.</p>
 <p><code>exit</code> verbreekt de verbinding. Je bent terug op je laptop. De bestanden op de schoolcomputer blijven daar. De bestanden op je laptop staan niet op de schoolcomputer, tot je ze daar zelf naartoe haalt.</p>
+<h2 id="de-pakketten-in-een-bestand">De pakketten in één bestand<a class="headerlink" href="#de-pakketten-in-een-bestand" title="Permanent link">&para;</a></h2>
+<p>Op de schoolcomputer is de virtuele omgeving leeg. De pakketten die je hoofdstuk per hoofdstuk installeerde, staan alleen op je laptop. Zet ze in een bestand <code>requirements.txt</code> in de root van je repository, naast <code>main.py</code>.</p>
+<div class="highlight"><pre><span></span><code>fastapi
+uvicorn
+httpx2
+pytest
+jinja2
+bcrypt
+python-multipart
+itsdangerous
+paho-mqtt
+</code></pre></div>
+<p>Bewaar dat bestand en stuur het naar GitHub, nog op je laptop:</p>
+<div class="highlight"><pre><span></span><code><span class="n">git</span> <span class="n">add</span> <span class="n">requirements</span><span class="p">.</span><span class="n">txt</span>
+<span class="n">git</span> <span class="n">commit</span> <span class="n">-m</span> <span class="s2">"Zet de pakketten in requirements.txt"</span>
+<span class="n">git</span> <span class="n">push</span>
+</code></pre></div>
+<p>Zonder die push mist de schoolcomputer het bestand, en stopt <code>pip</code> meteen.</p>
 <h2 id="de-repository-op-de-schoolcomputer">De repository op de schoolcomputer<a class="headerlink" href="#de-repository-op-de-schoolcomputer" title="Permanent link">&para;</a></h2>
 <p>Verbind opnieuw met <code>ssh</code>. Clone je private repository. De map op de schoolcomputer mag je home-map zijn. OneDrive speelt hier geen rol.</p>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/jouw-naam/weerstation.git
@@ -1165,7 +1205,7 @@ python3<span class="w"> </span>--version
 <p>GitHub aanvaardt in deze terminal je gewone accountwachtwoord niet. Het wachtwoord dat <code>git</code> vraagt, is een token.</p>
 <ol>
 <li>Open op je laptop <a href="https://github.com">github.com</a> → <strong>Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token</strong>.</li>
-<li>Kies alleen de repository <code>weerstation</code>. Zet bij <strong>Contents</strong> de toegang op <strong>Read-only</strong>.</li>
+<li>Kies alleen de repository <code>weerstation</code>. Zet bij <strong>Contents</strong> de toegang op <strong>Read and write</strong>. Alleen lezen geeft bij <code>git clone</code> een fout 403.</li>
 <li>Kies een vervaldatum van hooguit 30 dagen. Maak de token aan.</li>
 <li>GitHub toont de token één keer. Kopieer hem.</li>
 <li>In de SSH-terminal is de username je GitHub-naam. Plak de token als wachtwoord. De terminal toont niets terwijl je plakt.</li>
@@ -1217,7 +1257,9 @@ python<span class="w"> </span>-m<span class="w"> </span>pip<span class="w"> </sp
 <p><strong><code>Connection timed out</code>.</strong> Het adres klopt niet, of deze laptop zit niet op het netwerk dat de schoolcomputer bereikt. Vergelijk het adres met wat de leerkracht gaf.</p>
 <p><strong><code>Permission denied</code>.</strong> Gebruikersnaam of wachtwoord klopt niet. Het wachtwoord verschijnt niet terwijl je typt. Typ het opnieuw.</p>
 <p><strong><code>python3: command not found</code>.</strong> Zeg het tegen je leerkracht. Python hoort op de schoolcomputer te staan. Installeer hem niet zelf met <code>sudo</code>.</p>
-<p><strong><code>Authentication failed</code> bij <code>git clone</code>.</strong> GitHub weigert je accountwachtwoord. Gebruik een fine-grained token als wachtwoord, met leestoegang tot <code>weerstation</code>.</p>
+<p><strong><code>No such file or directory: 'requirements.txt'</code>.</strong> Het bestand staat niet in de repository. Maak het op je laptop, commit en push, en voer op de schoolcomputer <code>git pull</code> uit.</p>
+<p><strong><code>Authentication failed</code> bij <code>git clone</code>.</strong> GitHub weigert je accountwachtwoord. Gebruik een fine-grained token als wachtwoord, met schrijftoegang tot <code>weerstation</code>.</p>
+<p><strong><code>Write access to repository not granted</code>.</strong> De token heeft bij <strong>Contents</strong> alleen <strong>Read-only</strong>. Zet die toegang op <strong>Read and write</strong>, verwijder de half gekloonde map met <code>rm -rf weerstation</code> en clone opnieuw.</p>
 <p><strong><code>Address already in use</code>.</strong> Jouw poort is bezet. Vraag een ander getal. Start uvicorn opnieuw met die poort.</p>
 <p><strong>SSH werkt, de browser niet.</strong> In het uvicorn-commando moet <code>--host 0.0.0.0</code> staan. <code>127.0.0.1</code> antwoordt alleen op de schoolcomputer zelf. Klopt het commando wel, dan blokkeert het netwerk de poort. Zeg het tegen je leerkracht.</p>
 <p><strong>De ingester eindigt op <code>timed out</code>.</strong> In <code>broker.py</code> op de schoolcomputer staat een ander brokeradres dan op je laptop. <code>scp</code> kopieert het werkende bestand. Pas daarna alleen <code>MQTT_CLIENT_ID</code> aan.</p>
