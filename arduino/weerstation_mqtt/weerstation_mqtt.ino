@@ -51,13 +51,13 @@ void setup() {
 }
 
 void loop() {
+  mqtt.houdOpen();
+
   if (!sensorOk) {
     sensorOk = startSensor();
     delay(2000);
     return;
   }
-
-  mqtt.houdOpen();
 
   unsigned long nu = millis();
   if (nu - laatsteMeting >= MEET_INTERVAL_MS) {
@@ -65,6 +65,33 @@ void loop() {
     publiceerMeting();
   }
 }
+
+// De BMP280 blijft soms halverwege een I2C-lezing hangen, bijvoorbeeld als de
+// Uno opnieuw start terwijl de sensor nog antwoordt. SDA blijft dan laag.
+// Negen klokpulsen op SCL maken de bus weer los. Een reset van alleen de Uno
+// doet dat niet. De chip zelf herstelt pas als ook zijn voeding wegvalt.
+#if !SIMULEER_SENSOR
+void herstelI2cBus() {
+  Wire.end();
+  pinMode(A4, INPUT_PULLUP);
+  pinMode(A5, OUTPUT);
+  for (int puls = 0; puls < 9; puls++) {
+    digitalWrite(A5, HIGH);
+    delayMicroseconds(5);
+    digitalWrite(A5, LOW);
+    delayMicroseconds(5);
+  }
+  pinMode(A4, OUTPUT);
+  digitalWrite(A4, LOW);
+  delayMicroseconds(5);
+  digitalWrite(A5, HIGH);
+  delayMicroseconds(5);
+  digitalWrite(A4, HIGH);
+  delayMicroseconds(5);
+  pinMode(A4, INPUT);
+  pinMode(A5, INPUT);
+}
+#endif
 
 bool startSensor() {
 #if SIMULEER_SENSOR
@@ -75,6 +102,8 @@ bool startSensor() {
   Serial.println("Gesimuleerde sensor. Zet SIMULEER_SENSOR op 0 voor de BMP280.");
   return true;
 #else
+  herstelI2cBus();
+  delay(10);
   if (bmp.begin(0x76) || bmp.begin(0x77)) {
     mqtt.wisFout();
     Serial.println("BMP280 gevonden op A4 (SDA) en A5 (SCL)");
@@ -107,11 +136,29 @@ int maakBericht(char *bericht, size_t lengte) {
                   temperatuur, luchtdruk);
 }
 
+// De BMP280 kan fysisch van -40 tot 85 °C en van 300 tot 1100 hPa.
+// 178 °C en een negatieve luchtdruk betekent dat de ijkgetallen fout
+// gelezen zijn. Dat bericht gaat niet naar de broker.
+bool metingGeldig() {
+  if (isnan(temperatuur) || isnan(luchtdruk)) {
+    return false;
+  }
+  if (temperatuur < -40.0 || temperatuur > 85.0) {
+    return false;
+  }
+  if (luchtdruk < 300.0 || luchtdruk > 1100.0) {
+    return false;
+  }
+  return true;
+}
+
 void publiceerMeting() {
   leesSensor();
 
-  if (isnan(temperatuur) || isnan(luchtdruk)) {
-    Serial.println("Sensor gaf geen geldige meting.");
+  if (!metingGeldig()) {
+    Serial.println("Sensor gaf geen geldige meting. Opnieuw zoeken.");
+    mqtt.fout();
+    sensorOk = false;
     return;
   }
 

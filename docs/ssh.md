@@ -46,6 +46,32 @@ python3 --version
 
 `exit` verbreekt de verbinding. Je bent terug op je laptop. De bestanden op de schoolcomputer blijven daar. De bestanden op je laptop staan niet op de schoolcomputer, tot je ze daar zelf naartoe haalt.
 
+## De pakketten in één bestand
+
+Op de schoolcomputer is de virtuele omgeving leeg. De pakketten die je hoofdstuk per hoofdstuk installeerde, staan alleen op je laptop. Zet ze in een bestand `requirements.txt` in de root van je repository, naast `main.py`.
+
+```text
+fastapi
+uvicorn
+httpx2
+pytest
+jinja2
+bcrypt
+python-multipart
+itsdangerous
+paho-mqtt
+```
+
+Bewaar dat bestand en stuur het naar GitHub, nog op je laptop:
+
+```powershell
+git add requirements.txt
+git commit -m "Zet de pakketten in requirements.txt"
+git push
+```
+
+Zonder die push mist de schoolcomputer het bestand, en stopt `pip` meteen.
+
 ## De repository op de schoolcomputer
 
 Verbind opnieuw met `ssh`. Clone je private repository. De map op de schoolcomputer mag je home-map zijn. OneDrive speelt hier geen rol.
@@ -58,7 +84,7 @@ cd weerstation
 GitHub aanvaardt in deze terminal je gewone accountwachtwoord niet. Het wachtwoord dat `git` vraagt, is een token.
 
 1. Open op je laptop [github.com](https://github.com) → **Settings → Developer settings → Personal access tokens → Fine-grained tokens → Generate new token**.
-2. Kies alleen de repository `weerstation`. Zet bij **Contents** de toegang op **Read-only**.
+2. Kies alleen de repository `weerstation`. Zet bij **Contents** de toegang op **Read and write**. Alleen lezen geeft bij `git clone` een fout 403.
 3. Kies een vervaldatum van hooguit 30 dagen. Maak de token aan.
 4. GitHub toont de token één keer. Kopieer hem.
 5. In de SSH-terminal is de username je GitHub-naam. Plak de token als wachtwoord. De terminal toont niets terwijl je plakt.
@@ -145,7 +171,11 @@ Dat is de grens van dit hoofdstuk. De computer op school kan de site draaien, ma
 
     **`python3: command not found`.** Zeg het tegen je leerkracht. Python hoort op de schoolcomputer te staan. Installeer hem niet zelf met `sudo`.
 
-    **`Authentication failed` bij `git clone`.** GitHub weigert je accountwachtwoord. Gebruik een fine-grained token als wachtwoord, met leestoegang tot `weerstation`.
+    **`No such file or directory: 'requirements.txt'`.** Het bestand staat niet in de repository. Maak het op je laptop, commit en push, en voer op de schoolcomputer `git pull` uit.
+
+    **`Authentication failed` bij `git clone`.** GitHub weigert je accountwachtwoord. Gebruik een fine-grained token als wachtwoord, met schrijftoegang tot `weerstation`.
+
+    **`Write access to repository not granted`.** De token heeft bij **Contents** alleen **Read-only**. Zet die toegang op **Read and write**, verwijder de half gekloonde map met `rm -rf weerstation` en clone opnieuw.
 
     **`Address already in use`.** Jouw poort is bezet. Vraag een ander getal. Start uvicorn opnieuw met die poort.
 

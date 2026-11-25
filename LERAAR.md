@@ -113,7 +113,7 @@ Lokaal en op de server is dat hetzelfde `weerstation.db`. De tabellen blijven di
 
 ## SSH en de server
 
-Het hoofdstuk staat in `docs/ssh.md`. Er komt geen nieuw Python-voorbeeld bij. De code blijft `voorbeelden/07-mqtt/`. Elke leerling kloont de eigen private repository op de schoolcomputer, kopieert `broker.py` met `scp`, en zet `MQTT_CLIENT_ID` op een eigen waarde. Jij geeft in de les het adres, de gebruikersnaam, het wachtwoord en een unieke poort. Die vier staan niet in de cursustekst. Python 3.10+ staat al op die computer. Leerlingen installeren het niet met `sudo`.
+Het hoofdstuk staat in `docs/ssh.md`. Er komt geen nieuw Python-voorbeeld bij. De code blijft `voorbeelden/07-mqtt/`. Voor het clonen maken de leerlingen op hun laptop `requirements.txt` met de pakketten uit de vorige hoofdstukken, en pushen dat. Elke leerling kloont daarna de eigen private repository op de schoolcomputer, kopieert `broker.py` met `scp`, en zet `MQTT_CLIENT_ID` op een eigen waarde. Jij geeft in de les het adres, de gebruikersnaam, het wachtwoord en een unieke poort. Die vier staan niet in de cursustekst. Python 3.10+ staat al op die computer. Leerlingen installeren het niet met `sudo`.
 
 Twee ingesters met dezelfde client-id schoppen elkaar van de broker. Twintig ingesters met verschillende id's schrijven elk in hun eigen `weerstation.db`. Dat mag in dit hoofdstuk. De pagina sterft bewust als het SSH-venster dichtgaat.
 
